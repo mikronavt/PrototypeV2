@@ -44,7 +44,7 @@ public class InputFormImpl extends AbstractInput{
         InputFormFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         InputFormFrame.setLocationRelativeTo(null);
         InputFormFrame.setResizable(false);
-        InputFormFrame.setLayout(new GridLayout(2, 2));
+        InputFormFrame.setLayout(new GridLayout());
         
 
         /**
