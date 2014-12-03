@@ -81,14 +81,14 @@ public class InputFormImpl extends AbstractInput{
          * Добавляем JTextArea для многострочных текстов со скролом
          */
 
-        DataJTextArea = new JTextArea(20, 27);
-        DataJTextArea.setLineWrap(true);
-        DataJTextArea.setWrapStyleWord(true);
-
-        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
-        scrollPane.setViewportView(DataJTextArea);
-
-        InputFormFrame.add(scrollPane);
+//        DataJTextArea = new JTextArea(20, 27);
+//        DataJTextArea.setLineWrap(true);
+//        DataJTextArea.setWrapStyleWord(true);
+//
+//        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
+//        scrollPane.setViewportView(DataJTextArea);
+//
+//        InputFormFrame.add(scrollPane);
         InputFormFrame.setVisible(true);
         
     }
