@@ -4,8 +4,6 @@
  */
 package vreshetnyak.input.impl;
 
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.*;
 import vreshetnyak.input.AbstractInput;
