@@ -11,7 +11,9 @@ public class App {
 
     public static void main(String[] args) {
         Crawler robot = new CrawlerImpl();
-        robot.getAllURL(robot.getContentOfHTTPPageUTF8("http://inosmi.ru/history/"));
+        int ind = robot.getURL(robot.getContentOfHTTPPageUTF8("http://inosmi.ru/"));
+        System.out.println(ind);
+        robot.getAllURL(robot.getContentOfHTTPPageUTF8("http://inosmi.ru/"));
         ((CrawlerImpl)robot).Print();
         
     }

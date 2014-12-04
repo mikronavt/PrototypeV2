@@ -18,29 +18,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Класс описывает работу поискового робота,
- * который занимается индексированием сайтов
- * и поиска конкретных статей
+ * Класс описывает работу поискового робота, который занимается индексированием
+ * сайтов и поиска конкретных статей
+ *
  * @author artem
  */
 public class CrawlerImpl implements Crawler {
-    
+
     protected List<String> urls = null; //список url-ов на странице
-    
-    public CrawlerImpl(){
+
+    public CrawlerImpl() {
         urls = new ArrayList<String>();
     }
 
     public List<String> getUrls() {
         return urls;
     }
-    
-    
-   /**
-    * функция возвращает HTML код указанной страницы
-    * вторым параметром принимает кодировку (например "UTF8")
-    */ 
-    public StringBuilder getContentOfHTTPPage(String pageAddress, String codePage){
+
+    /**
+     * функция возвращает HTML код указанной страницы вторым параметром
+     * принимает кодировку (например "UTF8")
+     */
+    public StringBuilder getContentOfHTTPPage(String pageAddress, String codePage) {
         StringBuilder sb = null;
         URL pageURL = null;
         URLConnection uc = null;
@@ -54,7 +53,8 @@ public class CrawlerImpl implements Crawler {
             while ((inputLine = br.readLine()) != null) {
                 sb.append(inputLine);
             }
-        }catch(IOException ioexp){
+        } catch (IOException ioexp) {
+            ioexp.printStackTrace();
         } finally {
             try {
                 br.close();
@@ -66,8 +66,8 @@ public class CrawlerImpl implements Crawler {
     }
 
     /**
-     * получить HTML страницу по URL
-     * Кодировка по умолчанию UTF-8
+     * получить HTML страницу по URL Кодировка по умолчанию UTF-8
+     *
      * @param pageAddress адрес странцы индексирования
      * @return функция возвращает HTML код указанной страницы
      */
@@ -77,49 +77,53 @@ public class CrawlerImpl implements Crawler {
 
     /**
      * получить первый url на странице
+     *
      * @param content HTML страница
-     * @return 
+     * @return
      */
     public int getURL(StringBuilder content) {
-        int start = content.indexOf("<a href=\"")+"<a href=\"".length();
-        int end = content.indexOf("\"", start);
-        String url = content.substring(start, end);
+        int start = content.indexOf("<a href=\"");
+        int len = start + "<a href=\"".length();
+        int end = content.indexOf("\"", len);
+        String url = content.substring(len, end);
         urls.add(url);
-        return start+url.length();
+        return start;
     }
 
     /**
      * Получить url начиная с определенной позиции
+     *
      * @param content - HTML страница
      * @param indexStart - стартовый индекс
      * @return - найденный url
      */
-    public int getURL(StringBuilder content, int indexStart){
-        int start = content.indexOf("<a href=\"", indexStart)+"<a href=\"".length();
-        int end = content.indexOf("\"", start);
-        String url = content.substring(start, end);
+    public int getURL(StringBuilder content, int indexStart) {
+        int start = content.indexOf("<a href=\"", indexStart);
+        int len = start + "<a href=\"".length();
+        int end = content.indexOf("\"", len);
+        String url = content.substring(len, end);
         urls.add(url);
-        return start+url.length();
+        return start;
     }
-    
-    
+
     /**
      * Получить все URL на странице
+     *
      * @param content HTML код страницы
-     * @return 
+     * @return
      */
     public List<String> getAllURL(StringBuilder content) {
         int index = 0;
-        while(index <= content.length() && index!= -1){
-           index = getURL(content, index);   
+        while (index != -1) {
+            index = getURL(content, index+1);
         }
         return urls;
     }
 
-    public void Print(){
-        for(String url : urls){
+    public void Print() {
+        for (String url : urls) {
             System.out.println(url);
         }
     }
-    
+
 }
