@@ -1,3 +1,4 @@
 *.class
 *.jar
 /Model/SearchEngine/target/
+/IO/target/
