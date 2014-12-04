@@ -28,5 +28,6 @@
     <module>Statistics</module>
     <module>SolutionCenter</module>
     <module>Analisys</module>
+    <module>SearchEngine</module>
   </modules>
 </project>
