@@ -54,5 +54,13 @@ public interface Crawler {
      * @param content HTML код страницы
      * @return 
      */
-    public List<String> getAllURL(StringBuilder content);
+    public List<String> getAllURLPage(StringBuilder content);
+    
+    /**
+     * Получение всех url 
+     * заданного ресурса
+     * @param url страница с которой начинается получение urls
+     * @param breaking количество циклов индексирования
+     */
+    public void createIndexUrl(String url, int breaking);
 }

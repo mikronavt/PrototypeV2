@@ -13,7 +13,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,10 +27,12 @@ import java.util.logging.Logger;
  */
 public class CrawlerImpl implements Crawler {
 
+    protected Map<String, List<String>> index = null;
     protected List<String> urls = null; //список url-ов на странице
 
     public CrawlerImpl() {
         urls = new ArrayList<String>();
+        index = new HashMap<String, List<String>>();
     }
 
     public List<String> getUrls() {
@@ -112,10 +116,10 @@ public class CrawlerImpl implements Crawler {
      * @param content HTML код страницы
      * @return
      */
-    public List<String> getAllURL(StringBuilder content) {
+    public List<String> getAllURLPage(StringBuilder content) {
         int index = 0;
         while (index != -1) {
-            index = getURL(content, index+1);
+            index = getURL(content, index + 1);
         }
         return urls;
     }
@@ -126,4 +130,29 @@ public class CrawlerImpl implements Crawler {
         }
     }
 
+    /**
+     * Получение всех url заданного ресурса
+     *
+     * @param url страница с которой начинается получение urls
+     * @param breaking количество циклов индексирования
+     */
+    public void createIndexUrl(String url, int count) {
+        StringBuilder content = getContentOfHTTPPageUTF8(url);
+        getAllURLPage(content);
+        List<String> resources = new ArrayList<String>();
+        String uri = "";
+        for (int i = 0; i<urls.size()&& i<count; i++) {
+            uri = urls.get(i);
+            if (resources.indexOf(uri) == -1 && isHttp(uri)) {
+                content = getContentOfHTTPPageUTF8(uri);
+                getAllURLPage(content);
+                resources.add(uri);
+            }
+        }
+    }
+
+    
+    protected boolean isHttp(String uri){
+        return uri.indexOf("http") != -1;
+    }
 }
