@@ -1,6 +1,6 @@
-package graph;
+package com.artech.prototypev2.chuiko;
 
-import graph.manager.GraphManager;
+import com.artech.prototypev2.chuiko.manager.GraphManager;
 
 import java.io.IOException;
 

@@ -1,5 +1,6 @@
 package graph.vertex;
 
+import com.artech.prototypev2.chuiko.vertex.AbstractVertex;
 import org.junit.Before;
 import org.junit.Test;
 

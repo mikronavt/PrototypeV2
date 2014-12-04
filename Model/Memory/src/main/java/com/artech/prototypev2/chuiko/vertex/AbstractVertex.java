@@ -1,4 +1,4 @@
-package graph.vertex;
+package com.artech.prototypev2.chuiko.vertex;
 
 import java.util.HashMap;
 import java.util.Map;

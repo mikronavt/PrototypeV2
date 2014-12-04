@@ -1,10 +1,10 @@
-package graph.manager;
+package com.artech.prototypev2.chuiko.manager;
 
 //import com.snowtide.PDF;
 //import com.snowtide.pdf.Document;
 //import com.snowtide.pdf.OutputTarget;
-import graph.graph.AbstractGraph;
-import graph.vertex.AbstractVertex;
+import com.artech.prototypev2.chuiko.graph.AbstractGraph;
+import com.artech.prototypev2.chuiko.vertex.AbstractVertex;
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 

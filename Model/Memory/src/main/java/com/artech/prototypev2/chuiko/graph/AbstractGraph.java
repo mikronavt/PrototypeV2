@@ -1,6 +1,6 @@
-package graph.graph;
+package com.artech.prototypev2.chuiko.graph;
 
-import graph.vertex.AbstractVertex;
+import com.artech.prototypev2.chuiko.vertex.AbstractVertex;
 
 import java.util.Map;
 import java.util.Set;

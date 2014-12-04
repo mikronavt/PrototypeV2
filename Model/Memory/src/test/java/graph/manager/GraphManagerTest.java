@@ -1,5 +1,6 @@
 package graph.manager;
 
+import com.artech.prototypev2.chuiko.manager.GraphManager;
 import org.junit.Before;
 import org.junit.Test;
 
