@@ -7,12 +7,12 @@ import com.artech.prototype2.bardakov.crauler.impl.CrawlerImpl;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+
+    public static void main(String[] args) {
         Crawler robot = new CrawlerImpl();
-        String test = robot.getURL(robot.getContentOfHTTPPage("http://inosmi.ru/history/", "UTF-8"));
-        System.out.println(test);
+        robot.getAllURL(robot.getContentOfHTTPPageUTF8("http://inosmi.ru/history/"));
+        ((CrawlerImpl)robot).Print();
+        
     }
 }

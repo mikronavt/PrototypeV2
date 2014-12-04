@@ -30,6 +30,11 @@ public class CrawlerImpl implements Crawler {
     public CrawlerImpl(){
         urls = new ArrayList<String>();
     }
+
+    public List<String> getUrls() {
+        return urls;
+    }
+    
     
    /**
     * функция возвращает HTML код указанной страницы
@@ -75,11 +80,12 @@ public class CrawlerImpl implements Crawler {
      * @param content HTML страница
      * @return 
      */
-    public String getURL(StringBuilder content) {
+    public int getURL(StringBuilder content) {
         int start = content.indexOf("<a href=\"")+"<a href=\"".length();
         int end = content.indexOf("\"", start);
         String url = content.substring(start, end);
-        return url;
+        urls.add(url);
+        return start+url.length();
     }
 
     /**
@@ -88,11 +94,12 @@ public class CrawlerImpl implements Crawler {
      * @param indexStart - стартовый индекс
      * @return - найденный url
      */
-    public String getURL(StringBuilder content, int indexStart){
+    public int getURL(StringBuilder content, int indexStart){
         int start = content.indexOf("<a href=\"", indexStart)+"<a href=\"".length();
         int end = content.indexOf("\"", start);
         String url = content.substring(start, end);
-        return url;
+        urls.add(url);
+        return start+url.length();
     }
     
     
@@ -102,8 +109,17 @@ public class CrawlerImpl implements Crawler {
      * @return 
      */
     public List<String> getAllURL(StringBuilder content) {
-        
-        return null;
+        int index = 0;
+        while(index <= content.length() && index!= -1){
+           index = getURL(content, index);   
+        }
+        return urls;
     }
 
+    public void Print(){
+        for(String url : urls){
+            System.out.println(url);
+        }
+    }
+    
 }

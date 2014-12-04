@@ -38,7 +38,16 @@ public interface Crawler {
      * @param content HTML код страницы
      * @return 
      */
-    public String getURL(StringBuilder content);
+    public int getURL(StringBuilder content);
+    
+    /**
+     * Получение Url на странице
+     * начиная с указанной позиции
+     * @param content - HTML код страницы
+     * @param indexStart - стартовый индекс
+     * @return 
+     */
+     public int getURL(StringBuilder content, int indexStart);
     
     /**
      * Получить все URL на странице
