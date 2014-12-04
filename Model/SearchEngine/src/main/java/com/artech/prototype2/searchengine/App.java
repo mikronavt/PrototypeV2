@@ -1,7 +1,7 @@
 package com.artech.prototype2.searchengine;
 
-import com.artech.prototype2.bardakov.crauler.Crawler;
-import com.artech.prototype2.bardakov.crauler.impl.CrawlerImpl;
+import com.artech.prototype2.bardakov.crawler.Crawler;
+import com.artech.prototype2.bardakov.crawler.impl.CrawlerImpl;
 
 /**
  * Hello world!

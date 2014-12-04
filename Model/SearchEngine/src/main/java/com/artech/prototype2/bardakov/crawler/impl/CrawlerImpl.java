@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.artech.prototype2.bardakov.crauler.impl;
+package com.artech.prototype2.bardakov.crawler.impl;
 
-import com.artech.prototype2.bardakov.crauler.Crawler;
+import com.artech.prototype2.bardakov.crawler.Crawler;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -138,7 +138,7 @@ public class CrawlerImpl implements Crawler {
      * Получение всех url заданного ресурса
      *
      * @param url страница с которой начинается получение urls
-     * @param breaking количество циклов индексирования
+     * @param count количество циклов индексирования
      */
     public void createIndexUrl(String url, int count) {
         StringBuilder content = getContentOfHTTPPageUTF8(url);

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.artech.prototype2.bardakov.crauler;
+package com.artech.prototype2.bardakov.crawler;
 
 import java.net.URL;
 import java.util.List;
