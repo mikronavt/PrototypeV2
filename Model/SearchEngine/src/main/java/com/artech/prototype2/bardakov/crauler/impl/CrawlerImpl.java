@@ -85,12 +85,14 @@ public class CrawlerImpl implements Crawler {
      * @param content HTML страница
      * @return
      */
-    public int getURL(StringBuilder content) {
+    public int getURL(String url, StringBuilder content) {
         int start = content.indexOf("<a href=\"");
         int len = start + "<a href=\"".length();
         int end = content.indexOf("\"", len);
-        String url = content.substring(len, end);
-        urls.add(url);
+        String uri = content.substring(len, end);
+        if(!isHttp(uri))
+            uri = url+uri;
+        urls.add(uri);
         return start;
     }
 
@@ -101,12 +103,14 @@ public class CrawlerImpl implements Crawler {
      * @param indexStart - стартовый индекс
      * @return - найденный url
      */
-    public int getURL(StringBuilder content, int indexStart) {
+    public int getURL(String url, StringBuilder content, int indexStart) {
         int start = content.indexOf("<a href=\"", indexStart);
         int len = start + "<a href=\"".length();
         int end = content.indexOf("\"", len);
-        String url = content.substring(len, end);
-        urls.add(url);
+        String uri = content.substring(len, end);
+        if(!isHttp(uri))
+            uri = url+uri;
+        urls.add(uri);
         return start;
     }
 
@@ -116,10 +120,10 @@ public class CrawlerImpl implements Crawler {
      * @param content HTML код страницы
      * @return
      */
-    public List<String> getAllURLPage(StringBuilder content) {
+    public List<String> getAllURLPage(String url, StringBuilder content) {
         int index = 0;
         while (index != -1) {
-            index = getURL(content, index + 1);
+            index = getURL(url, content, index + 1);
         }
         return urls;
     }
@@ -138,20 +142,24 @@ public class CrawlerImpl implements Crawler {
      */
     public void createIndexUrl(String url, int count) {
         StringBuilder content = getContentOfHTTPPageUTF8(url);
-        getAllURLPage(content);
+        getAllURLPage(url, content);
         List<String> resources = new ArrayList<String>();
         String uri = "";
         for (int i = 0; i<urls.size()&& i<count; i++) {
             uri = urls.get(i);
             if (resources.indexOf(uri) == -1 && isHttp(uri)) {
                 content = getContentOfHTTPPageUTF8(uri);
-                getAllURLPage(content);
+                getAllURLPage(uri, content);
                 resources.add(uri);
             }
         }
     }
 
-    
+    /**
+     * Проверка ресурса
+     * @param uri - расположение ресурса
+     * @return 
+     */
     protected boolean isHttp(String uri){
         return uri.indexOf("http") != -1;
     }

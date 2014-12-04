@@ -38,7 +38,7 @@ public interface Crawler {
      * @param content HTML код страницы
      * @return 
      */
-    public int getURL(StringBuilder content);
+    public int getURL(String url, StringBuilder content);
     
     /**
      * Получение Url на странице
@@ -47,14 +47,14 @@ public interface Crawler {
      * @param indexStart - стартовый индекс
      * @return 
      */
-     public int getURL(StringBuilder content, int indexStart);
+     public int getURL(String url, StringBuilder content, int indexStart);
     
     /**
      * Получить все URL на странице
      * @param content HTML код страницы
      * @return 
      */
-    public List<String> getAllURLPage(StringBuilder content);
+    public List<String> getAllURLPage(String url, StringBuilder content);
     
     /**
      * Получение всех url 
