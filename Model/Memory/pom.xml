@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>Memory</groupId>
-    <artifactId>ArtifactldTest</artifactId>
+    <artifactId>Memory</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
@@ -27,6 +27,5 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-
-
+    <name>Memory</name>
 </project>

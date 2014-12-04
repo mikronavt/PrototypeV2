@@ -2,3 +2,10 @@
 *.jar
 /Model/SearchEngine/target/
 /IO/target/
+/Saver/target/
+/Core/target/
+/Model/Memory/target/
+/Utils/target/
+/Model/Statistics/target/
+/Model/SolutionCenter/target/
+/Model/Analisys/target/
