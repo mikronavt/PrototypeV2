@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package vreshetnyak.input.impl;
+package com.artech.prototype2.vreshetnyak.input.impl;
 
 import java.awt.GridLayout;
 import javax.swing.*;
-import vreshetnyak.input.AbstractInput;
+import com.artech.prototype2.vreshetnyak.input.AbstractInput;
 
 /**
  *

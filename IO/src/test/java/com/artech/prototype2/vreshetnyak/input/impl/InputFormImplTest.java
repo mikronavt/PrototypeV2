@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package vreshetnyak.input.impl;
+package com.artech.prototype2.vreshetnyak.input.impl;
 
+import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
 import junit.framework.TestCase;
 
 /**
