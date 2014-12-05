@@ -1,5 +1,7 @@
 package com.artech.prototype2.core;
 
+import com.artech.prototype2.core.main.Prototype;
+
 /**
  * Hello world!
  *
@@ -8,6 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Prototype prototype = new Prototype();
+        prototype.lifecycle();
     }
 }
