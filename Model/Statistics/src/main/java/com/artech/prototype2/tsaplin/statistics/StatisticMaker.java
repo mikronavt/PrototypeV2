@@ -4,9 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by User on 03.12.2014.
+ * Интерфейс для создания статистик.
+ *
+ * Created by atsaplin on 03.12.2014.
  */
 public interface StatisticMaker {
 
+    /**
+     * Метод создает и возвращает HashMap nGramStatistic со статистикой для н-грамм на основе списка слов.
+     * В HashMap ключом является н-грамм, значением - то, сколько раз она встречается в файле.
+     *
+     * @param words - список со словами
+     * @param wordsInNgram - число слов, входящих в одну нграмму
+     * @return статистика для н-грамм.
+     */
     public HashMap<String, Integer> makeStatistic (ArrayList<String> words, int wordsInNgram);
 }
