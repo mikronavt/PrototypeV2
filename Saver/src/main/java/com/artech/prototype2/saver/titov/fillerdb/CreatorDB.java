@@ -29,7 +29,7 @@ public class CreatorDB {
      * работает только для БД mysql
      */ 
     static public void executeScripts(){
-        String path = new File("").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";        
+        String path = new File("..\\Saver").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";        
 //        String path = "C:\\Users\\CANDY\\Dropbox\\PrototypeV2\\Saver\\src\\main\\resources";
         File file = new File(path);
         String[] str = file.list();

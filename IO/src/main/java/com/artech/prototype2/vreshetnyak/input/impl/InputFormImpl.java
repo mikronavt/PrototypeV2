@@ -50,7 +50,6 @@ public class InputFormImpl extends AbstractInput{
         /**
          * Menu
          */
-        
         JMenuBar BarMenu = new JMenuBar();
         JMenu menu = new JMenu("Команда");
 
@@ -80,15 +79,14 @@ public class InputFormImpl extends AbstractInput{
         /**
          * Добавляем JTextArea для многострочных текстов со скролом
          */
+        DataJTextArea = new JTextArea(20, 27);
+        DataJTextArea.setLineWrap(true);
+        DataJTextArea.setWrapStyleWord(true);
 
-//        DataJTextArea = new JTextArea(20, 27);
-//        DataJTextArea.setLineWrap(true);
-//        DataJTextArea.setWrapStyleWord(true);
-//
-//        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
-//        scrollPane.setViewportView(DataJTextArea);
-//
-//        InputFormFrame.add(scrollPane);
+        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
+        scrollPane.setViewportView(DataJTextArea);
+
+        InputFormFrame.add(scrollPane);
         InputFormFrame.setVisible(true);
         
     }

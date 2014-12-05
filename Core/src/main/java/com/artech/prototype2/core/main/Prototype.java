@@ -23,8 +23,8 @@ public class Prototype {
      * Предобработка 
      */
     public Prototype() {
-     //   createForms();
-        initDataBase();
+        createForms();
+     //   initDataBase();
     }
 
     /**
