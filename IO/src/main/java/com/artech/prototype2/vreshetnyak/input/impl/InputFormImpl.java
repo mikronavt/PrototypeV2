@@ -7,90 +7,130 @@ package com.artech.prototype2.vreshetnyak.input.impl;
 import java.awt.GridLayout;
 import javax.swing.*;
 import com.artech.prototype2.vreshetnyak.input.AbstractInput;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  *
  * @author Василий
  */
-public class InputFormImpl extends AbstractInput{
+public class InputFormImpl extends AbstractInput {
 
-    //private String[] CommandInput = {"Translate", "InMemory", "Statistic", "Analytics"};
-    protected JButton SendDataToSensoButton;
+    protected String command = null;
+    protected String[] item = {"Translate", "InMemory", "Statistic", "Analytics"};
+    protected JButton SendDataToSensorButton;
     protected JTextArea DataJTextArea;
-    protected JComboBox CommandJComboBox;
+    protected JMenuBar menuBar;
+    protected JMenu commandMenu;
+    protected JMenuItem translateItem;
+    protected JMenuItem inMemoryItem;
+    protected JMenuItem statisticItem;
+    protected JMenuItem analyticsItem;
 
     /**
-     * Унаследованный метод образует форму для ввода команд данных.
-     * Команды выбираются из выпадающего списка CommandJComboBox, которые
-     * принимает массив команд переменной CommandInput.
-     * 
+     * Унаследованный метод образует форму для ввода команд данных. Команды
+     * выбираются из выпадающего списка CommandJComboBox, которые принимает
+     * массив команд переменной CommandInput.
+     *
      * На кнопку SendDataToSensoButton повешен слушатель SendDataToSensor()
      * Класс которого описан здесь же. Наследует ActionListener
-     * 
-     * Выполняет единственный (пока!) метод actionPerformed, который
-     * формирует два поля - (String)title и command. 
-     * 
-     * Метод вызывает метод AcceptTranslateForOutput(title, command) 
-     * из объекта класса com.​artech.​prototype.​output.InitOutputForm
+     *
+     * Выполняет единственный (пока!) метод actionPerformed, который формирует
+     * два поля - (String)title и command.
+     *
+     * Метод вызывает метод AcceptTranslateForOutput(title, command) из объекта
+     * класса com.​artech.​prototype.​output.InitOutputForm
      */
     @Override
     public void InputGUIForm() {
         /**
          * Начинаем строить форму
          */
-        
         JFrame InputFormFrame = new JFrame("Ввод данных для обработки");
-        InputFormFrame.setSize(400, 500);
+        InputFormFrame.setSize(800, 600);
         InputFormFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         InputFormFrame.setLocationRelativeTo(null);
         InputFormFrame.setResizable(false);
-        InputFormFrame.setLayout(new GridLayout());
-        
+        InputFormFrame.setLayout(new BorderLayout());
 
         /**
-         * Menu
+         * JMenuBar
          */
-        
-        JMenuBar BarMenu = new JMenuBar();
-        JMenu menu = new JMenu("Команда");
+        menuBar = new JMenuBar();
+        commandMenu = new JMenu("Команды");
 
-        JMenuItem MItemTranstate = new JMenuItem("Translate");
-        JMenuItem MItemInMem = new JMenuItem("InMemory");
-        JMenuItem MItemStat = new JMenuItem("Statistic");
-        JMenuItem MItemAnalitic = new JMenuItem("Analytics");
+        translateItem = new JMenuItem(item[0]);
+        translateItem.addActionListener(new MenuActionListener());
+        commandMenu.add(translateItem);
 
-        menu.add(MItemTranstate);
-        menu.add(MItemInMem);
-        menu.add(MItemStat);
-        menu.add(MItemAnalitic);
+        inMemoryItem = new JMenuItem(item[1]);
+        inMemoryItem.addActionListener(new MenuActionListener());
+        commandMenu.add(inMemoryItem);
 
-        BarMenu.add(menu);
-        InputFormFrame.add(BarMenu);
-        
+        statisticItem = new JMenuItem(item[2]);
+        statisticItem.addActionListener(new MenuActionListener());
+        commandMenu.add(statisticItem);
+
+        analyticsItem = new JMenuItem(item[3]);
+        analyticsItem.addActionListener(new MenuActionListener());
+        commandMenu.add(analyticsItem);
+
+        menuBar.add(commandMenu);
+        InputFormFrame.setJMenuBar(menuBar);
+
         /**
-         * Добавляем выпадающий список
+         * JTextArea
          */
-        
-//        CommandJComboBox = new JComboBox(CommandInput);
-//        JPanel CommandJPanel = new JPanel();
-//        CommandJPanel.add(CommandJComboBox);
-//        CommandJPanel.setComponentOrientation(ComponentOrientation.UNKNOWN);
-//        InputFormFrame.add(CommandJPanel);
-        
-        /**
-         * Добавляем JTextArea для многострочных текстов со скролом
-         */
+        JPanel panel = new JPanel();
+        SendDataToSensorButton = new JButton("Send");
+        SendDataToSensorButton.addActionListener(new SendActionListener());
+        panel.add(SendDataToSensorButton);
+        InputFormFrame.add(panel, BorderLayout.SOUTH);
 
-//        DataJTextArea = new JTextArea(20, 27);
-//        DataJTextArea.setLineWrap(true);
-//        DataJTextArea.setWrapStyleWord(true);
-//
-//        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
-//        scrollPane.setViewportView(DataJTextArea);
-//
-//        InputFormFrame.add(scrollPane);
+        DataJTextArea = new JTextArea();
+        DataJTextArea.setLineWrap(true);
+        DataJTextArea.setWrapStyleWord(true);
+
+        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        InputFormFrame.add(scrollPane, BorderLayout.CENTER);
+
+
         InputFormFrame.setVisible(true);
-        
+
+
     }
-    
+
+    class MenuActionListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            command = e.getActionCommand();
+
+        }
+    }
+
+    class SendActionListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            if (DataJTextArea.getText().length() >= 5 && (command == item[0] | command == item[3])) {
+                String s[] = DataJTextArea.getText().split("\n");
+                File file = new File(s[0]);
+                if (file.exists()) {
+                    System.out.println("Есть файл");
+                } else {
+                    System.out.println("Нет ничего, что нам нужно!");
+                }
+                System.out.println("Элементов: " + s.length);
+            } else {
+                JOptionPane.showMessageDialog(null,
+                        "Введенный текст короткий или не та команда!",
+                        "Внимание",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 }
