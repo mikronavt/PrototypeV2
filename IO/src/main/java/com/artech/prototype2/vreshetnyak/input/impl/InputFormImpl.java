@@ -13,11 +13,21 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
+ * Класс является унаследованным от AbstractInput. Отвечает за формирование окна
+ * для ввода данных с разным назначением: командами — {"Translate", "InMemory",
+ * "Statistic", "Analytics"}.
+ *
+ * Каждой команде соответствует определенный набор аргументов: Translate - текст
+ * для перевода InMemory - путь к папке, url Statistics - путь к папке, url
+ * Analisys - текст для анализа
  *
  * @author Василий
  */
 public class InputFormImpl extends AbstractInput {
 
+    /**
+     * Объявление полей protected
+     */
     protected String command = null;
     protected int maskTypeData;
     protected String[] item = {"Translate", "InMemory", "Statistic", "Analytics"};
@@ -29,7 +39,6 @@ public class InputFormImpl extends AbstractInput {
     protected JMenuItem inMemoryItem;
     protected JMenuItem statisticItem;
     protected JMenuItem analyticsItem;
-    
     protected ValidationPathAndUrl validator;
 
     /**
@@ -59,11 +68,13 @@ public class InputFormImpl extends AbstractInput {
         InputFormFrame.setLayout(new BorderLayout());
 
         /**
-         * JMenuBar
+         * Добавляем главное меню на JMenuBar
          */
         menuBar = new JMenuBar();
         commandMenu = new JMenu("Команды");
-
+        /**
+         * Добавляем подпункты меню
+         */
         translateItem = new JMenuItem(item[0]);
         translateItem.addActionListener(new MenuActionListener());
         commandMenu.add(translateItem);
@@ -79,39 +90,54 @@ public class InputFormImpl extends AbstractInput {
         analyticsItem = new JMenuItem(item[3]);
         analyticsItem.addActionListener(new MenuActionListener());
         commandMenu.add(analyticsItem);
-
+        /**
+         * Устанавливаем сформированное меню на сцену.
+         */
         menuBar.add(commandMenu);
         InputFormFrame.setJMenuBar(menuBar);
-
         /**
-         * JTextArea
+         * Помещаем на сцену JTextArea, в который и будут вводиться данные.
+         */
+        DataJTextArea = new JTextArea();
+        DataJTextArea.setLineWrap(true);
+        DataJTextArea.setWrapStyleWord(true);
+        /**
+         * Полоса прокруточки
+         */
+        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        InputFormFrame.add(scrollPane, BorderLayout.CENTER);
+        /**
+         * Панелька для кнопочки
          */
         JPanel panel = new JPanel();
         SendDataToSensorButton = new JButton("Send");
         SendDataToSensorButton.addActionListener(new SendActionListener());
         panel.add(SendDataToSensorButton);
         InputFormFrame.add(panel, BorderLayout.SOUTH);
-
-        DataJTextArea = new JTextArea();
-        DataJTextArea.setLineWrap(true);
-        DataJTextArea.setWrapStyleWord(true);
-
-        JScrollPane scrollPane = new JScrollPane(DataJTextArea);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        InputFormFrame.add(scrollPane, BorderLayout.CENTER);
-
+        
+        /**
+         * Отображаем нашу форму
+         */
         InputFormFrame.setVisible(true);
     }
 
     class MenuActionListener implements ActionListener {
 
+        /**
+         * Отслеживаем выбранную команду
+         *
+         * @param e
+         */
         public void actionPerformed(ActionEvent e) {
             command = e.getActionCommand();
-
         }
     }
 
+    /**
+     * Класс-слушатель на кнопку SendDataToSensorButton("Send")
+     */
     class SendActionListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -125,34 +151,38 @@ public class InputFormImpl extends AbstractInput {
              */
             if (command != null) {
                 /**
-                 * Проверка на короткие тексты. Если коротки, то выводим JOptionPane
+                 * Проверка на короткие тексты. Если короткий (=< 20 символов),
+                 * то выводим JOptionPane
                  */
                 if (DataJTextArea.getText().length() >= 20) {
                     /**
-                     * В разбитом тексте по сплиту берем первый элемент
-                     * и проверяем валидность пути к папке/файлу через exists();
-                     * и сравнимаем выбранную команду.
-                     * Когда все удачно, полю @maskTypeData присваивается 0. 
+                     * В разбитом тексте по сплиту берем первый элемент и
+                     * проверяем валидность пути к папке/файлу через exists(); и
+                     * сравнимаем выбранную команду. Когда все удачно, полю
+                     * @maskTypeData присваивается 0.
                      */
                     if (file.exists() && (command.equals(item[1]) | command.equals(item[2]))) {
-                        maskTypeData = 0;
-                        validator = new ValidationPathAndUrl();
+                        maskTypeData = 0; //маска типа данных
+                        validator = new ValidationPathAndUrl(); //наш валидатор
+                        /**
+                         * перегруженный конструктор printArrayList(String args[], int type)
+                         * @param args[] - массив строк
+                         * @param type - значение маски типа данных
+                         */
                         validator.printArrayList(validator.validation(s, maskTypeData));
-                    }
-                    /**
-                     * В разбитом тексте по сплиту берем первый элемент
-                     * и проверяем валидность url-пути;
-                     * и сравнимаем выбранную команду.
-                     * Когда все удачно, полю @maskTypeData присваивается 1. 
-                     */                    
+                    } /**
+                     * В разбитом тексте по сплиту берем первый элемент и
+                     * проверяем валидность url-пути; и сравнимаем выбранную
+                     * команду. Когда все удачно, полю @maskTypeData
+                     * присваивается 1.
+                     */
                     else if (s[0].startsWith("http") && (command.equals(item[1]) | command.equals(item[2]))) {
                         maskTypeData = 1;
                         validator = new ValidationPathAndUrl();
                         validator.printArrayList(validator.validation(s, maskTypeData));
-                    } 
-                    /**
-                     * При остальных условиях берется просто текст.
-                     * Полю @maskTypeData присваивается -1. 
+                    } /**
+                     * При остальных условиях берется просто текст. Полю
+                     * @maskTypeData присваивается -1.
                      */
                     else {
                         maskTypeData = -1;

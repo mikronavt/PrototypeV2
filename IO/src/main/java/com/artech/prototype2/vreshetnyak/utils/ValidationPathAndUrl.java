@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- *
+ * Класс-валидатор, отвечающий за проверку вводимых данных
  * @author Василий
  */
 public class ValidationPathAndUrl {
@@ -21,7 +21,6 @@ public class ValidationPathAndUrl {
 
     public void valid() {
     }
-
     /**
      * Конструктор принимает аргументы
      *
@@ -52,16 +51,12 @@ public class ValidationPathAndUrl {
                     } catch (MalformedURLException ex) {
                         System.out.println("URL не валиден " + ex.getMessage());
                     }
-
-
                 }
                 break;
             default:
                 break;
         }
-
         return list;
-
     }
 
     public void printArrayList(ArrayList list) {

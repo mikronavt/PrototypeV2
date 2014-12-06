@@ -5,7 +5,10 @@
  */
 package com.artech.prototype2.vreshetnyak;
 
+import com.artech.prototype2.vreshetnyak.input.Input;
 import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
+import com.artech.prototype2.vreshetnyak.output.Output;
+import com.artech.prototype2.vreshetnyak.output.impl.InitOutputFormImpl;
 
 
 /**
@@ -16,7 +19,10 @@ public class io {
 
     public static void main( String[] args )
     {
-        InputFormImpl form = new InputFormImpl();
-        form.InputGUIForm();
+//        Input form = new InputFormImpl();
+//        form.InputGUIForm();
+        
+//        Output oForm = new InitOutputFormImpl();
+//        oForm.OutputForm("sdcds");
     }
 }
