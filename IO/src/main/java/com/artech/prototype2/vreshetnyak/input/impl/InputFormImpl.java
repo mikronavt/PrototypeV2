@@ -4,9 +4,9 @@
  */
 package com.artech.prototype2.vreshetnyak.input.impl;
 
-import java.awt.GridLayout;
 import javax.swing.*;
 import com.artech.prototype2.vreshetnyak.input.AbstractInput;
+import com.artech.prototype2.vreshetnyak.utils.ValidationPathAndUrl;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +19,7 @@ import java.io.File;
 public class InputFormImpl extends AbstractInput {
 
     protected String command = null;
+    protected int maskTypeData;
     protected String[] item = {"Translate", "InMemory", "Statistic", "Analytics"};
     protected JButton SendDataToSensorButton;
     protected JTextArea DataJTextArea;
@@ -28,6 +29,8 @@ public class InputFormImpl extends AbstractInput {
     protected JMenuItem inMemoryItem;
     protected JMenuItem statisticItem;
     protected JMenuItem analyticsItem;
+    
+    protected ValidationPathAndUrl validator;
 
     /**
      * Унаследованный метод образует форму для ввода команд данных. Команды
@@ -98,10 +101,7 @@ public class InputFormImpl extends AbstractInput {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         InputFormFrame.add(scrollPane, BorderLayout.CENTER);
 
-
         InputFormFrame.setVisible(true);
-
-
     }
 
     class MenuActionListener implements ActionListener {
@@ -115,20 +115,62 @@ public class InputFormImpl extends AbstractInput {
     class SendActionListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-
-            if (DataJTextArea.getText().length() >= 5 && (command == item[0] | command == item[3])) {
-                String s[] = DataJTextArea.getText().split("\n");
-                File file = new File(s[0]);
-                if (file.exists()) {
-                    System.out.println("Есть файл");
+            /*
+             * item = {"Translate", "InMemory", "Statistic", "Analytics"};
+             */
+            String s[] = DataJTextArea.getText().split("\n");
+            File file = new File(s[0]);
+            /**
+             * Проверяем, выбрана ли команда.
+             */
+            if (command != null) {
+                /**
+                 * Проверка на короткие тексты. Если коротки, то выводим JOptionPane
+                 */
+                if (DataJTextArea.getText().length() >= 20) {
+                    /**
+                     * В разбитом тексте по сплиту берем первый элемент
+                     * и проверяем валидность пути к папке/файлу через exists();
+                     * и сравнимаем выбранную команду.
+                     * Когда все удачно, полю @maskTypeData присваивается 0. 
+                     */
+                    if (file.exists() && (command.equals(item[1]) | command.equals(item[2]))) {
+                        maskTypeData = 0;
+                        validator = new ValidationPathAndUrl();
+                        validator.printArrayList(validator.validation(s, maskTypeData));
+                    }
+                    /**
+                     * В разбитом тексте по сплиту берем первый элемент
+                     * и проверяем валидность url-пути;
+                     * и сравнимаем выбранную команду.
+                     * Когда все удачно, полю @maskTypeData присваивается 1. 
+                     */                    
+                    else if (s[0].startsWith("http") && (command.equals(item[1]) | command.equals(item[2]))) {
+                        maskTypeData = 1;
+                        validator = new ValidationPathAndUrl();
+                        validator.printArrayList(validator.validation(s, maskTypeData));
+                    } 
+                    /**
+                     * При остальных условиях берется просто текст.
+                     * Полю @maskTypeData присваивается -1. 
+                     */
+                    else {
+                        maskTypeData = -1;
+                        /**
+                         * Принимаем текст как есть из JTextArea.
+                         */
+                        String DataToSensor = DataJTextArea.getText();
+                    }
                 } else {
-                    System.out.println("Нет ничего, что нам нужно!");
+                    JOptionPane.showMessageDialog(null,
+                            "Введенный текст слишком короткий!",
+                            "Внимание!",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-                System.out.println("Элементов: " + s.length);
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "Введенный текст короткий или не та команда!",
-                        "Внимание",
+                        "Команда не выбрана!",
+                        "Внимание!",
                         JOptionPane.ERROR_MESSAGE);
             }
         }
