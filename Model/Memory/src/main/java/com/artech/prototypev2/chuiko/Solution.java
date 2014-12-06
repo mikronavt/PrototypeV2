@@ -13,7 +13,7 @@ public class Solution {
         GraphManager manager = new GraphManager();
 
 
-        manager.addAllFilesForReadingInGraph("C:\\Users\\Alex\\Downloads\\7100\\7100\\7100");
+        manager.addAllFilesForReadingInGraph("C:\\Users\\CANDY\\книги");
        // manager.addAllFilesForReadingInGraph("src\\main\\resources\\graph\\texts");
         manager.printGraphInFile("src\\main\\resources\\graph\\rezult\\graph.txt");
     }

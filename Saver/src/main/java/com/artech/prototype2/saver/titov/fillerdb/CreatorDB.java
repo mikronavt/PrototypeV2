@@ -12,9 +12,10 @@ import java.io.File;
 /**
  *
  * @author Zhenya
+ * основной класс этого пакета
+ * вызывается функция executeScripts, 
+ * после которой находятся скрипты, создаюся таблицы
  */
-// основной класс этого пакета
-// вызывается функция executeScripts, после которой находятся скрипты, создаюся таблицы
 public class CreatorDB {          
     // создаю объект который будет заливать скрипты в БД
     static private CreateObjectsToRepository getCreateObjectsToRepository(String s){
@@ -22,9 +23,14 @@ public class CreatorDB {
         return null;
     }
     
-    // функция которая находит скрипты, которые надо залить в БД, на данный момент работает только для БД mysql
+    /**
+     * функция которая находит скрипты, 
+     * которые надо залить в БД, на данный момент
+     * работает только для БД mysql
+     */ 
     static public void executeScripts(){
-        String path = new File("").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";        
+        String path = new File("..\\Saver").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";        
+//        String path = "C:\\Users\\CANDY\\Dropbox\\PrototypeV2\\Saver\\src\\main\\resources";
         File file = new File(path);
         String[] str = file.list();
         for(String i : str){

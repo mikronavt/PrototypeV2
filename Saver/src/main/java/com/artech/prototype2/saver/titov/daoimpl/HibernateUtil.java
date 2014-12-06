@@ -58,7 +58,7 @@ public class HibernateUtil {
      */
     public static void createSessionFactory(){
         try {            
-            String path = new File("").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";                
+            String path = new File("..\\Saver").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";                
             findParamsMysql(path);
             Configuration c = HibernateUtil.configureHibernate(user, password, port);            
             sessionFactory = c.buildSessionFactory();//   new AnnotationConfiguration().configure().buildSessionFactory();
