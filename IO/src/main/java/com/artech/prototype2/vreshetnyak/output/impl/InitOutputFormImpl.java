@@ -6,6 +6,7 @@ package com.artech.prototype2.vreshetnyak.output.impl;
 
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -67,36 +68,14 @@ public class InitOutputFormImpl extends AbstractOutput {
     /**
      * FormReport(nameForm, countColum, название_колонки1, название_колонки2, ... , название_колонкиN, 
      * Название_таблицы) и создается форма в которую передаются данные из бд
-     * @param arg 
+     * 
      */
     @Override
-    public void FormReport(String[] arg) {
+    public void FormReport(String nameForm, String[] nameColumns, String nameTable) {
         
-        String[] columnNames = {
-                    "Name",
-                    "Last modified",
-                    "Type",
-                    "Size"
-          };
-           
-          String[][] data = {
-                    {"addins", "02.11.2006 19:15", "Folder", ""},
-                    {"AppPatch", "03.10.2006 14:10", "Folder", ""},
-                    {"assembly", "02.11.2006 14:20", "Folder", ""},
-                    {"Boot", "13.10.2007 10:46", "Folder", ""},
-                    {"Branding", "13.10.2007 12:10", "Folder", ""},
-                    {"Cursors", "23.09.2006 16:34", "Folder", ""},
-                    {"Debug", "07.12.2006 17:45", "Folder", ""},
-                    {"Fonts", "03.10.2006 14:08", "Folder", ""},
-                    {"Help", "08.11.2006 18:23", "Folder", ""},
-                    {"explorer.exe", "18.10.2006 14:13", "File", "2,93MB"},
-                    {"helppane.exe", "22.08.2006 11:39", "File", "4,58MB"},
-                    {"twunk.exe", "19.08.2007 10:37", "File", "1,08MB"},
-                    {"nsreg.exe", "07.08.2007 11:14", "File", "2,10MB"},
-                    {"avisp.exe", "17.12.2007 16:58", "File", "12,67MB"},
-          };
+        String[][] data = {};
         
-        JFrame OutputForm = new JFrame("Вывод");
+        JFrame OutputForm = new JFrame(nameForm);
         OutputForm.setSize(800, 600);
         OutputForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         OutputForm.setLocationRelativeTo(null);
@@ -105,25 +84,29 @@ public class InitOutputFormImpl extends AbstractOutput {
         /**
          * Добавляем главное меню на JMenuBar
          */
-        menuBar = new JMenuBar();
-        cMenu = new JMenu("Меню...");
+        //menuBar = new JMenuBar();
+        //cMenu = new JMenu("Меню...");
         /**
          * Устанавливаем сформированное меню на сцену.
          */
-        menuBar.add(cMenu);
-        OutputForm.setJMenuBar(menuBar);
+        //menuBar.add(cMenu);
+        //OutputForm.setJMenuBar(menuBar);
 
         /**
-         * Помещаем на сцену JTextArea, в который и будут вводиться данные.
+         * Помещаем на сцену JTable, в который и будут вводиться данные.
          */
-        JTable table = new JTable(data, columnNames);
+        JTable table = new JTable(data, nameColumns);
         /**
          * Полоса прокруточки
          */
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        OutputForm.add(scrollPane, BorderLayout.CENTER);
+        JPanel tablePanel = new JPanel(new GridLayout(1, 1));
+        tablePanel.setBorder(BorderFactory.createTitledBorder(nameTable));
+        tablePanel.add(scrollPane);
+        
+        OutputForm.add(tablePanel, BorderLayout.CENTER);
 
         OutputForm.setVisible(true);
     }

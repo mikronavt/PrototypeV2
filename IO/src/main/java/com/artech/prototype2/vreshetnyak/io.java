@@ -17,14 +17,15 @@ import com.artech.prototype2.vreshetnyak.output.impl.InitOutputFormImpl;
 public class io {
 
     public static void main(String[] args) {
-        
-        Input form = new InputFormImpl();
-        form.InputGUIForm();
-        
+
+//        Input form = new InputFormImpl();
+//        form.InputGUIForm();
+
 //        Output o = new InitOutputFormImpl();
 //        o.OutputFormTable(args);
 
-//        Output oForm = new InitOutputFormImpl();
-//        oForm.OutputForm("sdcds");
+        Output oForm = new InitOutputFormImpl();
+        String[] arStrings = {"title", "id"};
+        oForm.FormReport("Отчет по статистике", arStrings, "Table title");
     }
 }

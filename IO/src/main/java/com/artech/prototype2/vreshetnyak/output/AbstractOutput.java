@@ -9,6 +9,16 @@ package com.artech.prototype2.vreshetnyak.output;
  * @author Василий
  */
 public abstract class AbstractOutput implements Output{
-    public abstract void OutputForm(String text);   
-    public abstract void FormReport(String[] arg);
+    /**
+     * Метод возвращает базовую форму ввода данных
+     * @param text 
+     */
+    public abstract void OutputForm(String text);
+    /**
+     * Метод возвращает форму с таблицей
+     * @param nameForm
+     * @param nameColumns
+     * @param nameTable 
+     */
+    public abstract void FormReport(String nameForm, String[] nameColumns, String nameTable);
 }

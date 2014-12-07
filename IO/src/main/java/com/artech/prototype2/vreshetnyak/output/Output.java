@@ -17,8 +17,10 @@ public interface Output {
     
     /**
      * Выводит форму с таблицей
+     * FormReport(nameForm, countColum, название_колонки1, название_колонки2, ... , название_колонкиN, 
+     * Название_таблицы)
      * @param arg
      */
-    public void FormReport(String[] arg);
+    public void FormReport(String nameForm, String[] nameColumns, String nameTable);
     
 }
