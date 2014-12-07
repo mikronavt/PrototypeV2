@@ -24,7 +24,7 @@ public class Prototype {
      */
     public Prototype() {
         createForms();
-     //   initDataBase();
+        initDataBase();
     }
 
     /**

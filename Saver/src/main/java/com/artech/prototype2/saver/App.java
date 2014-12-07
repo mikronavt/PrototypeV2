@@ -11,7 +11,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        
         CreatorDB.executeScripts();
         HibernateUtil.createSessionFactory();
         HibernateUtil.getSessionFactory().close();
