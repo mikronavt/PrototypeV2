@@ -4,6 +4,8 @@
  */
 package com.artech.prototype2.vreshetnyak.output;
 
+import com.artech.prototype2.saver.titov.daoimpl.DAO;
+
 /**
  *
  * @author Василий
@@ -20,5 +22,5 @@ public abstract class AbstractOutput implements Output{
      * @param nameColumns
      * @param nameTable 
      */
-    public abstract void FormReport(String nameForm, String[] nameColumns, String nameTable);
+    public abstract void FormReportInit();
 }

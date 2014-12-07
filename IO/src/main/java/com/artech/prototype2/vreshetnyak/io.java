@@ -9,6 +9,8 @@ import com.artech.prototype2.vreshetnyak.input.Input;
 import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
 import com.artech.prototype2.vreshetnyak.output.Output;
 import com.artech.prototype2.vreshetnyak.output.impl.InitOutputFormImpl;
+import com.artech.prototype2.vreshetnyak.output.impl.FormReportImpl;
+
 
 /**
  *
@@ -23,9 +25,8 @@ public class io {
 
 //        Output o = new InitOutputFormImpl();
 //        o.OutputFormTable(args);
-
-        Output oForm = new InitOutputFormImpl();
         String[] arStrings = {"title", "id"};
-        oForm.FormReport("Отчет по статистике", arStrings, "Table title");
+        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, null, "Название таблицы");
+        oForm.FormReportInit();
     }
 }

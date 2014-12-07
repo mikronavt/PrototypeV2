@@ -4,6 +4,7 @@
  */
 package com.artech.prototype2.vreshetnyak.output.impl;
 
+import com.artech.prototype2.saver.titov.daoimpl.DAO;
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -65,49 +66,8 @@ public class InitOutputFormImpl extends AbstractOutput {
         OutputForm.setVisible(true);
     }
 
-    /**
-     * FormReport(nameForm, countColum, название_колонки1, название_колонки2, ... , название_колонкиN, 
-     * Название_таблицы) и создается форма в которую передаются данные из бд
-     * 
-     */
     @Override
-    public void FormReport(String nameForm, String[] nameColumns, String nameTable) {
-        
-        String[][] data = {};
-        
-        JFrame OutputForm = new JFrame(nameForm);
-        OutputForm.setSize(800, 600);
-        OutputForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        OutputForm.setLocationRelativeTo(null);
-        OutputForm.setResizable(false);
-        OutputForm.setLayout(new BorderLayout());
-        /**
-         * Добавляем главное меню на JMenuBar
-         */
-        //menuBar = new JMenuBar();
-        //cMenu = new JMenu("Меню...");
-        /**
-         * Устанавливаем сформированное меню на сцену.
-         */
-        //menuBar.add(cMenu);
-        //OutputForm.setJMenuBar(menuBar);
-
-        /**
-         * Помещаем на сцену JTable, в который и будут вводиться данные.
-         */
-        JTable table = new JTable(data, nameColumns);
-        /**
-         * Полоса прокруточки
-         */
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        JPanel tablePanel = new JPanel(new GridLayout(1, 1));
-        tablePanel.setBorder(BorderFactory.createTitledBorder(nameTable));
-        tablePanel.add(scrollPane);
-        
-        OutputForm.add(tablePanel, BorderLayout.CENTER);
-
-        OutputForm.setVisible(true);
+    public void FormReportInit() {
+       
     }
 }
