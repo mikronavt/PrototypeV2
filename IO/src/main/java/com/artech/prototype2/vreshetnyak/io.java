@@ -10,18 +10,20 @@ import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
 import com.artech.prototype2.vreshetnyak.output.Output;
 import com.artech.prototype2.vreshetnyak.output.impl.InitOutputFormImpl;
 
-
 /**
- * 
+ *
  * @author Vasilij
  */
 public class io {
 
-    public static void main( String[] args )
-    {
-//        Input form = new InputFormImpl();
-//        form.InputGUIForm();
+    public static void main(String[] args) {
         
+        Input form = new InputFormImpl();
+        form.InputGUIForm();
+        
+//        Output o = new InitOutputFormImpl();
+//        o.OutputFormTable(args);
+
 //        Output oForm = new InitOutputFormImpl();
 //        oForm.OutputForm("sdcds");
     }

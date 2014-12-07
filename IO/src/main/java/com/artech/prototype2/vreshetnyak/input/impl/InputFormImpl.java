@@ -32,6 +32,7 @@ public class InputFormImpl extends AbstractInput {
     protected int maskTypeData;
     protected String[] item = {"Translate", "InMemory", "Statistic", "Analytics"};
     protected JButton SendDataToSensorButton;
+    protected JLabel labelCommand;
     protected JTextArea DataJTextArea;
     protected JMenuBar menuBar;
     protected JMenu commandMenu;
@@ -42,18 +43,10 @@ public class InputFormImpl extends AbstractInput {
     protected ValidationPathAndUrl validator;
 
     /**
-     * Унаследованный метод образует форму для ввода команд данных. Команды
-     * выбираются из выпадающего списка CommandJComboBox, которые принимает
-     * массив команд переменной CommandInput.
+     * Унаследованный метод образует форму для ввода команд данных.
      *
      * На кнопку SendDataToSensoButton повешен слушатель SendDataToSensor()
-     * Класс которого описан здесь же. Наследует ActionListener
-     *
-     * Выполняет единственный (пока!) метод actionPerformed, который формирует
-     * два поля - (String)title и command.
-     *
-     * Метод вызывает метод AcceptTranslateForOutput(title, command) из объекта
-     * класса com.​artech.​prototype.​output.InitOutputForm
+     * Класс которого описан здесь же.
      */
     @Override
     public void InputGUIForm() {
@@ -116,7 +109,11 @@ public class InputFormImpl extends AbstractInput {
         SendDataToSensorButton.addActionListener(new SendActionListener());
         panel.add(SendDataToSensorButton);
         InputFormFrame.add(panel, BorderLayout.SOUTH);
-        
+        /**
+         * JLabel с выводом выбранной команды
+         */
+        labelCommand = new JLabel("Команда:");
+        panel.add(labelCommand);
         /**
          * Отображаем нашу форму
          */
@@ -132,6 +129,7 @@ public class InputFormImpl extends AbstractInput {
          */
         public void actionPerformed(ActionEvent e) {
             command = e.getActionCommand();
+            labelCommand.setText("Команда: " + command.toLowerCase());            
         }
     }
 

@@ -4,6 +4,7 @@
  */
 package com.artech.prototype2.vreshetnyak.input.impl;
 
+import com.artech.prototype2.vreshetnyak.input.Input;
 import junit.framework.TestCase;
 
 /**
@@ -18,9 +19,10 @@ public class InputFormImplTest extends TestCase {
 
     public void testInputGUIForm() {
         System.out.println("InputGUIForm");
-        InputFormImpl instance = new InputFormImpl();
+        Input instance = new InputFormImpl();
         instance.InputGUIForm();
-        
+        System.out.println("InputGUIForm - тест пройден!");
         
     }
+    
 }

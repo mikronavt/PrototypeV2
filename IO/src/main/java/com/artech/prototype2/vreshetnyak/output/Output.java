@@ -11,8 +11,14 @@ package com.artech.prototype2.vreshetnyak.output;
 public interface Output {
     /**
      * Выводит форму с переданным текстом в аргументе. Поддержка многострочности
-     * @param text 
+     * @param text
      */
     public void OutputForm(String text);
+    
+    /**
+     * Выводит форму с таблицей
+     * @param arg
+     */
+    public void OutputFormTable(String[] arg);
     
 }
