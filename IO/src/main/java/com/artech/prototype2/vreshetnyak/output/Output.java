@@ -19,6 +19,6 @@ public interface Output {
      * Выводит форму с таблицей
      * @param arg
      */
-    public void OutputFormTable(String[] arg);
+    public void FormReport(String[] arg);
     
 }

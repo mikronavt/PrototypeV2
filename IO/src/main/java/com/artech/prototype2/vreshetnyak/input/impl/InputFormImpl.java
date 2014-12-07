@@ -102,18 +102,20 @@ public class InputFormImpl extends AbstractInput {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         InputFormFrame.add(scrollPane, BorderLayout.CENTER);
         /**
-         * Панелька для кнопочки
-         */
-        JPanel panel = new JPanel();
-        SendDataToSensorButton = new JButton("Send");
-        SendDataToSensorButton.addActionListener(new SendActionListener());
-        panel.add(SendDataToSensorButton);
-        InputFormFrame.add(panel, BorderLayout.SOUTH);
-        /**
          * JLabel с выводом выбранной команды
          */
+        JPanel panelLabelCommand = new JPanel();
         labelCommand = new JLabel("Команда:");
-        panel.add(labelCommand);
+        panelLabelCommand.setLayout(new GridLayout(1, 2));
+        /**
+         * Панелька для кнопочки
+         */
+        SendDataToSensorButton = new JButton("Send");
+        SendDataToSensorButton.addActionListener(new SendActionListener());
+        panelLabelCommand.add(labelCommand);
+        panelLabelCommand.add(SendDataToSensorButton);
+        InputFormFrame.add(panelLabelCommand, BorderLayout.SOUTH);
+
         /**
          * Отображаем нашу форму
          */
@@ -129,7 +131,7 @@ public class InputFormImpl extends AbstractInput {
          */
         public void actionPerformed(ActionEvent e) {
             command = e.getActionCommand();
-            labelCommand.setText("Команда: " + command.toLowerCase());            
+            labelCommand.setText("Команда: " + command.toLowerCase());
         }
     }
 
@@ -163,7 +165,9 @@ public class InputFormImpl extends AbstractInput {
                         maskTypeData = 0; //маска типа данных
                         validator = new ValidationPathAndUrl(); //наш валидатор
                         /**
-                         * перегруженный конструктор printArrayList(String args[], int type)
+                         * перегруженный конструктор printArrayList(String
+                         * args[], int type)
+                         *
                          * @param args[] - массив строк
                          * @param type - значение маски типа данных
                          */

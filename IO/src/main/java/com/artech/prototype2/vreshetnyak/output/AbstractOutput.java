@@ -10,5 +10,5 @@ package com.artech.prototype2.vreshetnyak.output;
  */
 public abstract class AbstractOutput implements Output{
     public abstract void OutputForm(String text);   
-    public abstract void OutputFormTable(String[] arg);
+    public abstract void FormReport(String[] arg);
 }

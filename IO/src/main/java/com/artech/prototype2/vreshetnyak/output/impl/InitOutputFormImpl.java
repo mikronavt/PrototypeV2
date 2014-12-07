@@ -64,8 +64,13 @@ public class InitOutputFormImpl extends AbstractOutput {
         OutputForm.setVisible(true);
     }
 
+    /**
+     * FormReport(nameForm, countColum, название_колонки1, название_колонки2, ... , название_колонкиN, 
+     * Название_таблицы) и создается форма в которую передаются данные из бд
+     * @param arg 
+     */
     @Override
-    public void OutputFormTable(String[] arg) {
+    public void FormReport(String[] arg) {
         
         String[] columnNames = {
                     "Name",
