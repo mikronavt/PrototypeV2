@@ -31,6 +31,7 @@ public class HibernateUtil {
      * переменные для настройки соединения
      */
     protected static String user, password, port;
+    public static String path = "C:\\Users\\CANDY\\Dropbox\\PrototypeV2\\Saver\\src\\main\\resources";
     
     private static String getParameterFromName(String name, List<String> list){
         for(String s : list){
@@ -44,10 +45,13 @@ public class HibernateUtil {
         return "";
     }
     
-    // находит параметры которые нужны для подключения к БД mysql
+    /**
+     * находит параметры которые нужны для подключения к БД mysql
+     * @param p - строковое имя параметра
+     */
     private static void findParamsMysql(String p){
-        String path = p + File.separator + "parametersmysql.properties";        
-        List<String> list = ContentFile.getStringsFromPath(path);
+        String pathLocal = p + File.separator + "parametersmysql.properties";        
+        List<String> list = ContentFile.getStringsFromPath(pathLocal);
         user = getParameterFromName("user",list);
         password = getParameterFromName("password",list);
         port = getParameterFromName("port",list);
@@ -58,7 +62,7 @@ public class HibernateUtil {
      */
     public static void createSessionFactory(){
         try {            
-            String path = new File("..\\Saver").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";                
+//            String path = new File().getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";                
             findParamsMysql(path);
             Configuration c = HibernateUtil.configureHibernate(user, password, port);            
             sessionFactory = c.buildSessionFactory();//   new AnnotationConfiguration().configure().buildSessionFactory();

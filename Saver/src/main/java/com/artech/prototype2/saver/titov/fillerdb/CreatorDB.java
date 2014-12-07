@@ -5,6 +5,7 @@
  */
 package com.artech.prototype2.saver.titov.fillerdb;
 
+import com.artech.prototype2.saver.titov.daoimpl.HibernateUtil;
 import com.artech.prototype2.saver.titov.fillerdb.impl.CreateObjectsToRepository;
 import com.artech.prototype2.saver.titov.fillerdb.impl.CreateObjectsToRepositoryMySQLImpl;
 import java.io.File;
@@ -16,7 +17,10 @@ import java.io.File;
  * вызывается функция executeScripts, 
  * после которой находятся скрипты, создаюся таблицы
  */
-public class CreatorDB {          
+public class CreatorDB {    
+    
+    public static String path = "C:\\Users\\CANDY\\Dropbox\\PrototypeV2\\Saver\\src\\main\\resources";
+    
     // создаю объект который будет заливать скрипты в БД
     static private CreateObjectsToRepository getCreateObjectsToRepository(String s){
         if(s.equals("mysql")) return new CreateObjectsToRepositoryMySQLImpl();
@@ -29,8 +33,9 @@ public class CreatorDB {
      * работает только для БД mysql
      */ 
     static public void executeScripts(){
-        String path = new File("..\\Saver").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";        
+//        String path = new File("Saver").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";        
 //        String path = "C:\\Users\\CANDY\\Dropbox\\PrototypeV2\\Saver\\src\\main\\resources";
+//        String path = HibernateUtil.path;
         File file = new File(path);
         String[] str = file.list();
         for(String i : str){
