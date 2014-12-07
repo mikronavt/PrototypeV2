@@ -6,6 +6,10 @@
 package com.artech.prototype2.bardakov.crawler.impl;
 
 import com.artech.prototype2.bardakov.crawler.Crawler;
+import com.artech.prototype2.saver.bardakov.entity.impl.IndexedWeb;
+import com.artech.prototype2.saver.titov.dao.DAO;
+import com.artech.prototype2.saver.titov.dao.HibernateUtil;
+import com.artech.prototype2.saver.titov.dao.impl.IndexedWebDaoImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,10 +33,14 @@ public class CrawlerImpl implements Crawler {
 
     protected Map<String, List<String>> index = null;
     protected List<String> urls = null; //список url-ов на странице
-
+    protected List<String> resources = null;
+    protected DAO dao = null;
+    
     public CrawlerImpl() {
         urls = new ArrayList<String>();
         index = new HashMap<String, List<String>>();
+        resources = new ArrayList<String>();
+        dao = new IndexedWebDaoImpl(HibernateUtil.getSessionFactory());
     }
 
     public List<String> getUrls() {
@@ -90,8 +98,9 @@ public class CrawlerImpl implements Crawler {
         int len = start + "<a href=\"".length();
         int end = content.indexOf("\"", len);
         String uri = content.substring(len, end);
-        if(!isHttp(uri))
-            uri = url+uri;
+        if (!isHttp(uri)) {
+            uri = url + uri;
+        }
         urls.add(uri);
         return start;
     }
@@ -108,8 +117,6 @@ public class CrawlerImpl implements Crawler {
         int len = start + "<a href=\"".length();
         int end = content.indexOf("\"", len);
         String uri = content.substring(len, end);
-        if(!isHttp(uri))
-            uri = url+uri;
         urls.add(uri);
         return start;
     }
@@ -140,15 +147,22 @@ public class CrawlerImpl implements Crawler {
      * @param url страница с которой начинается получение urls
      * @param count количество циклов индексирования
      */
-    public void createIndexUrl(String url, int count) {
+    public void createIndexedUrl(String url, int count) {
         StringBuilder content = getContentOfHTTPPageUTF8(url);
         getAllURLPage(url, content);
-        List<String> resources = new ArrayList<String>();
         String uri = "";
-        for (int i = 0; i<urls.size()&& i<count; i++) {
+        int co = 0;
+        IndexedWeb entity = new IndexedWeb();
+        for (int i = 0; i < urls.size() && i < count; i++) {
             uri = urls.get(i);
+            entity.setTextEn(String.valueOf(content).getBytes());
+            entity.setTextRu(String.valueOf(content).getBytes());
+            entity.setUrlO(url);
+            entity.setUrlT(url);
+            dao.addObject(entity);
             if (resources.indexOf(uri) == -1 && isHttp(uri)) {
                 content = getContentOfHTTPPageUTF8(uri);
+
                 getAllURLPage(uri, content);
                 resources.add(uri);
             }
@@ -157,10 +171,26 @@ public class CrawlerImpl implements Crawler {
 
     /**
      * Проверка ресурса
+     *
      * @param uri - расположение ресурса
-     * @return 
+     * @return
      */
-    protected boolean isHttp(String uri){
+    protected boolean isHttp(String uri) {
         return uri.indexOf("http") != -1;
+    }
+
+    public void tryParseArticle(StringBuilder content, String[] keyWords) {
+    }
+
+    public boolean isNeedArticle(StringBuilder content, String[] keyWords) {
+        //  if(content.indexOf("Оригинал публикации:") != -1){
+        if (content.indexOf(keyWords[0]) != -1) {
+            // int end = content.indexOf("</h1>");
+            // int USA = content.indexOf(keyWords[1]);
+            // if (USA != -1 && USA < end) {
+            return true;
+            //  }
+        }
+        return false;
     }
 }

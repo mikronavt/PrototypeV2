@@ -5,10 +5,12 @@
  */
 package com.artech.prototype2.core.main;
 
-import com.artech.prototype2.saver.titov.daoimpl.HibernateUtil;
+import com.artech.prototype2.saver.titov.dao.HibernateUtil;
 import com.artech.prototype2.saver.titov.fillerdb.CreatorDB;
 import com.artech.prototype2.vreshetnyak.input.Input;
 import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
+import com.artech.prototype2.vreshetnyak.output.Output;
+import com.artech.prototype2.vreshetnyak.output.impl.InitOutputFormImpl;
 
 /**
  * Основоной класс всей системы
@@ -49,7 +51,8 @@ public class Prototype {
      * Метод создает формы вывода
      */
     protected void createOutput(){
-        
+        Output form = new InitOutputFormImpl(); //создаем
+        form.OutputForm("Test"); //вызываем
     }
     
     /**

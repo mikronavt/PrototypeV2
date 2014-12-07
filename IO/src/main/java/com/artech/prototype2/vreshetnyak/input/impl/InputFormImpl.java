@@ -54,7 +54,7 @@ public class InputFormImpl extends AbstractInput {
          * Начинаем строить форму
          */
         JFrame InputFormFrame = new JFrame("Ввод данных для обработки");
-        InputFormFrame.setSize(800, 600);
+        InputFormFrame.setSize(600, 400);
         InputFormFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         InputFormFrame.setLocationRelativeTo(null);
         InputFormFrame.setResizable(false);

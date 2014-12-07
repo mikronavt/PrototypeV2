@@ -1,6 +1,6 @@
 package com.artech.prototype2.saver;
 
-import com.artech.prototype2.saver.titov.daoimpl.HibernateUtil;
+import com.artech.prototype2.saver.titov.dao.HibernateUtil;
 import com.artech.prototype2.saver.titov.fillerdb.CreatorDB;
 
 /**

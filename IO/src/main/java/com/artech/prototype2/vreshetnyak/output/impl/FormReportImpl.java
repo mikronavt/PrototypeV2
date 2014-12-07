@@ -4,7 +4,7 @@
  */
 package com.artech.prototype2.vreshetnyak.output.impl;
 
-import com.artech.prototype2.saver.titov.daoimpl.DAO;
+import com.artech.prototype2.saver.titov.dao.DAO;
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

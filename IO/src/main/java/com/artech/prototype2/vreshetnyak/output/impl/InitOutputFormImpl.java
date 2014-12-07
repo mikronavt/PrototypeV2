@@ -4,7 +4,7 @@
  */
 package com.artech.prototype2.vreshetnyak.output.impl;
 
-import com.artech.prototype2.saver.titov.daoimpl.DAO;
+import com.artech.prototype2.saver.titov.dao.DAO;
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -32,7 +32,7 @@ public class InitOutputFormImpl extends AbstractOutput {
     @Override
     public void OutputForm(String text) {
         JFrame OutputForm = new JFrame("Вывод");
-        OutputForm.setSize(800, 600);
+        OutputForm.setSize(600, 400);
         OutputForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         OutputForm.setLocationRelativeTo(null);
         OutputForm.setResizable(false);

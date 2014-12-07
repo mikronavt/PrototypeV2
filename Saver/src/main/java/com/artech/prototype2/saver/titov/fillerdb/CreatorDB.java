@@ -5,7 +5,7 @@
  */
 package com.artech.prototype2.saver.titov.fillerdb;
 
-import com.artech.prototype2.saver.titov.daoimpl.HibernateUtil;
+import com.artech.prototype2.saver.titov.dao.HibernateUtil;
 import com.artech.prototype2.saver.titov.fillerdb.impl.CreateObjectsToRepository;
 import com.artech.prototype2.saver.titov.fillerdb.impl.CreateObjectsToRepositoryMySQLImpl;
 import java.io.File;

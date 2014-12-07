@@ -62,5 +62,22 @@ public interface Crawler {
      * @param url страница с которой начинается получение urls
      * @param breaking количество циклов индексирования
      */
-    public void createIndexUrl(String url, int breaking);
+    public void createIndexedUrl(String url, int breaking);
+    
+    /**
+     * Обработка контента, с целью получения 
+     * параллельных текстов
+     * @param content - HTML - страница
+     * @param keyWords - ключевые слова для отбора страниц
+     * @return 
+     */
+    public void tryParseArticle(StringBuilder content, String[] keyWords);
+    
+    /**
+     * Соответствует ли статья выбранным критериям
+     * @param content - контент
+     * @param keyWords - ключевые слова
+     * @return true - если текст соответствует требуемым ключевым словам
+     */
+    public boolean isNeedArticle(StringBuilder content, String[] keyWords);
 }
