@@ -5,7 +5,7 @@
  */
 package com.artech.prototype2.saver.titov.fillerdb;
 
-import com.artech.prototype2.saver.titov.dao.HibernateUtil;
+import com.artech.prototype2.saver.bardakov.utils.HibernateUtil;
 import com.artech.prototype2.saver.titov.fillerdb.impl.CreateObjectsToRepository;
 import com.artech.prototype2.saver.titov.fillerdb.impl.CreateObjectsToRepositoryMySQLImpl;
 import java.io.File;
@@ -36,7 +36,7 @@ public class CreatorDB {
 //        String path = new File("Saver").getAbsolutePath() + File.separator + "src" + File.separator + "main" + File.separator + "resources";        
 //        String path = "C:\\Users\\CANDY\\Dropbox\\PrototypeV2\\Saver\\src\\main\\resources";
 //        String path = HibernateUtil.path;
-        File file = new File(path);
+        File file = new File(CreatorDB.path);
         String[] str = file.list();
         for(String i : str){
             File f = new File(path + File.separator + i);

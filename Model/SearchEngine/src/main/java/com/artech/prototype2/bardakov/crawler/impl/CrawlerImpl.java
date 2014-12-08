@@ -8,12 +8,14 @@ package com.artech.prototype2.bardakov.crawler.impl;
 import com.artech.prototype2.bardakov.crawler.Crawler;
 import com.artech.prototype2.saver.bardakov.entity.impl.IndexedWeb;
 import com.artech.prototype2.saver.titov.dao.DAO;
-import com.artech.prototype2.saver.titov.dao.HibernateUtil;
+import com.artech.prototype2.saver.bardakov.utils.HibernateUtil;
+import com.artech.prototype2.saver.titov.dao.IndexedWebDao;
 import com.artech.prototype2.saver.titov.dao.impl.IndexedWebDaoImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -34,13 +36,13 @@ public class CrawlerImpl implements Crawler {
     protected Map<String, List<String>> index = null;
     protected List<String> urls = null; //список url-ов на странице
     protected List<String> resources = null;
-    protected DAO dao = null;
+    protected IndexedWebDao dao = null;
     
     public CrawlerImpl() {
         urls = new ArrayList<String>();
         index = new HashMap<String, List<String>>();
         resources = new ArrayList<String>();
-        dao = new IndexedWebDaoImpl(HibernateUtil.getSessionFactory());
+        dao = new IndexedWebDaoImpl();
     }
 
     public List<String> getUrls() {
@@ -155,18 +157,19 @@ public class CrawlerImpl implements Crawler {
         IndexedWeb entity = new IndexedWeb();
         for (int i = 0; i < urls.size() && i < count; i++) {
             uri = urls.get(i);
-            entity.setTextEn(String.valueOf(content).getBytes());
-            entity.setTextRu(String.valueOf(content).getBytes());
+            entity.setTextEn(content.toString());
+            entity.setTextRu(content.toString());
             entity.setUrlO(url);
             entity.setUrlT(url);
             dao.addObject(entity);
+            content.setLength(0);
             if (resources.indexOf(uri) == -1 && isHttp(uri)) {
                 content = getContentOfHTTPPageUTF8(uri);
-
                 getAllURLPage(uri, content);
                 resources.add(uri);
             }
         }
+        HibernateUtil.getSessionFactory().close();
     }
 
     /**

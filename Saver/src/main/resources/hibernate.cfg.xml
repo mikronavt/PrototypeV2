@@ -7,6 +7,8 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/prototype?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
-    <mapping resource="C:\Users\CANDY\Dropbox\PrototypeV2\Saver\src\main\resources\com\artech\prototype2\saver\bardakov\entity\impl\IndexedWeb.hbm.xml"/>
+    <!--<mapping resource="com/artech/prototype2/saver/bardakov/entity/impl/IndexedWeb.hbm.xml"/>-->
+    <!--<mapping class="com.artech.prototype2.saver.bardakov.entity.impl.IndexedWeb"/>-->
+    <mapping resource="com/artech/prototype2/saver/bardakov/entity/impl/IndexedWeb.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

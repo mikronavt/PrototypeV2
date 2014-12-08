@@ -6,7 +6,7 @@
 package com.artech.prototype2.saver.titov.dao.impl;
 
 import com.artech.prototype2.saver.titov.dao.DAO;
-import com.artech.prototype2.saver.titov.dao.HibernateUtil;
+import com.artech.prototype2.saver.bardakov.utils.HibernateUtil;
 import com.artech.prototype2.saver.titov.entity.EntityDB;
 import java.io.Serializable;
 import java.util.List;

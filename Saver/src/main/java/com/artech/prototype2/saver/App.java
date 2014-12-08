@@ -1,6 +1,6 @@
 package com.artech.prototype2.saver;
 
-import com.artech.prototype2.saver.titov.dao.HibernateUtil;
+import com.artech.prototype2.saver.bardakov.utils.HibernateUtil;
 import com.artech.prototype2.saver.titov.fillerdb.CreatorDB;
 
 /**
@@ -11,9 +11,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        CreatorDB.executeScripts();
-        HibernateUtil.createSessionFactory();
-        HibernateUtil.getSessionFactory().close();
+//        CreatorDB.executeScripts();
+//        HibernateUtil.getSessionFactory();
+//        HibernateUtil.getSessionFactory().close();
         System.out.println( "Hello World!" );
     }
 }
