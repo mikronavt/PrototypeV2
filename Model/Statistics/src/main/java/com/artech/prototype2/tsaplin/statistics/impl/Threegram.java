@@ -6,9 +6,9 @@ package com.artech.prototype2.tsaplin.statistics.impl;
  * Created by atsaplin on 09.12.2014.
  */
 public class Threegram extends NgramImpl {
-    String first;
-    String second;
-    String third;
+    private String first;
+    private String second;
+    private String third;
 
     /**
      * Конструктор для класса.
@@ -54,5 +54,27 @@ public class Threegram extends NgramImpl {
             case 3: this.third = word;
                 break;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Threegram threegram = (Threegram) o;
+
+        if (!first.equals(threegram.first)) return false;
+        if (!second.equals(threegram.second)) return false;
+        if (!third.equals(threegram.third)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = first.hashCode();
+        result = 31 * result + second.hashCode();
+        result = 31 * result + third.hashCode();
+        return result;
     }
 }

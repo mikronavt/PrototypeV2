@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class Bigram extends NgramImpl{
 
-    String first;
-    String second;
+    private String first;
+    private String second;
 
     /**
      * Конструктор для класса.
@@ -51,5 +51,25 @@ public class Bigram extends NgramImpl{
                 break;
             case 2: this.second = word;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bigram bigram = (Bigram) o;
+
+        if (!first.equals(bigram.first)) return false;
+        if (!second.equals(bigram.second)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = first.hashCode();
+        result = 31 * result + second.hashCode();
+        return result;
     }
 }

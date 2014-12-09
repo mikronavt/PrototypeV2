@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
  */
 public class SingleWord extends NgramImpl {
 
-    String word;
+    private String word;
 
     /**
      * Конструктор для класса.
@@ -43,4 +43,20 @@ public class SingleWord extends NgramImpl {
         else return null;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SingleWord that = (SingleWord) o;
+
+        if (!word.equals(that.word)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return word.hashCode();
+    }
 }

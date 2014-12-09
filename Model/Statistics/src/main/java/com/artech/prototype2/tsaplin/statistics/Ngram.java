@@ -26,4 +26,6 @@ public interface Ngram {
      * @param n - позиция, в которую надо записать слово.
      */
     public void setNthWord(String word, int n);
+
+
 }

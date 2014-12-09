@@ -6,10 +6,10 @@ package com.artech.prototype2.tsaplin.statistics.impl;
  * Created by atsaplin on 09.12.2014.
  */
 public class Fourgram extends NgramImpl {
-    String first;
-    String second;
-    String third;
-    String fourth;
+    private String first;
+    private String second;
+    private String third;
+    private String fourth;
 
     /**
      * Конструктор для класса.
@@ -60,6 +60,30 @@ public class Fourgram extends NgramImpl {
             case 4: fourth = word;
                 break;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Fourgram fourgram = (Fourgram) o;
+
+        if (!first.equals(fourgram.first)) return false;
+        if (!fourth.equals(fourgram.fourth)) return false;
+        if (!second.equals(fourgram.second)) return false;
+        if (!third.equals(fourgram.third)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = first.hashCode();
+        result = 31 * result + second.hashCode();
+        result = 31 * result + third.hashCode();
+        result = 31 * result + fourth.hashCode();
+        return result;
     }
 }
 
