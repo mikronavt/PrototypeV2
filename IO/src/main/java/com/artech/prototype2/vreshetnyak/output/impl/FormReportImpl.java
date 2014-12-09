@@ -4,7 +4,7 @@
  */
 package com.artech.prototype2.vreshetnyak.output.impl;
 
-import com.artech.prototype2.saver.titov.dao.DAO;
+//import com.artech.prototype2.saver.titov.dao.DAO;
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -17,13 +17,13 @@ import javax.swing.*;
 public class FormReportImpl extends AbstractOutput{
     protected String nameForm;
     protected String[] nameColumns;
-    protected DAO inTable;
+//    protected DAO inTable;
     protected String nameTable;
 
-    public FormReportImpl(String nameForm, String[] nameColumns, DAO inTable, String nameTable) {
+    public FormReportImpl(String nameForm, String[] nameColumns, String nameTable) {
         this.nameForm = nameForm;
         this.nameColumns = nameColumns;
-        this.inTable = inTable;
+//        this.inTable = inTable;
         this.nameTable = nameTable;
     }
     

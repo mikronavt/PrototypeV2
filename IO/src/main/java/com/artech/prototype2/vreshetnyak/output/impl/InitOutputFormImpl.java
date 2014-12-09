@@ -4,6 +4,10 @@
  */
 package com.artech.prototype2.vreshetnyak.output.impl;
 
+<<<<<<< HEAD
+//import com.artech.prototype2.saver.titov.dao.DAO;
+=======
+>>>>>>> 597ccd622350bf56700fab5f54c14cd51b9711c5
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;

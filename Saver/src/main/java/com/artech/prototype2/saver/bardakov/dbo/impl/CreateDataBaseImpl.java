@@ -8,6 +8,10 @@ package com.artech.prototype2.saver.bardakov.dbo.impl;
 import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
 import com.artech.prototype2.saver.bardakov.dbo.CreateDataBase;
 import com.artech.prototype2.saver.manager.ManagerAPISaver;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 597ccd622350bf56700fab5f54c14cd51b9711c5
 import com.mysql.jdbc.Connection;
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +33,11 @@ public class CreateDataBaseImpl implements CreateDataBase {
 
     protected Resources res;
 
+<<<<<<< HEAD
+    
+
+=======
+>>>>>>> 597ccd622350bf56700fab5f54c14cd51b9711c5
     public CreateDataBaseImpl() {
 //        ManagerAPISaver.getInstance().registry("create_db", this);
         res = new Resources();
