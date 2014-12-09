@@ -5,8 +5,9 @@
  */
 package com.artech.prototype2.core.main;
 
-import com.artech.prototype2.saver.titov.dao.HibernateUtil;
-import com.artech.prototype2.saver.titov.fillerdb.CreatorDB;
+import com.artech.prototype2.saver.bardakov.utils.impl.CreateDataBaseImpl;
+import com.artech.prototype2.saver.bardakov.utils.impl.MySQL;
+import com.artech.prototype2.saver.manager.ManagerAPISaver;
 import com.artech.prototype2.vreshetnyak.input.Input;
 import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
 import com.artech.prototype2.vreshetnyak.output.Output;
@@ -68,8 +69,7 @@ public class Prototype {
      * всех бд и таблиц
      */
     protected void initDataBase() {
-        CreatorDB.executeScripts();
-        HibernateUtil.createSessionFactory();
-        HibernateUtil.getSessionFactory().close();
+        ManagerAPISaver.getInstance().registry("create_db", new CreateDataBaseImpl());
+        ManagerAPISaver.getInstance().createDB(new MySQL("dbconnect/dbconnect.properties"));
     }
 }

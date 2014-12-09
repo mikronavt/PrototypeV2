@@ -18,6 +18,15 @@ public abstract class AbstractSUBD {
     protected String url;
     protected String scripts;
     protected String driverName;
+    protected String prop;
+
+    public String getProp() {
+        return prop;
+    }
+
+    public void setProp(String prop) {
+        this.prop = prop;
+    }
 
     public String getDriverName() {
         return driverName;

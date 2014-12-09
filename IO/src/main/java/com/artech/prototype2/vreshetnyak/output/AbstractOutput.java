@@ -4,7 +4,6 @@
  */
 package com.artech.prototype2.vreshetnyak.output;
 
-import com.artech.prototype2.saver.titov.dao.DAO;
 
 /**
  *
