@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.artech.prototype2.saver.bardakov.utils.impl;
+package com.artech.prototype2.saver.bardakov.dbo.impl;
 
-import com.artech.prototype2.saver.bardakov.utils.AbstractSUBD;
+import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

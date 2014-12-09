@@ -12,6 +12,13 @@
   <version>2.0</version>
   <name>Saver</name>
   <url>http://maven.apache.org</url>
+  <repositories>
+    <repository>
+      <id>unknown-jars-temp-repo</id>
+      <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+      <url>file:${project.basedir}/lib</url>
+    </repository>
+  </repositories>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -30,7 +37,7 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>4.3.1.Final</version>
+      <version>3.6.10.Final</version>
     </dependency>
     <dependency>
       <groupId>org.hibernate.common</groupId>
@@ -42,6 +49,26 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>Utils</artifactId>
       <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>3.6.10.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-commons-annotations</artifactId>
+      <version>3.2.0.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>jta</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>unknown.binary</groupId>
+      <artifactId>mysql-connector-java-5.1.23-bin</artifactId>
+      <version>SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
