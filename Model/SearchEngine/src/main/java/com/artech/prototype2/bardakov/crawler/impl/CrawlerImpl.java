@@ -6,11 +6,6 @@
 package com.artech.prototype2.bardakov.crawler.impl;
 
 import com.artech.prototype2.bardakov.crawler.Crawler;
-import com.artech.prototype2.saver.bardakov.entity.impl.IndexedWeb;
-import com.artech.prototype2.saver.titov.dao.DAO;
-import com.artech.prototype2.saver.bardakov.utils.HibernateUtil;
-import com.artech.prototype2.saver.titov.dao.IndexedWebDao;
-import com.artech.prototype2.saver.titov.dao.impl.IndexedWebDaoImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

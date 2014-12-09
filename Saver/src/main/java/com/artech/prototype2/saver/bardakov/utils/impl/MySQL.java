@@ -35,6 +35,7 @@ public class MySQL extends AbstractSUBD{
             this.scripts = res.getPropValue(config, "mysql.jdbc.scripts");
             this.url = res.getPropValue(config, "mysql.jdbc.url");
             this.driverName = res.getPropValue(config, "mysql.jdbc.driverName");
+            this.prop = res.getPropValue(config, "common.prop.jdbc");
         } catch (IOException ex) {
             Logger.getLogger(MySQL.class.getName()).log(Level.SEVERE, null, ex);
         }

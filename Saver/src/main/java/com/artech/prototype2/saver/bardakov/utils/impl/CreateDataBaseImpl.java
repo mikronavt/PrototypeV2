@@ -8,12 +8,16 @@ package com.artech.prototype2.saver.bardakov.utils.impl;
 import com.artech.prototype2.saver.bardakov.utils.AbstractSUBD;
 import com.artech.prototype2.saver.bardakov.utils.CreateDataBase;
 import com.artech.prototype2.saver.manager.ManagerAPISaver;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 597ccd622350bf56700fab5f54c14cd51b9711c5
 import com.mysql.jdbc.Connection;
 import java.io.File;
 import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,8 +33,11 @@ public class CreateDataBaseImpl implements CreateDataBase {
 
     protected Resources res;
 
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 597ccd622350bf56700fab5f54c14cd51b9711c5
     public CreateDataBaseImpl() {
 //        ManagerAPISaver.getInstance().registry("create_db", this);
         res = new Resources();
@@ -40,20 +47,62 @@ public class CreateDataBaseImpl implements CreateDataBase {
      * Метод занимается созданием БД
      */
     public void createDB(AbstractSUBD db) {
-        String[] sricpts = res.getScriptsForDB(db.getScripts());
+        String script = db.getProp();
+        List<String> scripts = res.getParseFileInLine(script);
         Connection conn = jdbcConnection(db);
+        executeScripts(conn, scripts, db);
     }
 
     /**
-     * Установление взаимодействия с CУБД
+     * Метод выполняет переданный массив скриптов
+     * @param conn соединение с БД
+     * @param scripts массив скриптов
+     * @param db - класс инкапсулирует данные соединения
+     */
+    protected void executeScripts(Connection conn, List<String> scripts, AbstractSUBD db) {
+        Statement stat = null;
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sql = new StringBuilder();
+        try {
+            stat = conn.createStatement();
+            for (String script : scripts) {
+                sb.append(db.getScripts());
+                sb.append("/");
+                sb.append(script);
+                sql.append(res.getContentFile(sb.toString()));
+                stat.executeUpdate(sql.toString());
+                sql.setLength(0);
+                sb.setLength(0);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateDataBaseImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            try{
+                if(stat!=null)
+                    conn.close();
+            }catch(SQLException sqlexp){
+                sqlexp.printStackTrace();
+            }
+            try{
+                if(conn!=null)
+                    conn.close();
+            }catch(SQLException sqlexp){
+                sqlexp.printStackTrace();
+            }
+        }
+
+    }
+
+    /**
+     * Установление соединения с CУБД
      */
     protected Connection jdbcConnection(AbstractSUBD db) {
         Connection conn = null;
-        try{
+        try {
             Class.forName(db.getDriverName());
             conn = (Connection) DriverManager.getConnection(db.getUrl(), db.getLogin(), db.getPassword());
-            
-        }catch(ClassNotFoundException cnfExp){
+
+        } catch (ClassNotFoundException cnfExp) {
             cnfExp.printStackTrace();
         } catch (SQLException ex) {
             Logger.getLogger(CreateDataBaseImpl.class.getName()).log(Level.SEVERE, null, ex);

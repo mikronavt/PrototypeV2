@@ -12,6 +12,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
@@ -39,6 +41,20 @@ public class Resources {
         return files;
     }
 
+    /**
+     * Метод получает файл из указанной папки, которая находится в
+     * resources
+     *
+     * @param folderScripts
+     * @return массив файлов в папке
+     */
+    public String getScriptForDB(String folderFile) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(folderFile).getPath());
+        String fileRes = file.getName();
+        return fileRes;
+    }
+    
     /**
      * Метод возвращает содержимое файла,
      *
@@ -75,6 +91,48 @@ public class Resources {
         return out;
     }
 
+    /**
+     * Метод возвращает содержимое файла,
+     * в виде массив, расположив каждую строку в отдельном элементе
+     * @param fileName - путь к файлу
+     * @return контент
+     * @throws IOException
+     */
+    public List<String> getParseFileInLine(String fileName) {
+        InputStream in = null;
+        List<String> out = new ArrayList<String>();
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource(fileName).getPath());
+            in = new FileInputStream(file);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                out.add(line);
+            }
+            reader.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Resources.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Resources.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                in.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Resources.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return out;
+    }
+    
+    
+    /**
+     * Получение значение свойства по ключу
+     * @param nameFile имя файла
+     * @param nameProperty название свойства
+     * @return значение свойства
+     * @throws IOException 
+     */
     public String getPropValue(String nameFile, String nameProperty) throws IOException {
         Properties prop = new Properties();
         String propFileName = nameFile;
