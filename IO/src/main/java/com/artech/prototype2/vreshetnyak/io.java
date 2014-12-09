@@ -26,7 +26,7 @@ public class io {
 //        Output o = new InitOutputFormImpl();
 //        o.OutputFormTable(args);
         String[] arStrings = {"title", "id"};
-        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, null, "Название таблицы");
+        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, "Название таблицы");
         oForm.FormReportInit();
     }
 }
