@@ -24,7 +24,7 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @param wordsInNgram - число слов, входящих в одну нграмму
      * @return статистика для н-грамм.
      */
-    public HashMap<String, Integer> makeStatistic(ArrayList<String> words, int wordsInNgram){
+   /* public HashMap<String, Integer> makeStatistic(ArrayList<String> words, int wordsInNgram){
         HashMap<String, Integer> nGramStatistic = new HashMap<String, Integer>();
 
         for (int i = wordsInNgram - 1; i < words.size(); i++) {
@@ -34,7 +34,8 @@ public class StatisticMakerImpl implements StatisticMaker{
         }
 
         return nGramStatistic;
-    }
+    } */
+
 
     /**
      *Вспомогательный метод, извлекающий из списка слова, создающий и возвращающий н-грамм из этих слов.
@@ -52,5 +53,53 @@ public class StatisticMakerImpl implements StatisticMaker{
         nGram = nGram.trim();
 
         return nGram;
+    }
+
+    @Override
+    public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words) {
+        NgramStatisticImpl singleWordStatistic = new NgramStatisticImpl();
+
+        for (int i = 0; i < words.size(); i++) {
+            SingleWord word = new SingleWord(words.get(i));
+            singleWordStatistic.plusOneNgram(word);
+        }
+
+        return singleWordStatistic;
+    }
+
+    @Override
+    public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words) {
+        NgramStatisticImpl bigramStatistic = new NgramStatisticImpl();
+
+        for (int i = 1; i < words.size(); i++) {
+            Bigram bigram = new Bigram(words.get(i - 1), words.get(i));
+            bigramStatistic.plusOneNgram(bigram);
+        }
+
+        return bigramStatistic;
+    }
+
+    @Override
+    public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words) {
+        NgramStatisticImpl threegramStatistic = new NgramStatisticImpl();
+
+        for (int i = 2; i < words.size(); i++) {
+            Threegram threegram = new Threegram(words.get(i - 2), words.get(i - 1), words.get(i));
+            threegramStatistic.plusOneNgram(threegram);
+        }
+
+        return threegramStatistic;
+    }
+
+    @Override
+    public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words) {
+        NgramStatisticImpl fourgramStatistic = new NgramStatisticImpl();
+
+        for (int i = 3; i < words.size(); i++) {
+            Fourgram fourgram = new Fourgram(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
+            fourgramStatistic.plusOneNgram(fourgram);
+        }
+
+        return fourgramStatistic;
     }
 }

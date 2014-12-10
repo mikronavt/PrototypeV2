@@ -2,6 +2,7 @@ package com.artech.prototype2.tsaplin.statistics.impl;
 
 import com.artech.prototype2.tsaplin.statistics.StatisticWork;
 import com.artech.prototype2.tsaplin.utils.impl.FileParserImpl;
+import com.sun.org.glassfish.external.statistics.impl.StatisticImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,9 +17,10 @@ import java.util.HashMap;
 public class StatisticWorkImpl implements StatisticWork{
 
     public static void main(String[] args) throws Throwable{
-        String fileName = "";
+        String fileName = "C:\\1\\3.txt";
         StatisticWorkImpl statisticWork = new StatisticWorkImpl();
-        statisticWork.getStatisticFromFile(fileName, "txt");
+        statisticWork.getFullStatisticFromFileToDB(fileName, "txt");
+
 
     }
 
@@ -32,18 +34,18 @@ public class StatisticWorkImpl implements StatisticWork{
      * @param format - формат данных в файле ("txt", "pdf", "doc" ...)
      * @throws IOException
      */
-    public void getStatisticFromFile(String fileName, String format) throws IOException{
+    public void getFullStatisticFromFileToDB(String fileName, String format) throws IOException{
         FileParserImpl fileParser = new FileParserImpl();
         ArrayList<String> words = fileParser.getListOfWordsFromFile(fileName, format);
 
         StatisticMakerImpl statisticMaker = new StatisticMakerImpl();
-        HashMap<String, Integer> singleWordStatistic = statisticMaker.makeStatistic(words, 1);
+        NgramStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordStatistic(words);
 
-        HashMap<String, Integer> bigramStatistic = statisticMaker.makeStatistic(words, 2);
+        NgramStatisticImpl bigramStatistic = statisticMaker.makeBigramStatistic(words);
 
-        HashMap<String, Integer> trigramStatistic = statisticMaker.makeStatistic(words, 3);
+        NgramStatisticImpl trigramStatistic = statisticMaker.makeThreegramStatistic(words);
 
-        HashMap<String, Integer> tetragramStatistic = statisticMaker.makeStatistic(words, 4);
+        NgramStatisticImpl fourgramStatistic = statisticMaker.makeFourgramStatistic(words);
 
         //дальше надо залить все в базу
     }
