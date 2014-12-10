@@ -19,7 +19,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Менеджер API модуля
+ * Позволяет получить доступ 
+ * ко всему функционала модуля
  * @author CANDY
  */
 public class ManagerAPISaver implements API {
@@ -80,7 +82,6 @@ public class ManagerAPISaver implements API {
 
     /**
      * Сохранить сущность использованную выбранную субд
-     *
      * @param db используемая субд
      * @param label метка действия
      * @param entity сущность
@@ -88,36 +89,64 @@ public class ManagerAPISaver implements API {
     public void save(String label, AbstractSUBD db, Entity entity) {
         CommonDB dao = (Dao) get(label, db);
         if (dao != null) {
-            ((AbstractDao) dao).save(entity);
+            ((AbstractDao) dao).save(db, entity);
         }
     }
 
+    /**
+     * Удалить сущность из БД
+     * @param label метка функционала
+     * @param db выбранная база данных
+     * @param entity удаляемая сущность
+     */
     public void delete(String label, AbstractSUBD db, Entity entity) {
         CommonDB dao = (Dao) get(label, db);
         if (dao != null) {
-            ((AbstractDao) dao).delete(entity);
+            ((AbstractDao) dao).delete(db, entity);
         }
     }
 
-    public Entity getById(String label, AbstractSUBD db, Entity entity) {
+    /**
+     * Получить сущность по индексу
+     * @param label метка функционала
+     * @param db выбранная база данных
+     * @param id идентификатор сущности в бд
+     * @return найденная сущность или null, если 
+     * сущность отсутствует
+     */
+    public Entity getById(String label, AbstractSUBD db, Integer id) {
         CommonDB dao = (Dao) get(label, db);
-        if (dao != null);
+        Entity entity = null;
+        if (dao != null)
+             entity = ((AbstractDao)dao).getById(db, id);
         return entity;
     }
 
+    /**
+     * Получить все данные из бд
+     * @param label метка функционала
+     * @param db выбранная база данных
+     * @return Список сущностей
+     */
     public List<Entity> getAll(String label, AbstractSUBD db) {
         CommonDB dao = (Dao) get(label, db);
         List<Entity> entities = null;
         if (dao != null) {
-            entities = ((AbstractDao) dao).getAll();
+            entities = ((AbstractDao) dao).getAll(db);
         }
         return entities;
     }
 
+    /**
+     * Обновление данных в бд
+     * @param label метка функционала
+     * @param db выбранная база данных
+     * @param entity сущность обновления
+     */
     public void update(String label, AbstractSUBD db, Entity entity) {
         CommonDB dao = (Dao) get(label, db);
         if (dao != null) {
-            ((AbstractDao) dao).update(entity);
+            ((AbstractDao) dao).update(db, entity);
         }
     }
 

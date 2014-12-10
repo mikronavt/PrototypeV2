@@ -6,8 +6,10 @@
 
 package com.artech.prototype2.saver.hiber.util;
 
+import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -18,12 +20,13 @@ import org.hibernate.SessionFactory;
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
-    
+    private static Configuration configure;
     static {
         try {
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file.
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+            configure = new Configuration().configure("hibernate\\hibernate-mysql.cfg.xml");
+            sessionFactory = configure.buildSessionFactory();
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);
@@ -31,7 +34,14 @@ public class HibernateUtil {
         }
     }
     
-    public static SessionFactory getSessionFactory() {
+    /**
+     * получить сессию хибернейт
+     * @param db - выбранная база данных
+     * @return 
+     */
+    public static SessionFactory getSessionFactory(AbstractSUBD db) {
+        configure.setProperty("hibernate.connection.username", db.getLogin());
+        configure.setProperty("hibernate.connection.password", db.getPassword());
         return sessionFactory;
     }
 }

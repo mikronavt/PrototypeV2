@@ -29,7 +29,7 @@ public class App
         ((DictionaryRu) entity).setCount(3);
 
         ManagerAPISaver.getInstance().save(label, db, entity);
-        ((DictionaryRu) entity).setRuid(2);
+        ((DictionaryRu) entity).setRuid(1);
   //      ManagerAPISaver.getInstance().delete(label, entity);
 //        ((DictionaryRu) entity).setRuid(4);
        ((DictionaryRu) entity).setCount(10);
