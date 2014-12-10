@@ -16,5 +16,7 @@ public interface StatisticWork {
      * @param format - формат данных в файле ("txt", "pdf", "doc" ...)
      * @throws IOException
      */
-    public void getStatisticFromFile(String fileName, String format) throws IOException;
+    public void getFullStatisticFromFileToDB(String fileName, String format) throws IOException;
+
+
 }
