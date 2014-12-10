@@ -5,10 +5,10 @@
  */
 package com.artech.prototype2.saver.manager;
 
-import com.artech.prototype2.saver.bardakov.api.API;
-import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
-import com.artech.prototype2.saver.bardakov.dbo.CreateDataBase;
-import com.artech.prototype2.saver.bardakov.dbo.impl.MySQL;
+import com.artech.prototype2.saver.api.API;
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.CreateDataBase;
+import com.artech.prototype2.saver.dbo.impl.MySQL;
 import com.artech.prototype2.saver.dao.AbstractDao;
 import com.artech.prototype2.saver.dao.Dao;
 import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;

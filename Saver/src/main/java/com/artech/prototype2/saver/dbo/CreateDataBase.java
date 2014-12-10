@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.artech.prototype2.saver.bardakov.dbo;
+package com.artech.prototype2.saver.dbo;
 
 import com.artech.prototype2.saver.manager.CommonDB;
 

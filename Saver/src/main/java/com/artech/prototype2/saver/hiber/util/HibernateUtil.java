@@ -6,7 +6,7 @@
 
 package com.artech.prototype2.saver.hiber.util;
 
-import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

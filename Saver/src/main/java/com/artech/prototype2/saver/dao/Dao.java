@@ -5,7 +5,7 @@
  */
 package com.artech.prototype2.saver.dao;
 
-import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.saver.manager.CommonDB;
 import java.io.Serializable;

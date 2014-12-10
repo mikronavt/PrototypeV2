@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.artech.prototype2.saver.bardakov.api;
+package com.artech.prototype2.saver.api;
 
-import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import com.artech.prototype2.saver.entity.Entity;
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.artech.prototype2.saver;
 
-import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
-import com.artech.prototype2.saver.bardakov.dbo.impl.CreateDataBaseImpl;
-import com.artech.prototype2.saver.bardakov.dbo.impl.MySQL;
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.impl.CreateDataBaseImpl;
+import com.artech.prototype2.saver.dbo.impl.MySQL;
 import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;
 import com.artech.prototype2.saver.entity.DictionaryRu;
 import com.artech.prototype2.saver.entity.Entity;

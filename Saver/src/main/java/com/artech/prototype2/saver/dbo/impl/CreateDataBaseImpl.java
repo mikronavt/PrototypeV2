@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.artech.prototype2.saver.bardakov.dbo.impl;
+package com.artech.prototype2.saver.dbo.impl;
 
-import com.artech.prototype2.saver.bardakov.dbo.AbstractSUBD;
-import com.artech.prototype2.saver.bardakov.dbo.CreateDataBase;
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.CreateDataBase;
 import com.artech.prototype2.saver.manager.ManagerAPISaver;
 import com.mysql.jdbc.Connection;
 import java.io.File;
