@@ -41,6 +41,7 @@ public class AbstractDao<ID extends Serializable, Type extends Entity> implement
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(entity);
+            session.flush();
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,11 +84,12 @@ public class AbstractDao<ID extends Serializable, Type extends Entity> implement
         }
     }
 
-    public Type getById(Type entity) {
+    public Type getById(ID id) {
         Session session = null;
+        Type entity = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            //entity = (Type) session.load(Entity.class, entity);
+            entity = (Type) session.load(Entity.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

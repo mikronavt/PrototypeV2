@@ -24,21 +24,21 @@ public interface API {
      * в указанной СУБД
      * @param db СУБД
      */
-    void createDB(AbstractSUBD db);
+    void createDB(String label, AbstractSUBD db);
     
     /**
      * Сохранение сущности в БД
      * @param db выбранная бд
      * @param entity сущность для сохранения
      */
-    void save(String label, Entity entity);
+    void save(String label, AbstractSUBD db, Entity entity);
     
-    void delete(String label, Entity entity);
+    void delete(String label, AbstractSUBD db, Entity entity);
     
-    Entity getById(String label, Entity entity);
+    Entity getById(String label, AbstractSUBD db, Entity entity);
     
-    List<Entity> getAll(String label);
+    List<Entity> getAll(String label, AbstractSUBD db);
     
-    void update(String label, Entity entity);
+    void update(String label, AbstractSUBD db, Entity entity);
     
 }

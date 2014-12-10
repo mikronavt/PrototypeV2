@@ -20,7 +20,7 @@ public interface Dao<ID extends Serializable, Type extends Entity> extends Commo
 
     void delete(Type entity);
 
-    Type getById(Type entity);
+    Type getById(ID id);
 
     List<Type> getAll();
 
