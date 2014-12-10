@@ -3,7 +3,7 @@ package com.artech.prototype2.tsaplin.statistics;
 import com.artech.prototype2.tsaplin.statistics.impl.NgramStatisticImpl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 /**
  * Интерфейс для создания статистик.
@@ -13,20 +13,35 @@ import java.util.HashMap;
 public interface StatisticMaker {
 
     /**
-     * Метод создает и возвращает HashMap nGramStatistic со статистикой для н-грамм на основе списка слов.
-     * В HashMap ключом является н-грамм, значением - то, сколько раз она встречается в файле.
+     * Создание статистики для одиночных слов.
      *
-     * @param words - список со словами
-     * @param wordsInNgram - число слов, входящих в одну нграмму
-     * @return статистика для н-грамм.
+     * @param words - список слов.
+     * @return - статистика одиночных слов.
      */
-    //public HashMap<String, Integer> makeStatistic (ArrayList<String> words, int wordsInNgram);
     public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words);
 
+    /**
+     * Создание статистики для биграмм на основе списка слов.
+     *
+     * @param words - список слов.
+     * @return - статистика биграмм.
+     */
     public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words);
 
+    /**
+     * Создание статистики для триграмм на основе списка слов.
+     *
+     * @param words - список слов.
+     * @return - статистика для триграмм.
+     */
     public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words);
 
+    /**
+     * Создание статистики для фограмм на основе списка слов.
+     *
+     * @param words - список слов.
+     * @return - статистика для фограмм.
+     */
     public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words);
 
 
