@@ -4,10 +4,12 @@
  */
 package com.artech.prototype2.vreshetnyak.output.impl;
 
-//import com.artech.prototype2.saver.titov.dao.DAO;
+import com.artech.prototype2.saver.dao.Dao;
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 
 /**
@@ -17,13 +19,13 @@ import javax.swing.*;
 public class FormReportImpl extends AbstractOutput{
     protected String nameForm;
     protected String[] nameColumns;
-//    protected DAO inTable;
+    protected Dao inTable;
     protected String nameTable;
 
-    public FormReportImpl(String nameForm, String[] nameColumns, String nameTable) {
+    public FormReportImpl(String nameForm, String[] nameColumns, Dao inTable, String nameTable) {
         this.nameForm = nameForm;
         this.nameColumns = nameColumns;
-//        this.inTable = inTable;
+        this.inTable = inTable;
         this.nameTable = nameTable;
     }
     
@@ -41,6 +43,7 @@ public class FormReportImpl extends AbstractOutput{
     public void FormReportInit() {
         
         String[][] data = {};
+        //ArrayList<String[][]> data = new ArrayList<String[][]>(); //сюда нужно помещать данные
         
         JFrame OutputForm = new JFrame(nameForm);
         OutputForm.setSize(800, 600);
@@ -49,7 +52,7 @@ public class FormReportImpl extends AbstractOutput{
         OutputForm.setResizable(false);
         OutputForm.setLayout(new BorderLayout());
         /**
-         * Помещаем на сцену JTable, в который и будут вводиться данные.
+         * Помещаем на сцену JTable, в который и будут заполняться данными.
          */
         JTable table = new JTable(data, nameColumns);
         /**

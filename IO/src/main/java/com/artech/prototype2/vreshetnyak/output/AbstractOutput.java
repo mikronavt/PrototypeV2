@@ -18,9 +18,6 @@ public abstract class AbstractOutput implements Output{
     public abstract void OutputForm(String text);
     /**
      * Метод возвращает форму с таблицей
-     * @param nameForm
-     * @param nameColumns
-     * @param nameTable 
      */
     public abstract void FormReportInit();
 }
