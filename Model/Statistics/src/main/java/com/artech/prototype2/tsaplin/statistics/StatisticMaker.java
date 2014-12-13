@@ -18,7 +18,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика одиночных слов.
      */
-    public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words);
+    public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words, String lang);
 
     /**
      * Создание статистики для биграмм на основе списка слов.
@@ -26,7 +26,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика биграмм.
      */
-    public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words);
+    public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words, String lang);
 
     /**
      * Создание статистики для триграмм на основе списка слов.
@@ -34,7 +34,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика для триграмм.
      */
-    public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words);
+    public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words, String lang);
 
     /**
      * Создание статистики для фограмм на основе списка слов.
@@ -42,7 +42,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика для фограмм.
      */
-    public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words);
+    public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words, String lang);
 
 
 }

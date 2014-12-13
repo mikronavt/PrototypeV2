@@ -7,11 +7,12 @@ import java.util.List;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public class Bigram extends NgramImpl{
+public abstract class Bigram extends NgramImpl{
 
     private String first;
     private String second;
 
+    public Bigram(){}
     /**
      * Конструктор для класса.
      *

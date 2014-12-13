@@ -11,6 +11,8 @@ public class Fourgram extends NgramImpl {
     private String third;
     private String fourth;
 
+    public Fourgram(){}
+
     /**
      * Конструктор для класса.
      *

@@ -38,14 +38,18 @@ public class StatisticWorkImpl implements StatisticWork{
         FileParserImpl fileParser = new FileParserImpl();
         ArrayList<String> words = fileParser.getListOfWordsFromFile(fileName, format);
 
+        //Здесь должен быть какой-то способ определения языка для файла
+        String lang = "ru";
+
+
         StatisticMakerImpl statisticMaker = new StatisticMakerImpl();
-        NgramStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordStatistic(words);
+        NgramStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordStatistic(words, lang);
 
-        NgramStatisticImpl bigramStatistic = statisticMaker.makeBigramStatistic(words);
+        NgramStatisticImpl bigramStatistic = statisticMaker.makeBigramStatistic(words, lang);
 
-        NgramStatisticImpl trigramStatistic = statisticMaker.makeThreegramStatistic(words);
+        NgramStatisticImpl trigramStatistic = statisticMaker.makeThreegramStatistic(words, lang);
 
-        NgramStatisticImpl fourgramStatistic = statisticMaker.makeFourgramStatistic(words);
+        NgramStatisticImpl fourgramStatistic = statisticMaker.makeFourgramStatistic(words, lang);
 
         //дальше надо залить все в базу
     }

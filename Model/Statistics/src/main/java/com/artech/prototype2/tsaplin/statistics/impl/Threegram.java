@@ -5,10 +5,12 @@ package com.artech.prototype2.tsaplin.statistics.impl;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public class Threegram extends NgramImpl {
+public abstract class Threegram extends NgramImpl {
     private String first;
     private String second;
     private String third;
+
+    public Threegram(){}
 
     /**
      * Конструктор для класса.

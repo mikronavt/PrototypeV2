@@ -1,5 +1,7 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
+import com.artech.prototype2.saver.entity.DictionaryRu;
+
 import java.text.SimpleDateFormat;
 
 /**
@@ -7,7 +9,7 @@ import java.text.SimpleDateFormat;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public class SingleWord extends NgramImpl {
+public abstract class SingleWord extends NgramImpl {
 
     private String word;
 
@@ -19,6 +21,8 @@ public class SingleWord extends NgramImpl {
     public SingleWord(String word){
         this.word = word;
     }
+
+    public SingleWord(){};
 
 
 
@@ -59,4 +63,6 @@ public class SingleWord extends NgramImpl {
     public int hashCode() {
         return word.hashCode();
     }
+
+
 }

@@ -1,9 +1,11 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
+import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.tsaplin.statistics.Ngram;
 import com.artech.prototype2.tsaplin.statistics.NgramStatistic;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -53,4 +55,6 @@ public class NgramStatisticImpl implements NgramStatistic {
     public HashMap<Ngram, Integer> getMapWithStatistic() {
         return map;
     }
+
+
 }

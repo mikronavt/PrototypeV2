@@ -1,6 +1,7 @@
 package com.artech.prototype2.tsaplin.statistics;
 
 
+import java.io.Serializable;
 
 /**
  * Интерфейс для N-грамм.
@@ -26,6 +27,7 @@ public interface Ngram {
      * @param n - позиция, в которую надо записать слово.
      */
     public void setNthWord(String word, int n);
+
 
 
 }

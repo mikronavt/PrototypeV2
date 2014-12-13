@@ -21,11 +21,20 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words) {
+    public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words, String lang) {
         NgramStatisticImpl singleWordStatistic = new NgramStatisticImpl();
 
         for (int i = 0; i < words.size(); i++) {
-            SingleWord word = new SingleWord(words.get(i));
+            SingleWord word;
+            if("en".equals(lang)) {
+                word = new SingleWordEn(words.get(i));
+            }
+            else if("ru".equals(lang)){
+                word = new SingleWordRu(words.get(i));
+            }
+            else{
+                word = new SingleWordRu(words.get(i));
+            }
             singleWordStatistic.plusOneNgram(word);
         }
 
@@ -38,11 +47,21 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words) {
+    public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words, String lang) {
         NgramStatisticImpl bigramStatistic = new NgramStatisticImpl();
 
         for (int i = 1; i < words.size(); i++) {
-            Bigram bigram = new Bigram(words.get(i - 1), words.get(i));
+            Bigram bigram;
+            if ("en".equals(lang)){
+                bigram = new BigramEn(words.get(i - 1), words.get(i));
+            }
+            else if("ru".equals(lang)){
+                bigram = new BigramRu(words.get(i - 1), words.get(i));
+            }
+            else {
+                bigram = new BigramEn(words.get(i - 1), words.get(i));
+            }
+
             bigramStatistic.plusOneNgram(bigram);
         }
 
@@ -55,11 +74,22 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words) {
+    public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words, String lang) {
         NgramStatisticImpl threegramStatistic = new NgramStatisticImpl();
 
         for (int i = 2; i < words.size(); i++) {
-            Threegram threegram = new Threegram(words.get(i - 2), words.get(i - 1), words.get(i));
+
+            Threegram threegram;
+            if("en".equals(lang)){
+                threegram = new ThreegramEn(words.get(i - 2), words.get(i - 1), words.get(i));
+            }
+            else if("ru".equals(lang)){
+                threegram = new ThreegramRu(words.get(i - 2), words.get(i - 1), words.get(i));
+            }
+            else{
+                threegram= new ThreegramRu(words.get(i - 2), words.get(i - 1), words.get(i));
+            }
+
             threegramStatistic.plusOneNgram(threegram);
         }
 
@@ -72,11 +102,23 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words) {
+    public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words, String lang) {
         NgramStatisticImpl fourgramStatistic = new NgramStatisticImpl();
 
         for (int i = 3; i < words.size(); i++) {
-            Fourgram fourgram = new Fourgram(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
+
+            Fourgram fourgram;
+
+            if("en".equals(lang)){
+                fourgram = new FourgramEn(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
+            }
+            else if("ru".equals(lang)){
+                fourgram = new FourgramRu(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
+            }
+            else{
+                fourgram = new FourgramRu(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
+            }
+
             fourgramStatistic.plusOneNgram(fourgram);
         }
 
