@@ -1,15 +1,16 @@
-package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
+package com.artech.prototype2.tsaplin.statistics.ngrams.impl;
 
 import com.artech.prototype2.saver.entity.BigramRuVarOne;
 import com.artech.prototype2.saver.entity.Entity;
+import com.artech.prototype2.tsaplin.statistics.ngrams.AbstractBigram;
 
 /**
  * Created by User on 13.12.2014.
  */
-public class BigramRu extends AbstractBigram {
-    public BigramRu(String first, String second){super(first, second);}
+public class BigramRuImpl extends AbstractBigram {
+    public BigramRuImpl(String first, String second){super(first, second);}
 
-    public BigramRu(BigramRuVarOne bigramRuVarOne){
+    public BigramRuImpl(BigramRuVarOne bigramRuVarOne){
         this.setFirst(bigramRuVarOne.getWordOne());
         this.setSecond(bigramRuVarOne.getWordTwo());
     }

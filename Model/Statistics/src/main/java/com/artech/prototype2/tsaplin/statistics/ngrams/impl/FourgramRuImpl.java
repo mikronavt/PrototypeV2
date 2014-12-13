@@ -1,15 +1,16 @@
-package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
+package com.artech.prototype2.tsaplin.statistics.ngrams.impl;
 
 import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.saver.entity.FourgramRuVarOne;
+import com.artech.prototype2.tsaplin.statistics.ngrams.AbstractFourgram;
 
 /**
  * Created by User on 13.12.2014.
  */
-public class FourgramRu extends AbstractFourgram {
-    public FourgramRu(String first,String second, String third, String fourth){super(first, second, third, fourth);}
+public class FourgramRuImpl extends AbstractFourgram {
+    public FourgramRuImpl(String first, String second, String third, String fourth){super(first, second, third, fourth);}
 
-    public FourgramRu(FourgramRuVarOne fourgramRuVarOne){
+    public FourgramRuImpl(FourgramRuVarOne fourgramRuVarOne){
         this.setFirst(fourgramRuVarOne.getWordOne());
         this.setSecond(fourgramRuVarOne.getWordTwo());
         this.setThird(fourgramRuVarOne.getWordThree());

@@ -2,8 +2,8 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
 import com.artech.prototype2.tsaplin.statistics.StatisticMaker;
-import com.artech.prototype2.tsaplin.statistics.impl.ngrams.*;
-import com.artech.prototype2.tsaplin.statistics.impl.statistics.*;
+import com.artech.prototype2.tsaplin.statistics.ngrams.impl.*;
+import com.artech.prototype2.tsaplin.statistics.statisticholder.impl.*;
 
 import java.util.ArrayList;
 
@@ -23,11 +23,11 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public SingleWordRuStatistic makeSingleWordRuStatistic(ArrayList<String> words) {
-        SingleWordRuStatistic singleWordStatistic = new SingleWordRuStatistic();
+    public SingleWordRuStatisticImpl makeSingleWordRuStatistic(ArrayList<String> words) {
+        SingleWordRuStatisticImpl singleWordStatistic = new SingleWordRuStatisticImpl();
 
         for (int i = 0; i < words.size(); i++) {
-             SingleWordRu word = new SingleWordRu(words.get(i));
+             SingleWordRuImpl word = new SingleWordRuImpl(words.get(i));
              singleWordStatistic.plusOneNgram(word);
         }
 
@@ -35,11 +35,11 @@ public class StatisticMakerImpl implements StatisticMaker{
     }
 
     @Override
-    public SingleWordEnStatistic makeSingleWordEnStatistic(ArrayList<String> words) {
-        SingleWordEnStatistic singleWordStatistic = new SingleWordEnStatistic();
+    public SingleWordEnStatisticImpl makeSingleWordEnStatistic(ArrayList<String> words) {
+        SingleWordEnStatisticImpl singleWordStatistic = new SingleWordEnStatisticImpl();
 
         for (int i = 0; i < words.size(); i++) {
-            SingleWordEn word = new SingleWordEn(words.get(i));
+            SingleWordEnImpl word = new SingleWordEnImpl(words.get(i));
             singleWordStatistic.plusOneNgram(word);
         }
 
@@ -52,11 +52,11 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public BigramRuStatistic makeBigramRuStatistic(ArrayList<String> words) {
-        BigramRuStatistic bigramStatistic = new BigramRuStatistic();
+    public BigramRuStatisticImpl makeBigramRuStatistic(ArrayList<String> words) {
+        BigramRuStatisticImpl bigramStatistic = new BigramRuStatisticImpl();
 
         for (int i = 1; i < words.size(); i++) {
-            BigramRu bigram = new BigramRu(words.get(i - 1), words.get(i));
+            BigramRuImpl bigram = new BigramRuImpl(words.get(i - 1), words.get(i));
             bigramStatistic.plusOneNgram(bigram);
         }
 
@@ -64,11 +64,11 @@ public class StatisticMakerImpl implements StatisticMaker{
     }
 
     @Override
-    public BigramEnStatistic makeBigramEnStatistic(ArrayList<String> words) {
-        BigramEnStatistic bigramStatistic = new BigramEnStatistic();
+    public BigramEnStatisticImpl makeBigramEnStatistic(ArrayList<String> words) {
+        BigramEnStatisticImpl bigramStatistic = new BigramEnStatisticImpl();
 
         for (int i = 1; i < words.size(); i++) {
-            BigramEn bigram = new BigramEn(words.get(i - 1), words.get(i));
+            BigramEnImpl bigram = new BigramEnImpl(words.get(i - 1), words.get(i));
             bigramStatistic.plusOneNgram(bigram);
         }
 
@@ -81,13 +81,13 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public ThreegramRuStatistic makeThreegramRuStatistic(ArrayList<String> words) {
-        ThreegramRuStatistic threegramStatistic = new ThreegramRuStatistic();
+    public ThreegramRuStatisticImpl makeThreegramRuStatistic(ArrayList<String> words) {
+        ThreegramRuStatisticImpl threegramStatistic = new ThreegramRuStatisticImpl();
 
         for (int i = 2; i < words.size(); i++) {
 
-            ThreegramRu threegram;
-            threegram = new ThreegramRu(words.get(i - 2), words.get(i - 1), words.get(i));
+            ThreegramRuImpl threegram;
+            threegram = new ThreegramRuImpl(words.get(i - 2), words.get(i - 1), words.get(i));
 
             threegramStatistic.plusOneNgram(threegram);
         }
@@ -96,13 +96,13 @@ public class StatisticMakerImpl implements StatisticMaker{
     }
 
     @Override
-    public ThreegramEnStatistic makeThreegramEnStatistic(ArrayList<String> words) {
-        ThreegramEnStatistic threegramStatistic = new ThreegramEnStatistic();
+    public ThreegramEnStatisticImpl makeThreegramEnStatistic(ArrayList<String> words) {
+        ThreegramEnStatisticImpl threegramStatistic = new ThreegramEnStatisticImpl();
 
         for (int i = 2; i < words.size(); i++) {
 
-            ThreegramEn threegram;
-            threegram = new ThreegramEn(words.get(i - 2), words.get(i - 1), words.get(i));
+            ThreegramEnImpl threegram;
+            threegram = new ThreegramEnImpl(words.get(i - 2), words.get(i - 1), words.get(i));
 
             threegramStatistic.plusOneNgram(threegram);
         }
@@ -116,13 +116,13 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public FourgramRuStatistic makeFourgramRuStatistic(ArrayList<String> words) {
-        FourgramRuStatistic fourgramStatistic = new FourgramRuStatistic();
+    public FourgramRuStatisticImpl makeFourgramRuStatistic(ArrayList<String> words) {
+        FourgramRuStatisticImpl fourgramStatistic = new FourgramRuStatisticImpl();
 
         for (int i = 3; i < words.size(); i++) {
 
-            FourgramRu fourgram;
-            fourgram = new FourgramRu(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
+            FourgramRuImpl fourgram;
+            fourgram = new FourgramRuImpl(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
 
             fourgramStatistic.plusOneNgram(fourgram);
         }
@@ -131,13 +131,13 @@ public class StatisticMakerImpl implements StatisticMaker{
     }
 
     @Override
-    public FourgramEnStatistic makeFourgramEnStatistic(ArrayList<String> words) {
-        FourgramEnStatistic fourgramStatistic = new FourgramEnStatistic();
+    public FourgramEnStatisticImpl makeFourgramEnStatistic(ArrayList<String> words) {
+        FourgramEnStatisticImpl fourgramStatistic = new FourgramEnStatisticImpl();
 
         for (int i = 3; i < words.size(); i++) {
 
-            FourgramEn fourgram;
-            fourgram = new FourgramEn(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
+            FourgramEnImpl fourgram;
+            fourgram = new FourgramEnImpl(words.get(i - 3), words.get(i - 2), words.get(i - 1), words.get(i));
 
             fourgramStatistic.plusOneNgram(fourgram);
         }

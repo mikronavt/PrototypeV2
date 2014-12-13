@@ -1,37 +1,35 @@
-package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
+package com.artech.prototype2.tsaplin.statistics.ngrams;
 
 /**
- * Класс, реализующий фограммы.
+ * Класс, реализующий триграммы.
  *
  * Created by atsaplin on 09.12.2014.
  */
-public abstract class AbstractFourgram extends AbstractNgram {
+public abstract class AbstractThreegram extends AbstractNgram {
     private String first;
     private String second;
     private String third;
-    private String fourth;
 
-    public AbstractFourgram(){}
+    public AbstractThreegram(){}
 
     /**
      * Конструктор для класса.
      *
-     * @param first
-     * @param second
-     * @param third
-     * @param fourth
+     * @param first - первое слово.
+     * @param second - второе слово.
+     * @param third - третье слово.
      */
-    public AbstractFourgram(String first, String second, String third, String fourth){
+    public AbstractThreegram(String first, String second, String third){
         this.first = first;
         this.second = second;
         this.third = third;
-        this.fourth = fourth;
     }
 
     /**
-     * Геттер для н-ного слова.
+     * Геттер для класса.
+     *
      * @param n - номер слова.
-     * @return - слово в виде строки, null при ошибочном n.
+     * @return слово в виде строки, null при ошибочном n.
      */
     @Override
     public String getNthWord(int n) {
@@ -39,27 +37,23 @@ public abstract class AbstractFourgram extends AbstractNgram {
             case 1: return first;
             case 2: return second;
             case 3: return third;
-            case 4: return fourth;
         }
         return null;
     }
 
     /**
-     * Сеттер для н-ного слова.
-     *
+     * Сеттер для класса.
      * @param word - слово, которое требуется подставить.
      * @param n - позиция, в которую надо записать слово.
      */
     @Override
     public void setNthWord(String word, int n) {
-        switch (n){
-            case 1: first = word;
+        switch(n){
+            case 1: this.first = word;
                 break;
-            case 2: second = word;
+            case 2: this.second = word;
                 break;
-            case 3: third = word;
-                break;
-            case 4: fourth = word;
+            case 3: this.third = word;
                 break;
         }
     }
@@ -69,12 +63,11 @@ public abstract class AbstractFourgram extends AbstractNgram {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AbstractFourgram fourgram = (AbstractFourgram) o;
+        AbstractThreegram threegram = (AbstractThreegram) o;
 
-        if (!first.equals(fourgram.first)) return false;
-        if (!fourth.equals(fourgram.fourth)) return false;
-        if (!second.equals(fourgram.second)) return false;
-        if (!third.equals(fourgram.third)) return false;
+        if (!first.equals(threegram.first)) return false;
+        if (!second.equals(threegram.second)) return false;
+        if (!third.equals(threegram.third)) return false;
 
         return true;
     }
@@ -84,7 +77,6 @@ public abstract class AbstractFourgram extends AbstractNgram {
         int result = first.hashCode();
         result = 31 * result + second.hashCode();
         result = 31 * result + third.hashCode();
-        result = 31 * result + fourth.hashCode();
         return result;
     }
 
@@ -111,13 +103,4 @@ public abstract class AbstractFourgram extends AbstractNgram {
     public void setThird(String third) {
         this.third = third;
     }
-
-    public String getFourth() {
-        return fourth;
-    }
-
-    public void setFourth(String fourth) {
-        this.fourth = fourth;
-    }
 }
-

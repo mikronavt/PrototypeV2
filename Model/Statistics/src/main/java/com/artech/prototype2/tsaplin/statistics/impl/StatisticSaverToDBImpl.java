@@ -4,7 +4,7 @@ import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;
 import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import com.artech.prototype2.saver.entity.DictionaryRu;
 import com.artech.prototype2.tsaplin.statistics.StatisticSaverToDB;
-import com.artech.prototype2.tsaplin.statistics.impl.statistics.AbstractNgramStatistic;
+import com.artech.prototype2.tsaplin.statistics.statisticholder.AbstractNgramStatistic;
 
 import java.util.List;
 

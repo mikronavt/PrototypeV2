@@ -1,7 +1,7 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
 import com.artech.prototype2.tsaplin.statistics.StatisticWork;
-import com.artech.prototype2.tsaplin.statistics.impl.statistics.AbstractNgramStatistic;
+import com.artech.prototype2.tsaplin.statistics.statisticholder.AbstractNgramStatistic;
 import com.artech.prototype2.tsaplin.utils.impl.FileParserImpl;
 
 import java.io.IOException;

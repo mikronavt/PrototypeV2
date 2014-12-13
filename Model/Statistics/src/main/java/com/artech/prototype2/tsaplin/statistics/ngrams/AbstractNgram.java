@@ -1,6 +1,6 @@
-package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
+package com.artech.prototype2.tsaplin.statistics.ngrams;
 
-import com.artech.prototype2.tsaplin.statistics.Ngram;
+import com.artech.prototype2.tsaplin.statistics.ngrams.Ngram;
 
 
 

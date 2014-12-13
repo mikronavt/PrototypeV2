@@ -1,4 +1,4 @@
-package com.artech.prototype2.tsaplin.statistics;
+package com.artech.prototype2.tsaplin.statistics.ngrams;
 
 
 import com.artech.prototype2.saver.entity.Entity;

@@ -1,11 +1,6 @@
-package com.artech.prototype2.tsaplin.statistics;
+package com.artech.prototype2.tsaplin.statistics.statisticholder;
 
-import com.artech.prototype2.saver.entity.Entity;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.artech.prototype2.tsaplin.statistics.ngrams.Ngram;
 
 /**
  * Интерфейс для класса, хранящего в себе статистику.

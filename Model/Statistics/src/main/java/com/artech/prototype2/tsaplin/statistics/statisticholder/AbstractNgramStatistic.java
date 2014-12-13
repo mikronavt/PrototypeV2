@@ -1,12 +1,8 @@
-package com.artech.prototype2.tsaplin.statistics.impl.statistics;
+package com.artech.prototype2.tsaplin.statistics.statisticholder;
 
-import com.artech.prototype2.saver.entity.Entity;
-import com.artech.prototype2.tsaplin.statistics.Ngram;
-import com.artech.prototype2.tsaplin.statistics.NgramStatistic;
+import com.artech.prototype2.tsaplin.statistics.ngrams.Ngram;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 /**

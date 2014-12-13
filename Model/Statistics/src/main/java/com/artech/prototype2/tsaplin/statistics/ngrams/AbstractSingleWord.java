@@ -1,4 +1,4 @@
-package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
+package com.artech.prototype2.tsaplin.statistics.ngrams;
 
 /**
  * Класс, реализующий одиночное слово.
