@@ -1,6 +1,8 @@
 package com.artech.prototype2.tsaplin.statistics;
 
 
+import com.artech.prototype2.saver.entity.Entity;
+
 import java.io.Serializable;
 
 /**
@@ -28,6 +30,6 @@ public interface Ngram {
      */
     public void setNthWord(String word, int n);
 
-
+    public Entity makeDictionary(int count);
 
 }

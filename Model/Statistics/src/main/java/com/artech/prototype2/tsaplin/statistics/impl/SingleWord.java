@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
  */
 public abstract class SingleWord extends NgramImpl {
 
-    private String word;
+    protected String word;
 
     /**
      * Конструктор для класса.

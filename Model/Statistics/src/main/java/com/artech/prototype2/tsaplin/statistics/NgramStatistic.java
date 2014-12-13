@@ -2,6 +2,7 @@ package com.artech.prototype2.tsaplin.statistics;
 
 import com.artech.prototype2.saver.entity.Entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,6 @@ public interface NgramStatistic{
      * @return
      */
     public HashMap<Ngram, Integer> getMapWithStatistic();
-
 
 
 }
