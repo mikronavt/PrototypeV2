@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public interface NgramStatistic{
+public interface NgramStatistic<Type extends Ngram>{
 
     /**
      * Метод увеличивает статистику для одной н-граммы.
@@ -21,7 +21,7 @@ public interface NgramStatistic{
      *
      * @param ngram
      */
-    public void plusOneNgram(Ngram ngram);
+    public void plusOneNgram(Type ngram);
 
     /**
      * Метод обновляет статистику для данной нграммы.
@@ -29,14 +29,8 @@ public interface NgramStatistic{
      * @param ngram - нграмма
      * @param count - новое значение.
      */
-    public void updateStatisticForNgram(Ngram ngram, Integer count);
+    public void updateStatisticForNgram(Type ngram, Integer count);
 
-    /**
-     * Метод возвращает HashMap со статистикой для нграмм.
-     *
-     * @return
-     */
-    public HashMap<Ngram, Integer> getMapWithStatistic();
 
 
 }

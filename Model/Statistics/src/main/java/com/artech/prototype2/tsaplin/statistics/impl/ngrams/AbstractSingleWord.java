@@ -5,7 +5,7 @@ package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public abstract class SingleWord extends NgramAbstract {
+public abstract class AbstractSingleWord extends AbstractNgram {
 
     private String word;
 
@@ -14,11 +14,11 @@ public abstract class SingleWord extends NgramAbstract {
      *
      * @param word - строка, на основании которой создается слово.
      */
-    public SingleWord(String word){
+    public AbstractSingleWord(String word){
         this.word = word;
     }
 
-    public SingleWord(){};
+    public AbstractSingleWord(){};
 
 
 
@@ -48,7 +48,7 @@ public abstract class SingleWord extends NgramAbstract {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SingleWord that = (SingleWord) o;
+        AbstractSingleWord that = (AbstractSingleWord) o;
 
         if (!word.equals(that.word)) return false;
 

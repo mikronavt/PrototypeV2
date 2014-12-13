@@ -15,15 +15,15 @@ import java.util.List;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public class NgramStatisticAbstract implements NgramStatistic {
+public abstract class AbstractNgramStatistic<Type extends Ngram> implements NgramStatistic<Type> {
 
-    private HashMap<Ngram, Integer> map;
+    private HashMap<Type, Integer> map;
 
     /**
      *
      */
-    public NgramStatisticAbstract(){
-        map = new HashMap<Ngram, Integer>();
+    public AbstractNgramStatistic(){
+        map = new HashMap<Type, Integer>();
     }
 
     /**
@@ -33,7 +33,7 @@ public class NgramStatisticAbstract implements NgramStatistic {
      * @param ngram
      */
     @Override
-    public void plusOneNgram(Ngram ngram) {
+    public void plusOneNgram(Type ngram) {
         if(map.containsKey(ngram)) map.put(ngram, map.get(ngram) + 1);
         else map.put(ngram, 1);
     }
@@ -44,7 +44,7 @@ public class NgramStatisticAbstract implements NgramStatistic {
      * @param count - новое значение.
      */
     @Override
-    public void updateStatisticForNgram(Ngram ngram, Integer count) {
+    public void updateStatisticForNgram(Type ngram, Integer count) {
         map.put(ngram, count);
     }
 
@@ -52,10 +52,13 @@ public class NgramStatisticAbstract implements NgramStatistic {
      * Метод возвращает HashMap со статистикой для нграмм.
      * @return
      */
-    @Override
-    public HashMap<Ngram, Integer> getMapWithStatistic() {
-        return map;
+    public HashMap<Type, Integer> getMap(){
+        return this.map;
     }
 
+
+    public void setMap(HashMap<Type, Integer> map) {
+        this.map = map;
+    }
 
 }

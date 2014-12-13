@@ -1,6 +1,6 @@
 package com.artech.prototype2.tsaplin.statistics;
 
-import com.artech.prototype2.tsaplin.statistics.impl.statistics.NgramStatisticAbstract;
+import com.artech.prototype2.tsaplin.statistics.impl.statistics.*;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,9 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика одиночных слов.
      */
-    public NgramStatisticAbstract makeSingleWordStatistic(ArrayList<String> words, String lang);
+    public SingleWordRuStatistic makeSingleWordRuStatistic(ArrayList<String> words);
+
+    public SingleWordEnStatistic makeSingleWordEnStatistic(ArrayList<String> words);
 
     /**
      * Создание статистики для биграмм на основе списка слов.
@@ -26,7 +28,9 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика биграмм.
      */
-    public NgramStatisticAbstract makeBigramStatistic(ArrayList<String> words, String lang);
+    public BigramRuStatistic makeBigramRuStatistic(ArrayList<String> words);
+
+    public BigramEnStatistic makeBigramEnStatistic(ArrayList<String> words);
 
     /**
      * Создание статистики для триграмм на основе списка слов.
@@ -34,7 +38,9 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика для триграмм.
      */
-    public NgramStatisticAbstract makeThreegramStatistic(ArrayList<String> words, String lang);
+    public ThreegramRuStatistic makeThreegramRuStatistic(ArrayList<String> words);
+
+    public ThreegramEnStatistic makeThreegramEnStatistic(ArrayList<String> words);
 
     /**
      * Создание статистики для фограмм на основе списка слов.
@@ -42,7 +48,9 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика для фограмм.
      */
-    public NgramStatisticAbstract makeFourgramStatistic(ArrayList<String> words, String lang);
+    public FourgramRuStatistic makeFourgramRuStatistic(ArrayList<String> words);
+
+    public FourgramEnStatistic makeFourgramEnStatistic(ArrayList<String> words);
 
 
 }

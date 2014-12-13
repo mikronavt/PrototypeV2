@@ -5,13 +5,13 @@ package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public abstract class Fourgram extends NgramAbstract {
+public abstract class AbstractFourgram extends AbstractNgram {
     private String first;
     private String second;
     private String third;
     private String fourth;
 
-    public Fourgram(){}
+    public AbstractFourgram(){}
 
     /**
      * Конструктор для класса.
@@ -21,7 +21,7 @@ public abstract class Fourgram extends NgramAbstract {
      * @param third
      * @param fourth
      */
-    public Fourgram(String first, String second, String third, String fourth){
+    public AbstractFourgram(String first, String second, String third, String fourth){
         this.first = first;
         this.second = second;
         this.third = third;
@@ -69,7 +69,7 @@ public abstract class Fourgram extends NgramAbstract {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Fourgram fourgram = (Fourgram) o;
+        AbstractFourgram fourgram = (AbstractFourgram) o;
 
         if (!first.equals(fourgram.first)) return false;
         if (!fourth.equals(fourgram.fourth)) return false;

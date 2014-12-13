@@ -4,7 +4,7 @@ import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;
 import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import com.artech.prototype2.saver.entity.DictionaryRu;
 import com.artech.prototype2.tsaplin.statistics.StatisticSaverToDB;
-import com.artech.prototype2.tsaplin.statistics.impl.statistics.NgramStatisticAbstract;
+import com.artech.prototype2.tsaplin.statistics.impl.statistics.AbstractNgramStatistic;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class StatisticSaverToDBImpl implements StatisticSaverToDB{
     @Override
-    public void saveOneRuWordStatistic(NgramStatisticAbstract statistic, AbstractSUBD bd) {
+    public void saveOneRuWordStatistic(AbstractNgramStatistic statistic, AbstractSUBD bd) {
         //получить список из бд
         DictionaryRuDaoImpl dictionaryRuDao = new DictionaryRuDaoImpl();
         List<DictionaryRu> list = dictionaryRuDao.getAll(bd);

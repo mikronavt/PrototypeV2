@@ -9,6 +9,6 @@ import com.artech.prototype2.tsaplin.statistics.Ngram;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public abstract class NgramAbstract implements Ngram{
+public abstract class AbstractNgram implements Ngram{
 
 }

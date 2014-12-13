@@ -1,7 +1,7 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
 import com.artech.prototype2.tsaplin.statistics.StatisticWork;
-import com.artech.prototype2.tsaplin.statistics.impl.statistics.NgramStatisticAbstract;
+import com.artech.prototype2.tsaplin.statistics.impl.statistics.AbstractNgramStatistic;
 import com.artech.prototype2.tsaplin.utils.impl.FileParserImpl;
 
 import java.io.IOException;
@@ -42,13 +42,27 @@ public class StatisticWorkImpl implements StatisticWork{
 
 
         StatisticMakerImpl statisticMaker = new StatisticMakerImpl();
-        NgramStatisticAbstract singleWordStatistic = statisticMaker.makeSingleWordStatistic(words, lang);
+        if("ru".equals(lang)) {
+            AbstractNgramStatistic singleWordStatistic = statisticMaker.makeSingleWordRuStatistic(words);
 
-        NgramStatisticAbstract bigramStatistic = statisticMaker.makeBigramStatistic(words, lang);
+            AbstractNgramStatistic bigramStatistic = statisticMaker.makeBigramRuStatistic(words);
 
-        NgramStatisticAbstract trigramStatistic = statisticMaker.makeThreegramStatistic(words, lang);
+            AbstractNgramStatistic trigramStatistic = statisticMaker.makeThreegramRuStatistic(words);
 
-        NgramStatisticAbstract fourgramStatistic = statisticMaker.makeFourgramStatistic(words, lang);
+            AbstractNgramStatistic fourgramStatistic = statisticMaker.makeFourgramRuStatistic(words);
+
+        }
+        else if ("en".equals(lang)){
+            AbstractNgramStatistic singleWordStatistic = statisticMaker.makeSingleWordEnStatistic(words);
+
+            AbstractNgramStatistic bigramStatistic = statisticMaker.makeBigramEnStatistic(words);
+
+            AbstractNgramStatistic trigramStatistic = statisticMaker.makeThreegramEnStatistic(words);
+
+            AbstractNgramStatistic fourgramStatistic = statisticMaker.makeFourgramEnStatistic(words);
+
+        }
+
 
         //дальше надо залить все в базу
     }
