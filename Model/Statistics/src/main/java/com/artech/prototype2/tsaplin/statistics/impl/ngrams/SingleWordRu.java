@@ -1,6 +1,7 @@
-package com.artech.prototype2.tsaplin.statistics.impl;
+package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
 
 import com.artech.prototype2.saver.entity.DictionaryRu;
+import com.artech.prototype2.tsaplin.statistics.impl.ngrams.SingleWord;
 
 /**
  * Created by User on 13.12.2014.

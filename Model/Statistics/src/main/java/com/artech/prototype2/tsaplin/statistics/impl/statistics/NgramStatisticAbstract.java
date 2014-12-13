@@ -1,4 +1,4 @@
-package com.artech.prototype2.tsaplin.statistics.impl;
+package com.artech.prototype2.tsaplin.statistics.impl.statistics;
 
 import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.tsaplin.statistics.Ngram;
@@ -15,14 +15,14 @@ import java.util.List;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public class NgramStatisticImpl implements NgramStatistic {
+public class NgramStatisticAbstract implements NgramStatistic {
 
     private HashMap<Ngram, Integer> map;
 
     /**
      *
      */
-    public NgramStatisticImpl(){
+    public NgramStatisticAbstract(){
         map = new HashMap<Ngram, Integer>();
     }
 

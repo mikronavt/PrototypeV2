@@ -1,45 +1,38 @@
-package com.artech.prototype2.tsaplin.statistics.impl;
+package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
 
 /**
- * Класс, реализующий фограммы.
+ * Класс, реализующий биграмм.
  *
  * Created by atsaplin on 09.12.2014.
  */
-public class Fourgram extends NgramImpl {
+public abstract class Bigram extends NgramAbstract {
+
     private String first;
     private String second;
-    private String third;
-    private String fourth;
 
-    public Fourgram(){}
-
+    public Bigram(){}
     /**
      * Конструктор для класса.
      *
-     * @param first
-     * @param second
-     * @param third
-     * @param fourth
+     * @param first - первое слово.
+     * @param second - второе слово.
      */
-    public Fourgram(String first, String second, String third, String fourth){
+    public Bigram(String first, String second){
         this.first = first;
         this.second = second;
-        this.third = third;
-        this.fourth = fourth;
     }
 
     /**
      * Геттер для н-ного слова.
+     *
      * @param n - номер слова.
-     * @return - слово в виде строки, null при ошибочном n.
+     * @return слово в виде строки, null при ошибочном n
      */
     @Override
     public String getNthWord(int n) {
-        switch(n){
+        switch (n){
             case 1: return first;
             case 2: return second;
-            case 3: return third;
-            case 4: return fourth;
         }
         return null;
     }
@@ -53,14 +46,9 @@ public class Fourgram extends NgramImpl {
     @Override
     public void setNthWord(String word, int n) {
         switch (n){
-            case 1: first = word;
+            case 1: this.first = word;
                 break;
-            case 2: second = word;
-                break;
-            case 3: third = word;
-                break;
-            case 4: fourth = word;
-                break;
+            case 2: this.second = word;
         }
     }
 
@@ -69,12 +57,10 @@ public class Fourgram extends NgramImpl {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Fourgram fourgram = (Fourgram) o;
+        Bigram bigram = (Bigram) o;
 
-        if (!first.equals(fourgram.first)) return false;
-        if (!fourth.equals(fourgram.fourth)) return false;
-        if (!second.equals(fourgram.second)) return false;
-        if (!third.equals(fourgram.third)) return false;
+        if (!first.equals(bigram.first)) return false;
+        if (!second.equals(bigram.second)) return false;
 
         return true;
     }
@@ -83,9 +69,6 @@ public class Fourgram extends NgramImpl {
     public int hashCode() {
         int result = first.hashCode();
         result = 31 * result + second.hashCode();
-        result = 31 * result + third.hashCode();
-        result = 31 * result + fourth.hashCode();
         return result;
     }
 }
-

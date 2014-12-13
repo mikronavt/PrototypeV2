@@ -1,12 +1,11 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
 import com.artech.prototype2.tsaplin.statistics.StatisticWork;
+import com.artech.prototype2.tsaplin.statistics.impl.statistics.NgramStatisticAbstract;
 import com.artech.prototype2.tsaplin.utils.impl.FileParserImpl;
-import com.sun.org.glassfish.external.statistics.impl.StatisticImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *
@@ -43,13 +42,13 @@ public class StatisticWorkImpl implements StatisticWork{
 
 
         StatisticMakerImpl statisticMaker = new StatisticMakerImpl();
-        NgramStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordStatistic(words, lang);
+        NgramStatisticAbstract singleWordStatistic = statisticMaker.makeSingleWordStatistic(words, lang);
 
-        NgramStatisticImpl bigramStatistic = statisticMaker.makeBigramStatistic(words, lang);
+        NgramStatisticAbstract bigramStatistic = statisticMaker.makeBigramStatistic(words, lang);
 
-        NgramStatisticImpl trigramStatistic = statisticMaker.makeThreegramStatistic(words, lang);
+        NgramStatisticAbstract trigramStatistic = statisticMaker.makeThreegramStatistic(words, lang);
 
-        NgramStatisticImpl fourgramStatistic = statisticMaker.makeFourgramStatistic(words, lang);
+        NgramStatisticAbstract fourgramStatistic = statisticMaker.makeFourgramStatistic(words, lang);
 
         //дальше надо залить все в базу
     }

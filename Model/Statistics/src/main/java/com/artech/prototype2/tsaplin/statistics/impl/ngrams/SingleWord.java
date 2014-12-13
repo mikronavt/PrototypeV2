@@ -1,15 +1,11 @@
-package com.artech.prototype2.tsaplin.statistics.impl;
-
-import com.artech.prototype2.saver.entity.DictionaryRu;
-
-import java.text.SimpleDateFormat;
+package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
 
 /**
  * Класс, реализующий одиночное слово.
  *
  * Created by atsaplin on 09.12.2014.
  */
-public abstract class SingleWord extends NgramImpl {
+public abstract class SingleWord extends NgramAbstract {
 
     protected String word;
 

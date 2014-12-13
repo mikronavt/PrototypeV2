@@ -1,6 +1,6 @@
 package com.artech.prototype2.tsaplin.statistics;
 
-import com.artech.prototype2.tsaplin.statistics.impl.NgramStatisticImpl;
+import com.artech.prototype2.tsaplin.statistics.impl.statistics.NgramStatisticAbstract;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика одиночных слов.
      */
-    public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words, String lang);
+    public NgramStatisticAbstract makeSingleWordStatistic(ArrayList<String> words, String lang);
 
     /**
      * Создание статистики для биграмм на основе списка слов.
@@ -26,7 +26,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика биграмм.
      */
-    public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words, String lang);
+    public NgramStatisticAbstract makeBigramStatistic(ArrayList<String> words, String lang);
 
     /**
      * Создание статистики для триграмм на основе списка слов.
@@ -34,7 +34,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика для триграмм.
      */
-    public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words, String lang);
+    public NgramStatisticAbstract makeThreegramStatistic(ArrayList<String> words, String lang);
 
     /**
      * Создание статистики для фограмм на основе списка слов.
@@ -42,7 +42,7 @@ public interface StatisticMaker {
      * @param words - список слов.
      * @return - статистика для фограмм.
      */
-    public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words, String lang);
+    public NgramStatisticAbstract makeFourgramStatistic(ArrayList<String> words, String lang);
 
 
 }

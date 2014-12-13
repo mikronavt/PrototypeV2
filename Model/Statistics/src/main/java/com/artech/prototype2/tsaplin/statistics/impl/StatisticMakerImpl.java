@@ -2,6 +2,8 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
 import com.artech.prototype2.tsaplin.statistics.StatisticMaker;
+import com.artech.prototype2.tsaplin.statistics.impl.ngrams.*;
+import com.artech.prototype2.tsaplin.statistics.impl.statistics.NgramStatisticAbstract;
 
 import java.util.ArrayList;
 
@@ -21,8 +23,8 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeSingleWordStatistic(ArrayList<String> words, String lang) {
-        NgramStatisticImpl singleWordStatistic = new NgramStatisticImpl();
+    public NgramStatisticAbstract makeSingleWordStatistic(ArrayList<String> words, String lang) {
+        NgramStatisticAbstract singleWordStatistic = new NgramStatisticAbstract();
 
         for (int i = 0; i < words.size(); i++) {
             SingleWord word;
@@ -47,8 +49,8 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeBigramStatistic(ArrayList<String> words, String lang) {
-        NgramStatisticImpl bigramStatistic = new NgramStatisticImpl();
+    public NgramStatisticAbstract makeBigramStatistic(ArrayList<String> words, String lang) {
+        NgramStatisticAbstract bigramStatistic = new NgramStatisticAbstract();
 
         for (int i = 1; i < words.size(); i++) {
             Bigram bigram;
@@ -74,8 +76,8 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeThreegramStatistic(ArrayList<String> words, String lang) {
-        NgramStatisticImpl threegramStatistic = new NgramStatisticImpl();
+    public NgramStatisticAbstract makeThreegramStatistic(ArrayList<String> words, String lang) {
+        NgramStatisticAbstract threegramStatistic = new NgramStatisticAbstract();
 
         for (int i = 2; i < words.size(); i++) {
 
@@ -102,8 +104,8 @@ public class StatisticMakerImpl implements StatisticMaker{
      * @return
      */
     @Override
-    public NgramStatisticImpl makeFourgramStatistic(ArrayList<String> words, String lang) {
-        NgramStatisticImpl fourgramStatistic = new NgramStatisticImpl();
+    public NgramStatisticAbstract makeFourgramStatistic(ArrayList<String> words, String lang) {
+        NgramStatisticAbstract fourgramStatistic = new NgramStatisticAbstract();
 
         for (int i = 3; i < words.size(); i++) {
 
