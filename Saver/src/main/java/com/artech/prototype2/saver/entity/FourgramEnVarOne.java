@@ -14,11 +14,12 @@ public class FourgramEnVarOne implements java.io.Serializable, Entity {
 
     public FourgramEnVarOne(){}
 
-    public FourgramEnVarOne(String wordOne, String wordTwo, String wordThree, String wordFour){
+    public FourgramEnVarOne(String wordOne, String wordTwo, String wordThree, String wordFour, int count){
         this.wordOne = wordOne;
         this.wordTwo = wordTwo;
         this.wordThree = wordThree;
         this.wordFour = wordFour;
+        this.count = count;
     }
 
     public Integer getEnid() {

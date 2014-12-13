@@ -79,4 +79,28 @@ public abstract class Threegram extends NgramAbstract {
         result = 31 * result + third.hashCode();
         return result;
     }
+
+    public String getFirst() {
+        return first;
+    }
+
+    public void setFirst(String first) {
+        this.first = first;
+    }
+
+    public String getSecond() {
+        return second;
+    }
+
+    public void setSecond(String second) {
+        this.second = second;
+    }
+
+    public String getThird() {
+        return third;
+    }
+
+    public void setThird(String third) {
+        this.third = third;
+    }
 }

@@ -7,7 +7,7 @@ package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
  */
 public abstract class SingleWord extends NgramAbstract {
 
-    protected String word;
+    private String word;
 
     /**
      * Конструктор для класса.
@@ -60,5 +60,11 @@ public abstract class SingleWord extends NgramAbstract {
         return word.hashCode();
     }
 
+    public String getWord() {
+        return word;
+    }
 
+    public void setWord(String word) {
+        this.word = word;
+    }
 }

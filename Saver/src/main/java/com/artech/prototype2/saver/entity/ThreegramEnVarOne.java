@@ -12,10 +12,11 @@ public class ThreegramEnVarOne implements java.io.Serializable, Entity {
 
     public ThreegramEnVarOne(){}
 
-    public ThreegramEnVarOne(String wordOne, String wordTwo, String wordThree){
+    public ThreegramEnVarOne(String wordOne, String wordTwo, String wordThree, int count){
         this.wordOne = wordOne;
         this.wordTwo = wordTwo;
         this.wordThree = wordThree;
+        this.count = count;
     }
 
     public Integer getEnid() {

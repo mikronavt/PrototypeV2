@@ -10,8 +10,14 @@ public class SingleWordRu extends SingleWord {
 
     public SingleWordRu(String word){super(word);}
 
-    public DictionaryRu makeDictionary(int count){
-        return new DictionaryRu(word, count);
+    public SingleWordRu(DictionaryRu dictionaryRu){
+        this.setWord(dictionaryRu.getWord());
     }
+
+    public DictionaryRu makeDictionary(int count){
+        return new DictionaryRu(this.getWord(), count);
+    }
+
+
 
 }

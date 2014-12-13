@@ -12,10 +12,11 @@ public class ThreegramRuVarOne implements java.io.Serializable, Entity {
 
     public ThreegramRuVarOne(){}
 
-    public ThreegramRuVarOne(String wordOne, String wordTwo, String wordThree){
+    public ThreegramRuVarOne(String wordOne, String wordTwo, String wordThree, int count){
         this.wordOne = wordOne;
         this.wordTwo = wordTwo;
         this.wordThree = wordThree;
+        this.count = count;
     }
 
     public Integer getRuid() {

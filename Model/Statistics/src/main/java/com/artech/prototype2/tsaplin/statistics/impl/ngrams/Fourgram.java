@@ -5,7 +5,7 @@ package com.artech.prototype2.tsaplin.statistics.impl.ngrams;
  *
  * Created by atsaplin on 09.12.2014.
  */
-public class Fourgram extends NgramAbstract {
+public abstract class Fourgram extends NgramAbstract {
     private String first;
     private String second;
     private String third;
@@ -86,6 +86,38 @@ public class Fourgram extends NgramAbstract {
         result = 31 * result + third.hashCode();
         result = 31 * result + fourth.hashCode();
         return result;
+    }
+
+    public String getFirst() {
+        return first;
+    }
+
+    public void setFirst(String first) {
+        this.first = first;
+    }
+
+    public String getSecond() {
+        return second;
+    }
+
+    public void setSecond(String second) {
+        this.second = second;
+    }
+
+    public String getThird() {
+        return third;
+    }
+
+    public void setThird(String third) {
+        this.third = third;
+    }
+
+    public String getFourth() {
+        return fourth;
+    }
+
+    public void setFourth(String fourth) {
+        this.fourth = fourth;
     }
 }
 

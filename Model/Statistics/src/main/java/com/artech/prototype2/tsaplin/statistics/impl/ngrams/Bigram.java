@@ -71,4 +71,20 @@ public abstract class Bigram extends NgramAbstract {
         result = 31 * result + second.hashCode();
         return result;
     }
+
+    public String getFirst() {
+        return first;
+    }
+
+    public void setFirst(String first) {
+        this.first = first;
+    }
+
+    public String getSecond() {
+        return second;
+    }
+
+    public void setSecond(String second) {
+        this.second = second;
+    }
 }

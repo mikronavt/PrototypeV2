@@ -12,9 +12,10 @@ public class BigramRuVarOne implements java.io.Serializable, Entity {
 
     public BigramRuVarOne(){}
 
-    public BigramRuVarOne(String wordOne, String wordTwo){
+    public BigramRuVarOne(String wordOne, String wordTwo, int count){
         this.wordOne = wordOne;
         this.wordTwo = wordTwo;
+        this.count = count;
     }
 
     public Integer getRuid() {

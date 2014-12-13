@@ -13,11 +13,12 @@ public class FourgramRuVarOne implements java.io.Serializable, Entity {
 
     public FourgramRuVarOne(){}
 
-    public FourgramRuVarOne(String wordOne, String wordTwo, String wordThree, String wordFour){
+    public FourgramRuVarOne(String wordOne, String wordTwo, String wordThree, String wordFour, int count){
         this.wordOne = wordOne;
         this.wordTwo = wordTwo;
         this.wordThree = wordThree;
         this.wordFour = wordFour;
+        this.count = count;
     }
 
     public Integer getRuid() {
