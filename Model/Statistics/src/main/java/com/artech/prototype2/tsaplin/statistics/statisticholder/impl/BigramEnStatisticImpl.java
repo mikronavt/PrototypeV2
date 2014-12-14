@@ -10,6 +10,8 @@ import java.util.List;
  * Created by User on 14.12.2014.
  */
 public class BigramEnStatisticImpl extends AbstractNgramStatistic<BigramEnImpl> {
+    public BigramEnStatisticImpl(){super();}
+
     public BigramEnStatisticImpl(List<BigramEnVarOne> list){
         super();
         for(BigramEnVarOne dict: list){

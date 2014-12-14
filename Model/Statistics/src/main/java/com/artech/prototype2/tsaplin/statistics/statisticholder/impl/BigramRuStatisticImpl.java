@@ -10,6 +10,8 @@ import java.util.List;
  * Created by User on 14.12.2014.
  */
 public class BigramRuStatisticImpl extends AbstractNgramStatistic<BigramRuImpl> {
+    public BigramRuStatisticImpl(){super();}
+
     public BigramRuStatisticImpl(List<BigramRuVarOne> list){
         super();
         for(BigramRuVarOne dict: list){

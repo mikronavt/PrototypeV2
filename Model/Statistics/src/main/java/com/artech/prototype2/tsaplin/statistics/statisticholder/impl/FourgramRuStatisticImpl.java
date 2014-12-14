@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class FourgramRuStatisticImpl extends AbstractNgramStatistic<FourgramRuImpl> {
 
+    public FourgramRuStatisticImpl(){super();}
+
     public FourgramRuStatisticImpl(List<FourgramRuVarOne> list){
         super();
         for(FourgramRuVarOne dict: list){

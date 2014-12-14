@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class SingleWordRuStatisticImpl extends AbstractNgramStatistic<SingleWordRuImpl> {
 
+    public SingleWordRuStatisticImpl(){super();}
+
     public SingleWordRuStatisticImpl(List<DictionaryRu> list){
         super();
         for(DictionaryRu dict: list){

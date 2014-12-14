@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class ThreegramEnStatisticImpl extends AbstractNgramStatistic<ThreegramEnImpl> {
 
+    public ThreegramEnStatisticImpl(){super();}
+
     public ThreegramEnStatisticImpl(List<ThreegramEnVarOne> list){
         super();
         for(ThreegramEnVarOne dict: list){

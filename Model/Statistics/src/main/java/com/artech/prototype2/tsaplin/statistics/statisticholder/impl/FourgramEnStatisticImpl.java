@@ -10,6 +10,8 @@ import java.util.List;
  * Created by User on 14.12.2014.
  */
 public class FourgramEnStatisticImpl extends AbstractNgramStatistic<FourgramEnImpl> {
+    public FourgramEnStatisticImpl(){super();}
+
     public FourgramEnStatisticImpl(List<FourgramEnVarOne> list){
         super();
         for(FourgramEnVarOne dict: list){

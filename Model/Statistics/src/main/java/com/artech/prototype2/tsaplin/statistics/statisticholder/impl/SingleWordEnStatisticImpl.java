@@ -10,6 +10,8 @@ import java.util.List;
  * Created by User on 14.12.2014.
  */
 public class SingleWordEnStatisticImpl extends AbstractNgramStatistic<SingleWordEnImpl> {
+    public SingleWordEnStatisticImpl(){super();}
+
     public SingleWordEnStatisticImpl(List<DictionaryEn> list){
         super();
         for (DictionaryEn dict: list) {

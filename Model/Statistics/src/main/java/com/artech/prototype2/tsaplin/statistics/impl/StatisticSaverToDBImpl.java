@@ -25,7 +25,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB{
             DictionaryRu dictionary= entry.getKey().makeDictionary(entry.getValue());
         }
         */
-        //писать в бд
+        //писать  в бд
 
 
         //Чтобы реализовать конструкцию, создаю отдельные классы для соотв статистик с нграммами,
