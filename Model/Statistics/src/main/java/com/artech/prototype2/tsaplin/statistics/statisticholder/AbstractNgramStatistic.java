@@ -1,8 +1,9 @@
 package com.artech.prototype2.tsaplin.statistics.statisticholder;
 
+import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.tsaplin.statistics.ngrams.Ngram;
 
-import java.util.HashMap;
+import java.util.*;
 
 
 /**
@@ -21,6 +22,8 @@ public abstract class AbstractNgramStatistic<Type extends Ngram> implements Ngra
     public AbstractNgramStatistic(){
         map = new HashMap<Type, Integer>();
     }
+
+    public AbstractNgramStatistic(HashMap<Type, Integer> map){this.map = map;}
 
     /**
      * Метод увеличивает статистику для одной н-граммы.
@@ -57,4 +60,63 @@ public abstract class AbstractNgramStatistic<Type extends Ngram> implements Ngra
         this.map = map;
     }
 
+    @Override
+    public int size() {
+        return map.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return map.isEmpty();
+    }
+
+    @Override
+    public boolean containsKey(Object key) {
+        return map.containsKey(key);
+    }
+
+    @Override
+    public boolean containsValue(Object value) {
+        return map.containsValue(value);
+    }
+
+    @Override
+    public Integer get(Object key) {
+        return map.get(key);
+    }
+
+    @Override
+    public Integer put(Type key, Integer value) {
+        return map.put(key, value);
+    }
+
+    @Override
+    public Integer remove(Object key) {
+        return map.remove(key);
+    }
+
+    @Override
+    public void putAll(Map<? extends Type, ? extends Integer> m) {
+        map.putAll(m);
+    }
+
+    @Override
+    public void clear() {
+        map.clear();
+    }
+
+    @Override
+    public Set<Type> keySet() {
+        return map.keySet();
+    }
+
+    @Override
+    public Collection<Integer> values() {
+        return map.values();
+    }
+
+    @Override
+    public Set<Entry<Type, Integer>> entrySet() {
+        return map.entrySet();
+    }
 }

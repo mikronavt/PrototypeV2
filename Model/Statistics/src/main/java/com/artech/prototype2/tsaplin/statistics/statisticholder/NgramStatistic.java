@@ -2,12 +2,15 @@ package com.artech.prototype2.tsaplin.statistics.statisticholder;
 
 import com.artech.prototype2.tsaplin.statistics.ngrams.Ngram;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Интерфейс для класса, хранящего в себе статистику.
  *
  * Created by atsaplin on 09.12.2014.
  */
-public interface NgramStatistic<Type extends Ngram>{
+public interface NgramStatistic<Type extends Ngram> extends Map<Type, Integer> {
 
     /**
      * Метод увеличивает статистику для одной н-граммы.
@@ -25,7 +28,5 @@ public interface NgramStatistic<Type extends Ngram>{
      * @param count - новое значение.
      */
     public void updateStatisticForNgram(Type ngram, Integer count);
-
-
 
 }
