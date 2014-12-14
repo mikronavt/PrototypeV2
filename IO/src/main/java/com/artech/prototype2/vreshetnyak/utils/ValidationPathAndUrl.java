@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 /**
  * Класс-валидатор, отвечающий за проверку вводимых данных
+ *
  * @author Василий
  */
 public class ValidationPathAndUrl {
@@ -21,6 +22,7 @@ public class ValidationPathAndUrl {
 
     public void valid() {
     }
+
     /**
      * Конструктор принимает аргументы
      *
@@ -32,10 +34,10 @@ public class ValidationPathAndUrl {
     public ArrayList validation(String args[], int type) {
         switch (type) {
             case 0:
+                list = new ArrayList<String>();
                 for (String string : args) {
                     file = new File(string);
                     if (file.exists()) {
-                        list = new ArrayList<String>();
                         list.add(string);
                     } else {
                         System.out.println("Путь не найден!");
@@ -61,7 +63,7 @@ public class ValidationPathAndUrl {
 
     public void printArrayList(ArrayList list) {
         for (Object e : list) {
-            System.out.println(e);
+            System.out.println((String) e);
         }
     }
 }
