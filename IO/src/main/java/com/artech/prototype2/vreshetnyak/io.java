@@ -11,7 +11,6 @@ import com.artech.prototype2.vreshetnyak.output.Output;
 import com.artech.prototype2.vreshetnyak.output.impl.InitOutputFormImpl;
 import com.artech.prototype2.vreshetnyak.output.impl.FormReportImpl;
 
-
 /**
  *
  * @author Vasilij
@@ -20,13 +19,13 @@ public class io {
 
     public static void main(String[] args) {
 
-//        Input form = new InputFormImpl();
-//        form.InputGUIForm();
+        Input form = new InputFormImpl();
+        form.InputGUIForm();
 
 //        Output o = new InitOutputFormImpl();
 //        o.OutputFormTable(args);
-        String[] arStrings = {};
-        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, null, "Название таблицы");
-        oForm.FormReportInit();
+//        String[] arStrings = {};
+//        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, null, "Название таблицы");
+//        oForm.FormReportInit();
     }
 }

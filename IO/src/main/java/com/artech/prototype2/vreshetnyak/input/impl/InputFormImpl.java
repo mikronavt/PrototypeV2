@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Arrays;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  * Класс является унаследованным от AbstractInput. Отвечает за формирование окна
@@ -34,6 +37,7 @@ public class InputFormImpl extends AbstractInput {
     protected JButton SendDataToSensorButton;
     protected JLabel labelCommand;
     protected JTextArea DataJTextArea;
+    protected JTextField commandJTextField;
     protected JMenuBar menuBar;
     protected JMenu commandMenu;
     protected JMenuItem translateItem;
@@ -106,14 +110,25 @@ public class InputFormImpl extends AbstractInput {
          */
         JPanel panelLabelCommand = new JPanel();
         labelCommand = new JLabel("Команда:");
-        panelLabelCommand.setLayout(new GridLayout(1, 2));
+        panelLabelCommand.setLayout(new GridLayout(2, 2));
         /**
          * Панелька для кнопочки
          */
         SendDataToSensorButton = new JButton("Send");
         SendDataToSensorButton.addActionListener(new SendActionListener());
-        panelLabelCommand.add(labelCommand);
+
+        /**
+         * Поле для ввода команды
+         */
+        commandJTextField = new JTextField("");// поле для ввода команды
+        commandJTextField.getDocument().addDocumentListener(new commandJTextFieldListener());
+        /**
+         * ДОбавляем все на панельку
+         */
+        panelLabelCommand.add(commandJTextField);
         panelLabelCommand.add(SendDataToSensorButton);
+        panelLabelCommand.add(labelCommand);
+
         InputFormFrame.add(panelLabelCommand, BorderLayout.SOUTH);
 
         /**
@@ -149,7 +164,7 @@ public class InputFormImpl extends AbstractInput {
             /**
              * Проверяем, выбрана ли команда.
              */
-            if (command != null) {
+            if (command != null | !"".equals(commandJTextField.getText())) {
                 /**
                  * Проверка на короткие тексты. Если короткий (=< 20 символов),
                  * то выводим JOptionPane
@@ -161,7 +176,9 @@ public class InputFormImpl extends AbstractInput {
                      * сравнимаем выбранную команду. Когда все удачно, полю
                      * @maskTypeData присваивается 0.
                      */
-                    if (file.exists() && (command.equals(item[1]) | command.equals(item[2]))) {
+                    if (file.exists()
+                            && ((item[1].equals(command) | (item[1].toLowerCase().equals(commandJTextField.getText())))
+                            | (item[2].equals(command) | (item[2].toLowerCase().equals(commandJTextField.getText()))))) {
                         maskTypeData = 0; //маска типа данных
                         validator = new ValidationPathAndUrl(); //наш валидатор
                         /**
@@ -178,7 +195,9 @@ public class InputFormImpl extends AbstractInput {
                      * команду. Когда все удачно, полю @maskTypeData
                      * присваивается 1.
                      */
-                    else if (s[0].startsWith("http") && (command.equals(item[1]) | command.equals(item[2]))) {
+                    else if (s[0].startsWith("http")
+                            && ((item[1].equals(command) | (item[1].toLowerCase().equals(commandJTextField.getText())))
+                            | (item[2].equals(command) | (item[2].toLowerCase().equals(commandJTextField.getText()))))) {
                         maskTypeData = 1;
                         validator = new ValidationPathAndUrl();
                         validator.printArrayList(validator.validation(s, maskTypeData));
@@ -205,6 +224,35 @@ public class InputFormImpl extends AbstractInput {
                         "Внимание!",
                         JOptionPane.ERROR_MESSAGE);
             }
+        }
+    }
+
+    class commandJTextFieldListener implements DocumentListener {
+
+        public commandJTextFieldListener() {
+        }
+
+        /**
+         * ContainsCommandsString Метод подсветки правильности введенной команды
+         */
+        protected void ContainsCommandsString() {
+            if (Arrays.toString(item).toLowerCase().contains(commandJTextField.getText().toLowerCase())) {
+                commandJTextField.setForeground(Color.GREEN);
+            } else {
+                commandJTextField.setForeground(Color.RED);
+            }
+            labelCommand.setText("Команда: " + commandJTextField.getText().toLowerCase());
+        }
+
+        public void insertUpdate(DocumentEvent e) {
+            ContainsCommandsString();
+        }
+
+        public void removeUpdate(DocumentEvent e) {
+            ContainsCommandsString();
+        }
+
+        public void changedUpdate(DocumentEvent e) {
         }
     }
 }
