@@ -19,4 +19,6 @@ public class SingleWordRuStatisticImpl extends AbstractNgramStatistic<SingleWord
             this.put(new SingleWordRuImpl(dict), dict.getCount());
         }
     }
+
+
 }

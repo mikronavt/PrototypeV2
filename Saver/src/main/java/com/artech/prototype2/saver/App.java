@@ -19,7 +19,7 @@ public class App {
         AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
         String label = "create_db";
         ManagerAPISaver.getInstance().registry(label, db, new CreateDataBaseImpl());
-        ManagerAPISaver.getInstance().createDB(label, db);
+        /*ManagerAPISaver.getInstance().createDB(label, db);*/
 
         label = "dict_ru_dao";
         ManagerAPISaver.getInstance().registry(label, db, new DictionaryRuDaoImpl());

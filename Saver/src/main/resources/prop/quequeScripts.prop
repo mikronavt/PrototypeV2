@@ -6,10 +6,10 @@ Create_Bigram_Ru_One_MySql.sql
 Create_Bigram_En_One_MySql.sql
 Create_Bigram_Ru_Two_MySql.sql
 Create_Bigram_En_Two_MySql.sql
-Create_TreeGram_Ru_One_MySql.sql
-Create_TreeGram_En_One_MySql.sql
-Create_TreeGram_Ru_Two_MySql.sql
-Create_TreeGram_En_Two_MySql.sql
+Create_ThreeGram_Ru_One_MySql.sql
+Create_ThreeGram_En_One_MySql.sql
+Create_ThreeGram_Ru_Two_MySql.sql
+Create_ThreeGram_En_Two_MySql.sql
 Create_FourGram_Ru_One_MySql.sql
 Create_FourGram_En_One_MySql.sql
 Create_FourGram_Ru_Two_MySql.sql

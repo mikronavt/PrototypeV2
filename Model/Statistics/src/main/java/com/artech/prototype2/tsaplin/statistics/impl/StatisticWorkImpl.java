@@ -1,7 +1,12 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.impl.MySQL;
+import com.artech.prototype2.tsaplin.statistics.StatisticSaverToDB;
 import com.artech.prototype2.tsaplin.statistics.StatisticWork;
 import com.artech.prototype2.tsaplin.statistics.statisticholder.AbstractNgramStatistic;
+import com.artech.prototype2.tsaplin.statistics.statisticholder.impl.SingleWordEnStatisticImpl;
+import com.artech.prototype2.tsaplin.statistics.statisticholder.impl.SingleWordRuStatisticImpl;
 import com.artech.prototype2.tsaplin.utils.impl.FileParserImpl;
 
 import java.io.IOException;
@@ -41,27 +46,37 @@ public class StatisticWorkImpl implements StatisticWork{
         String lang = "ru";
 
 
+
+        AbstractNgramStatistic bigramStatistic;
+        AbstractNgramStatistic trigramStatistic;
+        AbstractNgramStatistic fourgramStatistic;
+
+
         StatisticMakerImpl statisticMaker = new StatisticMakerImpl();
+        StatisticSaverToDB dbSaver = new StatisticSaverToDBImpl();
+        AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
         if("ru".equals(lang)) {
-            AbstractNgramStatistic singleWordStatistic = statisticMaker.makeSingleWordRuStatistic(words);
+            SingleWordRuStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordRuStatistic(words);
+            dbSaver.saveSingleWordRuStatistic(singleWordStatistic, db);
 
-            AbstractNgramStatistic bigramStatistic = statisticMaker.makeBigramRuStatistic(words);
+            bigramStatistic = statisticMaker.makeBigramRuStatistic(words);
 
-            AbstractNgramStatistic trigramStatistic = statisticMaker.makeThreegramRuStatistic(words);
+            trigramStatistic = statisticMaker.makeThreegramRuStatistic(words);
 
-            AbstractNgramStatistic fourgramStatistic = statisticMaker.makeFourgramRuStatistic(words);
+            fourgramStatistic = statisticMaker.makeFourgramRuStatistic(words);
 
         }
         else if ("en".equals(lang)){
-            AbstractNgramStatistic singleWordStatistic = statisticMaker.makeSingleWordEnStatistic(words);
+            SingleWordEnStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordEnStatistic(words);
 
-            AbstractNgramStatistic bigramStatistic = statisticMaker.makeBigramEnStatistic(words);
+            bigramStatistic = statisticMaker.makeBigramEnStatistic(words);
 
-            AbstractNgramStatistic trigramStatistic = statisticMaker.makeThreegramEnStatistic(words);
+            trigramStatistic = statisticMaker.makeThreegramEnStatistic(words);
 
-            AbstractNgramStatistic fourgramStatistic = statisticMaker.makeFourgramEnStatistic(words);
+            fourgramStatistic = statisticMaker.makeFourgramEnStatistic(words);
 
         }
+
 
 
         //дальше надо залить все в базу
