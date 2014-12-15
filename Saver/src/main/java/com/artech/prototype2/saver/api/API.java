@@ -67,5 +67,13 @@ public interface API {
      * @param entity сущность обновления
      */
     void update(String label, AbstractSUBD db, Entity entity);
+    
+    /**
+     * Сохранение или обновление сущности в бд
+     * @param label метка функционала
+     * @param db выбранная база данных
+     * @param entity сущность обновления
+     */
+    void saveOrUpdate(String label, AbstractSUBD db, Entity entity);
 
 }

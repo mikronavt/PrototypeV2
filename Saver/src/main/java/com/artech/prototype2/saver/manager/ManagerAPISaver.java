@@ -150,4 +150,11 @@ public class ManagerAPISaver implements API {
         }
     }
 
+    public void saveOrUpdate(String label, AbstractSUBD db, Entity entity) {
+        CommonDB dao = (Dao) get(label, db);
+        if (dao != null) {
+            ((AbstractDao) dao).saveOrUpdate(db, entity);
+        }
+    }
+
 }

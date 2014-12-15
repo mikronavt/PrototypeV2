@@ -29,4 +29,6 @@ public interface Dao<ID extends Serializable, Type extends Entity> extends Commo
     List<Type> getAll(AbstractSUBD db);
 
     void update(AbstractSUBD db, Type entity);
+    
+    void saveOrUpdate(AbstractSUBD db, Type entity);
 }

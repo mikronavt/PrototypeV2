@@ -101,4 +101,20 @@ public class AbstractDao<ID extends Serializable, Type extends Entity> implement
         return entity;
     }
 
+    public void saveOrUpdate(AbstractSUBD db, Type entity) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory(db).openSession();
+            session.beginTransaction();
+            session.saveOrUpdate(entity);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
+
 }

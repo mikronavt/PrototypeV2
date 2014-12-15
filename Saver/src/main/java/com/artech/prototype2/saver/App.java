@@ -19,7 +19,7 @@ public class App {
         AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
         String label = "create_db";
         ManagerAPISaver.getInstance().registry(label, db, new CreateDataBaseImpl());
-        /*ManagerAPISaver.getInstance().createDB(label, db);*/
+        ManagerAPISaver.getInstance().createDB(label, db);
 
         label = "dict_ru_dao";
         ManagerAPISaver.getInstance().registry(label, db, new DictionaryRuDaoImpl());
@@ -27,14 +27,15 @@ public class App {
         ((DictionaryRu) entity).setWord("example");
         ((DictionaryRu) entity).setCount(3);
 
-        ManagerAPISaver.getInstance().save(label, db, entity);
-        ((DictionaryRu) entity).setRuid(2);
-  //      ManagerAPISaver.getInstance().delete(label, entity);
-//        ((DictionaryRu) entity).setRuid(4);
-       ((DictionaryRu) entity).setCount(10);
-        ManagerAPISaver.getInstance().update(label, db, entity);
+        ManagerAPISaver.getInstance().saveOrUpdate(label, db, entity);
+//        ((DictionaryRu) entity).setRuid(2);
+//  //      ManagerAPISaver.getInstance().delete(label, entity);
+////        ((DictionaryRu) entity).setRuid(4);
+//       ((DictionaryRu) entity).setCount(10);
+//        ManagerAPISaver.getInstance().update(label, db, entity);
         
         List<Entity> dict = ManagerAPISaver.getInstance().getAll(label, db);
+        int count = 0;
         for(Entity ent : dict){
             System.out.println(((DictionaryRu)ent).getWord());
         }
