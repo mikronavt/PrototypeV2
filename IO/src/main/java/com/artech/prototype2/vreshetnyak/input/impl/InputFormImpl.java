@@ -211,6 +211,7 @@ public class InputFormImpl extends AbstractInput {
                          * Принимаем текст как есть из JTextArea.
                          */
                         String DataToSensor = DataJTextArea.getText();
+                        
                     }
                 } else {
                     JOptionPane.showMessageDialog(null,

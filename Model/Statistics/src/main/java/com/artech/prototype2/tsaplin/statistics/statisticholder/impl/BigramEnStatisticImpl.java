@@ -3,6 +3,8 @@ package com.artech.prototype2.tsaplin.statistics.statisticholder.impl;
 import com.artech.prototype2.saver.entity.BigramEnVarOne;
 import com.artech.prototype2.tsaplin.statistics.ngrams.impl.BigramEnImpl;
 import com.artech.prototype2.tsaplin.statistics.statisticholder.AbstractNgramStatistic;
+//import com.artech.prototype2.tsaplin.statistics.ngrams.impl.BigramEnImpl;
+//import com.artech.prototype2.tsaplin.statistics.statisticholder.AbstractNgramStatistic;
 
 import java.util.List;
 
