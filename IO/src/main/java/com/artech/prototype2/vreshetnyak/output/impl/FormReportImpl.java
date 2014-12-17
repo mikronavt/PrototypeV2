@@ -4,7 +4,13 @@
  */
 package com.artech.prototype2.vreshetnyak.output.impl;
 
+import com.artech.prototype2.saver.dao.AbstractDao;
 import com.artech.prototype2.saver.dao.Dao;
+import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
+import com.artech.prototype2.saver.dbo.impl.MySQL;
+import com.artech.prototype2.saver.entity.DictionaryRu;
+import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -19,10 +25,10 @@ import javax.swing.*;
 public class FormReportImpl extends AbstractOutput{
     protected String nameForm;
     protected String[] nameColumns;
-    protected Dao inTable;
+    protected AbstractDao inTable;
     protected String nameTable;
 
-    public FormReportImpl(String nameForm, String[] nameColumns, Dao inTable, String nameTable) {
+    public FormReportImpl(String nameForm, String[] nameColumns, AbstractDao inTable, String nameTable) {
         this.nameForm = nameForm;
         this.nameColumns = nameColumns;
         this.inTable = inTable;
@@ -41,6 +47,12 @@ public class FormReportImpl extends AbstractOutput{
      */
     @Override
     public void FormReportInit() {
+        AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
+        
+        List<DictionaryRu> all = ((DictionaryRuDaoImpl)inTable).getAll(db);
+        for (int i = 0; i < all.size(); ++i){
+            System.out.println(all.get(i));
+        }
         
         String[][] data = {};
         //ArrayList<String[][]> data = new ArrayList<String[][]>(); //сюда нужно помещать данные
