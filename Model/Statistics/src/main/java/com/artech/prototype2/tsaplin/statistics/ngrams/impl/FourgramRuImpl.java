@@ -18,7 +18,7 @@ public class FourgramRuImpl extends AbstractFourgram {
     }
 
     @Override
-    public Entity makeDictionary(int count) {
+    public FourgramRuVarOne makeDictionary(int count) {
         return new FourgramRuVarOne(this.getFirst(), this.getSecond(), this.getThird(), this.getFourth(), count);
     }
 }

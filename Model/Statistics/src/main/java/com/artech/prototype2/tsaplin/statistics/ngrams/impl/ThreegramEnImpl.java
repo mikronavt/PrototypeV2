@@ -17,7 +17,7 @@ public class ThreegramEnImpl extends AbstractThreegram {
     }
 
     @Override
-    public Entity makeDictionary(int count) {
+    public ThreegramEnVarOne makeDictionary(int count) {
         return new ThreegramEnVarOne(this.getFirst(), this.getSecond(), this.getThird(), count);
     }
 }

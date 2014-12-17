@@ -10,5 +10,11 @@
     <property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
     <mapping resource="com/artech/prototype2/saver/entity/BigramEnVarOne.hbm.xml"/>
     <mapping resource="com/artech/prototype2/saver/entity/DictionaryRu.hbm.xml"/>
+    <mapping resource="com/artech/prototype2/saver/entity/DictionaryEn.hbm.xml"/>
+    <mapping resource="com/artech/prototype2/saver/entity/BigramRuVarOne.hbm.xml"/>
+    <mapping resource="com/artech/prototype2/saver/entity/ThreegramRuVarOne.hbm.xml"/>
+    <mapping resource="com/artech/prototype2/saver/entity/ThreegramEnVarOne.hbm.xml"/>
+    <mapping resource="com/artech/prototype2/saver/entity/FourgramRuVarOne.hbm.xml"/>
+    <mapping resource="com/artech/prototype2/saver/entity/FourgramEnVarOne.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

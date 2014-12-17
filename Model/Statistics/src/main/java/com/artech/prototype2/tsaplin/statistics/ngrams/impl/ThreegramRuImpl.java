@@ -17,7 +17,7 @@ public class ThreegramRuImpl extends AbstractThreegram {
     }
 
     @Override
-    public Entity makeDictionary(int count) {
+    public ThreegramRuVarOne makeDictionary(int count) {
         return new ThreegramRuVarOne(this.getFirst(), this.getSecond(), this.getThird(), count);
     }
 }

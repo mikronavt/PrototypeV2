@@ -25,7 +25,7 @@ public class BigramEnImpl extends AbstractBigram {
     }
 
     @Override
-    public Entity makeDictionary(int count) {
+    public BigramEnVarOne makeDictionary(int count) {
         return new BigramEnVarOne(this.getFirst(), this.getSecond(), count);
     }
 }
