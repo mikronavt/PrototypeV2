@@ -15,7 +15,7 @@ public class SingleWordEnImpl extends AbstractSingleWord {
     }
 
     @Override
-    public Entity makeDictionary(int count) {
+    public DictionaryEn makeDictionary(int count) {
         return new DictionaryEn(this.getWord(), count);
     }
 }

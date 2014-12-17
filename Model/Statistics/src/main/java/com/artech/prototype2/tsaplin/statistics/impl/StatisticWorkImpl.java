@@ -57,7 +57,7 @@ public class StatisticWorkImpl implements StatisticWork{
         AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
         if("ru".equals(lang)) {
             SingleWordRuStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordRuStatistic(words);
-            dbSaver.saveSingleWordRuStatistic(singleWordStatistic, db);
+            dbSaver.saveStatisticToDB(singleWordStatistic, db);
 
             bigramStatistic = statisticMaker.makeBigramRuStatistic(words);
 

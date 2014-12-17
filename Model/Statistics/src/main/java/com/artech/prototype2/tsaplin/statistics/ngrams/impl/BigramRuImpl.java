@@ -16,7 +16,7 @@ public class BigramRuImpl extends AbstractBigram {
     }
 
     @Override
-    public Entity makeDictionary(int count) {
+    public BigramRuVarOne makeDictionary(int count) {
         return new BigramRuVarOne(this.getFirst(), this.getSecond(), count);
     }
 }
