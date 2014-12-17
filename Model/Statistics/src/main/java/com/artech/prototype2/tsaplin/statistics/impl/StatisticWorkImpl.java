@@ -49,30 +49,30 @@ public class StatisticWorkImpl implements StatisticWork{
         AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
         if("ru".equals(lang)) {
             SingleWordRuStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordRuStatistic(words);
-           dbSaver.saveStatisticToDB(singleWordStatistic, db);
+            dbSaver.saveStatisticToDB(singleWordStatistic, db);
 
             BigramRuStatisticImpl bigramStatistic = statisticMaker.makeBigramRuStatistic(words);
- //           dbSaver.saveStatisticToDB(bigramStatistic, db);
+            dbSaver.saveStatisticToDB(bigramStatistic, db);
 
             ThreegramRuStatisticImpl threegramStatistic = statisticMaker.makeThreegramRuStatistic(words);
-  //          dbSaver.saveStatisticToDB(threegramStatistic, db);
+            dbSaver.saveStatisticToDB(threegramStatistic, db);
 
             FourgramRuStatisticImpl fourgramStatistic = statisticMaker.makeFourgramRuStatistic(words);
-    //        dbSaver.saveStatisticToDB(fourgramStatistic, db);
+            dbSaver.saveStatisticToDB(fourgramStatistic, db);
 
         }
         else if ("en".equals(lang)){
             SingleWordEnStatisticImpl singleWordStatistic = statisticMaker.makeSingleWordEnStatistic(words);
-     //       dbSaver.saveStatisticToDB(singleWordStatistic, db);
+         dbSaver.saveStatisticToDB(singleWordStatistic, db);
 
             BigramEnStatisticImpl bigramStatistic = statisticMaker.makeBigramEnStatistic(words);
-      //      dbSaver.saveStatisticToDB(bigramStatistic, db);
+          dbSaver.saveStatisticToDB(bigramStatistic, db);
 
             ThreegramEnStatisticImpl threegramStatistic = statisticMaker.makeThreegramEnStatistic(words);
-       //     dbSaver.saveStatisticToDB(threegramStatistic, db);
+           dbSaver.saveStatisticToDB(threegramStatistic, db);
 
             FourgramEnStatisticImpl fourgramStatistic = statisticMaker.makeFourgramEnStatistic(words);
-       //     dbSaver.saveStatisticToDB(fourgramStatistic, db);
+            dbSaver.saveStatisticToDB(fourgramStatistic, db);
         }
 
 
