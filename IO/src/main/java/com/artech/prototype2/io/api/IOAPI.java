@@ -6,10 +6,13 @@
 
 package com.artech.prototype2.io.api;
 
+import com.artech.prototype2.vreshetnyak.input.AbstractInput;
+
 /**
  *
  * @author artem
  */
 public interface IOAPI {
-    
+    void InputForm(String label, AbstractInput InForm);
 }
+
