@@ -6,6 +6,7 @@ package com.artech.prototype2.vreshetnyak.input.impl;
 
 import javax.swing.*;
 import com.artech.prototype2.vreshetnyak.input.AbstractInput;
+import com.artech.prototype2.vreshetnyak.utils.GetDataFromInputForm;
 import com.artech.prototype2.vreshetnyak.utils.ValidationPathAndUrl;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -36,7 +37,7 @@ public class InputFormImpl extends AbstractInput {
     protected String[] item = {"Translate", "InMemory", "Statistic", "Analytics"};
     protected JButton SendDataToSensorButton;
     protected JLabel labelCommand;
-    protected JTextArea DataJTextArea;
+    public JTextArea DataJTextArea;
     protected JTextField commandJTextField;
     protected JMenuBar menuBar;
     protected JMenu commandMenu;
@@ -121,7 +122,6 @@ public class InputFormImpl extends AbstractInput {
          * Поле для ввода команды
          */
         commandJTextField = new JTextField("");// поле для ввода команды
-        commandJTextField.getDocument().addDocumentListener(new commandJTextFieldListener());
         /**
          * ДОбавляем все на панельку
          */
@@ -135,6 +135,7 @@ public class InputFormImpl extends AbstractInput {
          * Отображаем нашу форму
          */
         InputFormFrame.setVisible(true);
+
     }
 
     class MenuActionListener implements ActionListener {
@@ -177,8 +178,7 @@ public class InputFormImpl extends AbstractInput {
                      * @maskTypeData присваивается 0.
                      */
                     if (file.exists()
-                            && ((item[1].equals(command) | (item[1].toLowerCase().equals(commandJTextField.getText())))
-                            | (item[2].equals(command) | (item[2].toLowerCase().equals(commandJTextField.getText()))))) {
+                            && (item[1].equals(command) | item[2].equals(command))) {
                         maskTypeData = 0; //маска типа данных
                         validator = new ValidationPathAndUrl(); //наш валидатор
                         /**
@@ -196,8 +196,7 @@ public class InputFormImpl extends AbstractInput {
                      * присваивается 1.
                      */
                     else if (s[0].startsWith("http")
-                            && ((item[1].equals(command) | (item[1].toLowerCase().equals(commandJTextField.getText())))
-                            | (item[2].equals(command) | (item[2].toLowerCase().equals(commandJTextField.getText()))))) {
+                            && (item[1].equals(command) | item[2].equals(command))) {
                         maskTypeData = 1;
                         validator = new ValidationPathAndUrl();
                         validator.printArrayList(validator.validation(s, maskTypeData));
@@ -210,8 +209,6 @@ public class InputFormImpl extends AbstractInput {
                         /**
                          * Принимаем текст как есть из JTextArea.
                          */
-                        String DataToSensor = DataJTextArea.getText();
-                        
                     }
                 } else {
                     JOptionPane.showMessageDialog(null,
@@ -225,35 +222,6 @@ public class InputFormImpl extends AbstractInput {
                         "Внимание!",
                         JOptionPane.ERROR_MESSAGE);
             }
-        }
-    }
-
-    class commandJTextFieldListener implements DocumentListener {
-
-        public commandJTextFieldListener() {
-        }
-
-        /**
-         * ContainsCommandsString Метод подсветки правильности введенной команды
-         */
-        protected void ContainsCommandsString() {
-            if (Arrays.toString(item).toLowerCase().contains(commandJTextField.getText().toLowerCase())) {
-                commandJTextField.setForeground(Color.GREEN);
-            } else {
-                commandJTextField.setForeground(Color.RED);
-            }
-            labelCommand.setText("Команда: " + commandJTextField.getText().toLowerCase());
-        }
-
-        public void insertUpdate(DocumentEvent e) {
-            ContainsCommandsString();
-        }
-
-        public void removeUpdate(DocumentEvent e) {
-            ContainsCommandsString();
-        }
-
-        public void changedUpdate(DocumentEvent e) {
         }
     }
 }

@@ -9,7 +9,6 @@ package com.artech.prototype2.vreshetnyak.input;
  * @author Василий
  */
 public interface Input {
-    
+
     public void InputGUIForm();
-    
 }

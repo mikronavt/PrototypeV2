@@ -21,17 +21,5 @@ import com.artech.prototype2.vreshetnyak.output.impl.FormReportImpl;
 public class io {
 
     public static void main(String[] args) {
-
-//        Input form = new InputFormImpl();
-//        form.InputGUIForm();
-
-//        Output o = new InitOutputFormImpl();
-//        o.OutputFormTable(args);
-
-        String[] arStrings = {};
-        AbstractDao test = new DictionaryRuDaoImpl();
-        
-        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, test, "Название таблицы");
-        oForm.FormReportInit();
     }
 }

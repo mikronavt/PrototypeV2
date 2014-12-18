@@ -14,6 +14,7 @@ import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.vreshetnyak.output.AbstractOutput;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
@@ -22,11 +23,13 @@ import javax.swing.*;
  *
  * @author Василий
  */
-public class FormReportImpl extends AbstractOutput{
+public class FormReportImpl extends AbstractOutput {
+
     protected String nameForm;
     protected String[] nameColumns;
     protected AbstractDao inTable;
     protected String nameTable;
+    protected Object[][] data;
 
     public FormReportImpl(String nameForm, String[] nameColumns, AbstractDao inTable, String nameTable) {
         this.nameForm = nameForm;
@@ -34,29 +37,38 @@ public class FormReportImpl extends AbstractOutput{
         this.inTable = inTable;
         this.nameTable = nameTable;
     }
-    
+
     @Override
     public void OutputForm(String text) {
-        
     }
 
-     /**
-     * FormReport(nameForm, countColum, название_колонки1, название_колонки2, ... , название_колонкиN, 
-     * Название_таблицы) и создается форма в которую передаются данные из бд
-     * 
+    /**
+     * FormReport(nameForm, countColum, название_колонки1, название_колонки2,
+     * ... , название_колонкиN, Название_таблицы) и создается форма в которую
+     * передаются данные из бд
+     *
      */
     @Override
     public void FormReportInit() {
         AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
+
+        List<DictionaryRu> all = ((DictionaryRuDaoImpl) inTable).getAll(db);
+        data = new Object[all.size()][nameColumns.length];
         
-        List<DictionaryRu> all = ((DictionaryRuDaoImpl)inTable).getAll(db);
-        for (int i = 0; i < all.size(); ++i){
-            System.out.println(all.get(i));
+        for (int i = 0; i < all.size(); ++i) {
+            String[] temp = new String[nameColumns.length];
+                temp[0] = all.get(i).getRuid().toString();
+                temp[1] = all.get(i).getWord();
+                temp[2] = String.valueOf(all.get(i).getCount());
+                
+            
+            data[i] = temp;
+            //System.out.println(all.get(i).getRuid() + " : " + all.get(i).getWord() + " : " + all.get(i).getCount());
         }
-        
-        String[][] data = {};
+
+
         //ArrayList<String[][]> data = new ArrayList<String[][]>(); //сюда нужно помещать данные
-        
+
         JFrame OutputForm = new JFrame(nameForm);
         OutputForm.setSize(800, 600);
         OutputForm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,11 +88,9 @@ public class FormReportImpl extends AbstractOutput{
         JPanel tablePanel = new JPanel(new GridLayout(1, 1));
         tablePanel.setBorder(BorderFactory.createTitledBorder(nameTable));
         tablePanel.add(scrollPane);
-        
+
         OutputForm.add(tablePanel, BorderLayout.CENTER);
 
         OutputForm.setVisible(true);
     }
-    
-    
 }
