@@ -28,7 +28,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         //получить список из бд
         String label = "dict_ru_dao";
         ManagerAPISaver.getInstance().registry(label, db, new DictionaryRuDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, DictionaryRu.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 
@@ -69,7 +69,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
     public void saveStatisticToDB(SingleWordEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "dict_en_dao";
         ManagerAPISaver.getInstance().registry(label, db, new DictionaryEnDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, DictionaryEn.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 
@@ -108,7 +108,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
     public void saveStatisticToDB(BigramRuStatisticImpl statistic, AbstractSUBD db) {
         String label = "bigram_ru_dao";
         ManagerAPISaver.getInstance().registry(label, db, new BigramRuVarOneDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, BigramRuImpl.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 
@@ -146,7 +146,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
     public void saveStatisticToDB(BigramEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "bigram_en_dao";
         ManagerAPISaver.getInstance().registry(label, db, new BigramEnVarOneDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, BigramEnImpl.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 
@@ -184,7 +184,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
     public void saveStatisticToDB(ThreegramRuStatisticImpl statistic, AbstractSUBD db) {
         String label = "threegram_ru_dao";
         ManagerAPISaver.getInstance().registry(label, db, new ThreegramRuVarOneDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, ThreegramRuVarOne.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 
@@ -222,7 +222,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
     public void saveStatisticToDB(ThreegramEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "threegram_en_dao";
         ManagerAPISaver.getInstance().registry(label, db, new ThreegramEnVarOneDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, ThreegramEnVarOne.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 
@@ -260,7 +260,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
     public void saveStatisticToDB(FourgramRuStatisticImpl statistic, AbstractSUBD db) {
         String label = "fourgram_ru_dao";
         ManagerAPISaver.getInstance().registry(label, db, new FourgramRuVarOneDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, FourgramRuVarOne.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 
@@ -298,7 +298,7 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
     public void saveStatisticToDB(FourgramEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "fourgram_en_dao";
         ManagerAPISaver.getInstance().registry(label, db, new FourgramEnVarOneDaoImpl());
-        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db, FourgramEnVarOne.class);
 
         List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
 

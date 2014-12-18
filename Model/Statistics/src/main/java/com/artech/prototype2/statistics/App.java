@@ -4,6 +4,7 @@ import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import com.artech.prototype2.saver.dbo.impl.CreateDataBaseImpl;
 import com.artech.prototype2.saver.dbo.impl.MySQL;
 import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;
+import com.artech.prototype2.saver.entity.DictionaryEn;
 import com.artech.prototype2.saver.entity.DictionaryRu;
 import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.saver.manager.ManagerAPISaver;
@@ -35,7 +36,7 @@ public class App
        ((DictionaryRu) entity).setCount(10);
         ManagerAPISaver.getInstance().update(label, db, entity);
         
-        List<Entity> dict = ManagerAPISaver.getInstance().getAll(label, db);
+        List<Entity> dict = ManagerAPISaver.getInstance().getAll(label, db, DictionaryEn.class);
         for(Entity ent : dict){
             System.out.println(((DictionaryRu)ent).getWord());
         }
