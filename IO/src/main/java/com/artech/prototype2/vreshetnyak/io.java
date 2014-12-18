@@ -5,6 +5,9 @@
  */
 package com.artech.prototype2.vreshetnyak;
 
+import com.artech.prototype2.saver.dao.AbstractDao;
+import com.artech.prototype2.saver.dao.Dao;
+import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;
 import com.artech.prototype2.vreshetnyak.input.Input;
 import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
 import com.artech.prototype2.vreshetnyak.output.Output;
@@ -18,14 +21,5 @@ import com.artech.prototype2.vreshetnyak.output.impl.FormReportImpl;
 public class io {
 
     public static void main(String[] args) {
-
-        Input form = new InputFormImpl();
-        form.InputGUIForm();
-
-//        Output o = new InitOutputFormImpl();
-//        o.OutputFormTable(args);
-//        String[] arStrings = {};
-//        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, null, "Название таблицы");
-//        oForm.FormReportInit();
     }
 }

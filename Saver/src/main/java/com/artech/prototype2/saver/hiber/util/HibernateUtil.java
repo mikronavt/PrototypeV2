@@ -36,7 +36,7 @@ public class HibernateUtil {
             try {
                 // Create the SessionFactory from standard (hibernate.cfg.xml) 
                 // config file.
-                configure = new Configuration().configure("hibernate\\hibernate-mysql.cfg.xml");
+                configure = new Configuration().configure("hibernate/hibernate-mysql.cfg.xml");
                 configure.setProperty("hibernate.connection.username", db.getLogin());
                 configure.setProperty("hibernate.connection.password", db.getPassword());
                 sessionFactory = configure.buildSessionFactory();
