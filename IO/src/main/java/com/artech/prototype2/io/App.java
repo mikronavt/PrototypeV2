@@ -31,11 +31,11 @@ public class App {
 //        Output o = new InitOutputFormImpl();
 //        o.OutputFormTable(args);
 
-//        String[] arStrings = {"RUID", "WORLD", "COUNT"};
-//        AbstractDao test = new DictionaryRuDaoImpl();
+        String[] arStrings = {"RUID", "WORLD", "COUNT"};
+        AbstractDao test = new DictionaryRuDaoImpl();
 //
-//        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, test, "Название таблицы");
-//        oForm.FormReportInit();
+        Output oForm = new FormReportImpl("Отчет по статистике", arStrings, test, "Название таблицы");
+        oForm.FormReportInit();
 
     }
     
