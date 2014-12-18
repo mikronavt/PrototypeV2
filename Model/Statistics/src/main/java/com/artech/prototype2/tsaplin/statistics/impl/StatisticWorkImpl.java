@@ -20,10 +20,17 @@ import java.util.ArrayList;
 public class StatisticWorkImpl implements StatisticWork{
 
     public static void main(String[] args) throws Throwable{
-        String fileName = "C:\\1\\3.txt";
+        String fileName = "E:\\test.txt";
         StatisticWorkImpl statisticWork = new StatisticWorkImpl();
         statisticWork.getFullStatisticFromFileToDB(fileName, "txt");
-
+        
+//        AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
+//        String label = "create_db";
+//        ManagerAPISaver.getInstance().registry(label, db, new BigramRuVarOneDaoImpl());
+//        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
+//
+//        List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
+//
 
     }
 

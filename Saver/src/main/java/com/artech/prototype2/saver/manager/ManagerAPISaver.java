@@ -121,21 +121,22 @@ public class ManagerAPISaver implements API {
              entity = ((AbstractDao)dao).getById(db, id);
         return entity;
     }
-
-    /**
-     * Получить все данные из бд
-     * @param label метка функционала
-     * @param db выбранная база данных
-     * @return Список сущностей
-     */
-    public List<Entity> getAll(String label, AbstractSUBD db) {
-        CommonDB dao = (Dao) get(label, db);
-        List<Entity> entities = null;
-        if (dao != null) {
-            entities = ((AbstractDao) dao).getAll(db);
-        }
-        return entities;
-    }
+//
+//    /**
+//     * Получить все данные из бд
+//     * @param label метка функционала
+//     * @param db выбранная база данных
+//     * @param type
+//     * @return Список сущностей
+//     */
+//    public List<Entity> getAll(String label, AbstractSUBD db) {
+//        CommonDB dao = (Dao) get(label, db);
+//        List<Entity> entities = null;
+//        if (dao != null) {
+//            entities = ((AbstractDao) dao).getAll(db);
+//        }
+//        return entities;
+//    }
 
     /**
      * Обновление данных в бд
@@ -155,6 +156,22 @@ public class ManagerAPISaver implements API {
         if (dao != null) {
             ((AbstractDao) dao).saveOrUpdate(db, entity);
         }
+    }
+
+     /**
+     * Получить все данные из бд
+     * @param label метка функционала
+     * @param db выбранная база данных
+     * @param type
+     * @return Список сущностей
+     */
+    public List<Entity> getAll(String label, AbstractSUBD db, Class name) {
+         CommonDB dao = (Dao) get(label, db);
+        List<Entity> entities = null;
+        if (dao != null) {
+            entities = ((AbstractDao) dao).getAll(db, name);
+        }
+        return entities;
     }
 
 }

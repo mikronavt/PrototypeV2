@@ -50,14 +50,24 @@ public interface API {
      */
     Entity getById(String label, AbstractSUBD db, Integer id);
 
-    /**
+//    /**
+//     * Получить все данные из бд
+//     *
+//     * @param label метка функционала
+//     * @param db выбранная база данных
+//     * @return Список сущностей
+//     */
+//    List<Entity> getAll(String label, AbstractSUBD db);
+//    
+    
+     /**
      * Получить все данные из бд
      *
      * @param label метка функционала
      * @param db выбранная база данных
      * @return Список сущностей
      */
-    List<Entity> getAll(String label, AbstractSUBD db);
+    List<Entity> getAll(String label, AbstractSUBD db, Class name);
 
     /**
      * Обновление данных в бд
