@@ -16,19 +16,19 @@ import java.util.Map;
  *
  * @author artem
  */
-public class InOutApiImpl implements IOAPI {
+public class ManagerIOAPI implements IOAPI {
 
-    private static InOutApiImpl instance;
+    private static ManagerIOAPI instance;
     protected Map<String, Common> ioContainer;
 
-    public static InOutApiImpl getInstance() {
+    public static ManagerIOAPI getInstance() {
         if (instance == null) {
-            instance = new InOutApiImpl();
+            instance = new ManagerIOAPI();
         }
         return instance;
     }
 
-    private InOutApiImpl() {
+    private ManagerIOAPI() {
         ioContainer = new HashMap<String, Common>();
     }
 
@@ -41,10 +41,11 @@ public class InOutApiImpl implements IOAPI {
     }
 
     public void InputForm(String label) {
+        int i = 0;
         Common test = getCommon(label);
-        if (test != null) {
-            ((AbstractInput)test).InputGUIForm();// метод InputGUIForm строит и отображает форму
+        if (test != null && i < 1) {
+            ((AbstractInput) test).InputGUIForm();// метод InputGUIForm строит и отображает форму
+            i++;
         }
     }
-
 }

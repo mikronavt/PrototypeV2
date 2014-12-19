@@ -1,7 +1,7 @@
 package com.artech.prototype2.io;
 
 import com.artech.prototype2.io.api.IOAPI;
-import com.artech.prototype2.io.api.InOutApiImpl;
+import com.artech.prototype2.io.api.ManagerIOAPI;
 import com.artech.prototype2.io.common.Common;
 import com.artech.prototype2.saver.dao.AbstractDao;
 import com.artech.prototype2.saver.dao.impl.DictionaryRuDaoImpl;
@@ -18,23 +18,21 @@ import com.artech.prototype2.vreshetnyak.utils.GetDataFromInputForm;
  */
 public class App {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         String labelInputForm = "InputGUIForm";
-        InOutApiImpl.getInstance().registery(labelInputForm, new InputFormImpl());
+        ManagerIOAPI.getInstance().registery(labelInputForm, new InputFormImpl());
         
-        InOutApiImpl.getInstance().InputForm(labelInputForm);
+        ManagerIOAPI.getInstance().InputForm(labelInputForm);
 
-//        Input form = new InputFormImpl();
-//        form.InputGUIForm();
 //        /*
 //         * Спим 10 сек 
 //         */
-        Thread.sleep(10000);
+
 //        
 //        /*
 //         * Возвращаем текст с формы
 //         */
-        Common com = InOutApiImpl.getInstance().getCommon(labelInputForm);
+        Common com = ManagerIOAPI.getInstance().getCommon(labelInputForm);
         
         GetDataFromInputForm d = new GetDataFromInputForm(com);
         System.out.println(d.getData().toString());
