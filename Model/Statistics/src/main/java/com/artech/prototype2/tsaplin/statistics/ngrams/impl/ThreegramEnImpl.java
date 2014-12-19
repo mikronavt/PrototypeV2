@@ -5,10 +5,24 @@ import com.artech.prototype2.saver.entity.ThreegramEnVarOne;
 import com.artech.prototype2.tsaplin.statistics.ngrams.AbstractThreegram;
 
 /**
+ * Англоязычные триграммы.
  * Created by User on 13.12.2014.
  */
 public class ThreegramEnImpl extends AbstractThreegram {
-    public ThreegramEnImpl(String first, String second, String third){super(first, second, third);}
+
+
+    /**
+     * Конструктор для класса.
+     *
+     * @param first - первое слово.
+     * @param second - второе слово.
+     * @param third - третье слово.
+     */
+    public ThreegramEnImpl(String first, String second, String third){
+        this.first = first;
+        this.second = second;
+        this.third = third;
+    }
 
     public ThreegramEnImpl(ThreegramEnVarOne threegramEnVarOne){
         this.setFirst(threegramEnVarOne.getWordOne());

@@ -7,7 +7,7 @@ import java.util.*;
 
 
 /**
- * Класс, хранящий статистику.
+ * Абстрактных класс, хранящий статистику.
  * Хранит статистику в ХэшКарте map, где ключом является нграмма, значением - количество раз, которые она встречалась.
  *
  * Created by atsaplin on 09.12.2014.
@@ -16,14 +16,7 @@ public abstract class AbstractNgramStatistic<Type extends Ngram> implements Ngra
 
     private HashMap<Type, Integer> map;
 
-    /**
-     *
-     */
-    public AbstractNgramStatistic(){
-        map = new HashMap<Type, Integer>();
-    }
 
-    public AbstractNgramStatistic(HashMap<Type, Integer> map){this.map = map;}
 
     /**
      * Метод увеличивает статистику для одной н-граммы.
@@ -55,7 +48,10 @@ public abstract class AbstractNgramStatistic<Type extends Ngram> implements Ngra
         return this.map;
     }
 
-
+    /**
+     * Метод устанавливает HashMap со статистикой для нграмм.
+     * @param map
+     */
     public void setMap(HashMap<Type, Integer> map) {
         this.map = map;
     }

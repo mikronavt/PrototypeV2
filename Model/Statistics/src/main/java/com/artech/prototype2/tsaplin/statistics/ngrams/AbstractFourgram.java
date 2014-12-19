@@ -1,32 +1,19 @@
 package com.artech.prototype2.tsaplin.statistics.ngrams;
 
 /**
- * Класс, реализующий фограммы.
+ * Абстрактный класс фограмм.
  *
  * Created by atsaplin on 09.12.2014.
  */
 public abstract class AbstractFourgram extends AbstractNgram {
-    private String first;
-    private String second;
-    private String third;
-    private String fourth;
+    protected String first;
+    protected String second;
+    protected String third;
+    protected String fourth;
 
-    public AbstractFourgram(){}
 
-    /**
-     * Конструктор для класса.
-     *
-     * @param first
-     * @param second
-     * @param third
-     * @param fourth
-     */
-    public AbstractFourgram(String first, String second, String third, String fourth){
-        this.first = first;
-        this.second = second;
-        this.third = third;
-        this.fourth = fourth;
-    }
+
+
 
     /**
      * Геттер для н-ного слова.

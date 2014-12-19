@@ -5,11 +5,24 @@ import com.artech.prototype2.saver.entity.FourgramRuVarOne;
 import com.artech.prototype2.tsaplin.statistics.ngrams.AbstractFourgram;
 
 /**
+ * Русскоязычные фограммы.
  * Created by User on 13.12.2014.
  */
 public class FourgramRuImpl extends AbstractFourgram {
-    public FourgramRuImpl(String first, String second, String third, String fourth){super(first, second, third, fourth);}
-
+    /**
+     * Конструктор для класса.
+     *
+     * @param first
+     * @param second
+     * @param third
+     * @param fourth
+     */
+    public FourgramRuImpl(String first, String second, String third, String fourth){
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
+    }
     public FourgramRuImpl(FourgramRuVarOne fourgramRuVarOne){
         this.setFirst(fourgramRuVarOne.getWordOne());
         this.setSecond(fourgramRuVarOne.getWordTwo());
