@@ -14,6 +14,6 @@ import com.artech.prototype2.vreshetnyak.input.Input;
  * @author artem
  */
 public interface IOAPI {
-    void InputForm(String label, AbstractInput InForm);
+    void InputForm(String label);
 }
 

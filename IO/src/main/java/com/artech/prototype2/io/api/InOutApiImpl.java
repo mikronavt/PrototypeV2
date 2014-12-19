@@ -40,7 +40,7 @@ public class InOutApiImpl implements IOAPI {
         return ioContainer.get(label);
     }
 
-    public void InputForm(String label, AbstractInput InForm) {
+    public void InputForm(String label) {
         Common test = getCommon(label);
         if (test != null) {
             ((AbstractInput)test).InputGUIForm();// метод InputGUIForm строит и отображает форму

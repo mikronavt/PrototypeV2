@@ -4,6 +4,7 @@
  */
 package com.artech.prototype2.vreshetnyak.utils;
 
+import com.artech.prototype2.io.common.Common;
 import com.artech.prototype2.vreshetnyak.input.Input;
 import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
 
@@ -12,7 +13,7 @@ import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
  *
  * @author Василий
  */
-public class GetDataFromInputForm {
+public class GetDataFromInputForm extends InputFormImpl{
 
     /**
      * Частное поле типа InputFormImpl
@@ -26,6 +27,10 @@ public class GetDataFromInputForm {
      */
     public GetDataFromInputForm(Input someFrame) {
         this.frame = (InputFormImpl) someFrame;
+    }
+
+    public GetDataFromInputForm(Common common) {
+        this.frame = (InputFormImpl) common;
     }
 
     /**
