@@ -7,6 +7,7 @@
 package com.artech.prototype2.io.api;
 
 import com.artech.prototype2.vreshetnyak.input.AbstractInput;
+import com.artech.prototype2.vreshetnyak.input.Input;
 
 /**
  *

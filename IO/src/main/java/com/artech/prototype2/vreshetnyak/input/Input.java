@@ -4,11 +4,13 @@
  */
 package com.artech.prototype2.vreshetnyak.input;
 
+import com.artech.prototype2.io.common.Common;
+
 /**
  *
  * @author Василий
  */
-public interface Input {
+public interface Input extends Common{
 
     public void InputGUIForm();
 }

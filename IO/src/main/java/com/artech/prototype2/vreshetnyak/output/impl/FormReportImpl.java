@@ -52,7 +52,7 @@ public class FormReportImpl extends AbstractOutput {
     public void FormReportInit() {
         AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
 
-        List<DictionaryRu> all = ((DictionaryRuDaoImpl) inTable).getAll(db);
+        List<DictionaryRu> all = ((DictionaryRuDaoImpl) inTable).getAll(db, DictionaryRu.class);
         data = new Object[all.size()][nameColumns.length];
         
         for (int i = 0; i < all.size(); ++i) {

@@ -4,6 +4,7 @@
  */
 package com.artech.prototype2.vreshetnyak.input.impl;
 
+import com.artech.prototype2.io.api.InOutApiImpl;
 import javax.swing.*;
 import com.artech.prototype2.vreshetnyak.input.AbstractInput;
 import com.artech.prototype2.vreshetnyak.utils.GetDataFromInputForm;

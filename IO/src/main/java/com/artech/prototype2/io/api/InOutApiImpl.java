@@ -7,6 +7,8 @@ package com.artech.prototype2.io.api;
 
 import com.artech.prototype2.io.common.Common;
 import com.artech.prototype2.vreshetnyak.input.AbstractInput;
+import com.artech.prototype2.vreshetnyak.input.Input;
+import com.artech.prototype2.vreshetnyak.input.impl.InputFormImpl;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,8 +42,9 @@ public class InOutApiImpl implements IOAPI {
 
     public void InputForm(String label, AbstractInput InForm) {
         Common test = getCommon(label);
-        if(test != null){
-            ((AbstractInput) test).InputGUIForm();
+        if (test != null) {
+            ((AbstractInput)test).InputGUIForm();// метод InputGUIForm строит и отображает форму
         }
     }
+
 }
