@@ -1,24 +1,14 @@
 package com.artech.prototype2.tsaplin.statistics.ngrams;
 
 /**
- * Класс, реализующий одиночное слово.
+ * Абстрактный класс одиночных слов.
  *
  * Created by atsaplin on 09.12.2014.
  */
 public abstract class AbstractSingleWord extends AbstractNgram {
 
-    private String word;
+    protected String word;
 
-    /**
-     * Конструктор для класса.
-     *
-     * @param word - строка, на основании которой создается слово.
-     */
-    public AbstractSingleWord(String word){
-        this.word = word;
-    }
-
-    public AbstractSingleWord(){};
 
 
 

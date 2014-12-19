@@ -40,5 +40,7 @@ public class App
         for(Entity ent : dict){
             System.out.println(((DictionaryRu)ent).getWord());
         }
+
+
     }
 }

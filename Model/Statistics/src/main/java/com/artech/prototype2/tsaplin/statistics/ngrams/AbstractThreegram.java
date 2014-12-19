@@ -1,29 +1,16 @@
 package com.artech.prototype2.tsaplin.statistics.ngrams;
 
 /**
- * Класс, реализующий триграммы.
+ * Абстрактный класс триграмм.
  *
  * Created by atsaplin on 09.12.2014.
  */
 public abstract class AbstractThreegram extends AbstractNgram {
-    private String first;
-    private String second;
-    private String third;
+    protected String first;
+    protected String second;
+    protected String third;
 
-    public AbstractThreegram(){}
 
-    /**
-     * Конструктор для класса.
-     *
-     * @param first - первое слово.
-     * @param second - второе слово.
-     * @param third - третье слово.
-     */
-    public AbstractThreegram(String first, String second, String third){
-        this.first = first;
-        this.second = second;
-        this.third = third;
-    }
 
     /**
      * Геттер для класса.

@@ -17,12 +17,20 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Класс, сохраняющий статистику в БД.
  * Created by User on 13.12.2014.
  */
 public class StatisticSaverToDBImpl implements StatisticSaverToDB {
 
 
-
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(SingleWordRuStatisticImpl statistic, AbstractSUBD db) {
         //получить список из бд
@@ -38,6 +46,16 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
 
     }
 
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(SingleWordRuStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<SingleWordRuImpl, Integer> mapDictionaryId = new HashMap<SingleWordRuImpl, Integer>();
         HashMap<SingleWordRuImpl, Integer> mapDictionaryCount = new HashMap<SingleWordRuImpl, Integer>();
@@ -65,6 +83,14 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
 
     }
 
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(SingleWordEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "dict_en_dao";
@@ -78,6 +104,17 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         }
     }
 
+
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(SingleWordEnStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<SingleWordEnImpl, Integer> mapDictionaryId = new HashMap<SingleWordEnImpl, Integer>();
         HashMap<SingleWordEnImpl, Integer> mapDictionaryCount = new HashMap<SingleWordEnImpl, Integer>();
@@ -103,7 +140,14 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         return saveAndUpdateList;
     }
 
-
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(BigramRuStatisticImpl statistic, AbstractSUBD db) {
         String label = "bigram_ru_dao";
@@ -117,6 +161,16 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         }
     }
 
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(BigramRuStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<BigramRuImpl, Integer> mapDictionaryId = new HashMap<BigramRuImpl, Integer>();
         HashMap<BigramRuImpl, Integer> mapDictionaryCount = new HashMap<BigramRuImpl, Integer>();
@@ -142,6 +196,14 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         return saveAndUpdateList;
     }
 
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(BigramEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "bigram_en_dao";
@@ -155,6 +217,16 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         }
     }
 
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(BigramEnStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<BigramEnImpl, Integer> mapDictionaryId = new HashMap<BigramEnImpl, Integer>();
         HashMap<BigramEnImpl, Integer> mapDictionaryCount = new HashMap<BigramEnImpl, Integer>();
@@ -180,6 +252,14 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         return saveAndUpdateList;
     }
 
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(ThreegramRuStatisticImpl statistic, AbstractSUBD db) {
         String label = "threegram_ru_dao";
@@ -193,6 +273,16 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         }
     }
 
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(ThreegramRuStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<ThreegramRuImpl, Integer> mapDictionaryId = new HashMap<ThreegramRuImpl, Integer>();
         HashMap<ThreegramRuImpl, Integer> mapDictionaryCount = new HashMap<ThreegramRuImpl, Integer>();
@@ -218,6 +308,14 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         return saveAndUpdateList;
     }
 
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(ThreegramEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "threegram_en_dao";
@@ -231,6 +329,16 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         }
     }
 
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(ThreegramEnStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<ThreegramEnImpl, Integer> mapDictionaryId = new HashMap<ThreegramEnImpl, Integer>();
         HashMap<ThreegramEnImpl, Integer> mapDictionaryCount = new HashMap<ThreegramEnImpl, Integer>();
@@ -256,6 +364,14 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         return saveAndUpdateList;
     }
 
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(FourgramRuStatisticImpl statistic, AbstractSUBD db) {
         String label = "fourgram_ru_dao";
@@ -269,6 +385,16 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         }
     }
 
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(FourgramRuStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<FourgramRuImpl, Integer> mapDictionaryId = new HashMap<FourgramRuImpl, Integer>();
         HashMap<FourgramRuImpl, Integer> mapDictionaryCount = new HashMap<FourgramRuImpl, Integer>();
@@ -294,6 +420,14 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         return saveAndUpdateList;
     }
 
+    /**
+     * Метод, сохраняющий статистику в БД.
+     * При работе метода из БД подгружается список сущностей, затем на основании этого списка сущностей
+     * и имеющейся статистики, создается список сущностей для обновления.
+     * После чего этот список сохраняется в БД.
+     * @param statistic
+     * @param db
+     */
     @Override
     public void saveStatisticToDB(FourgramEnStatisticImpl statistic, AbstractSUBD db) {
         String label = "fourgram_en_dao";
@@ -307,6 +441,16 @@ public class StatisticSaverToDBImpl implements StatisticSaverToDB {
         }
     }
 
+    /**
+     * Вспомогательный метод, создающий список изменений на основании статистики и списка сущностей из БД.
+     * При работе метода на основании списка сущностей создаются хэшкарты нграмма-количество и нграмма-id.
+     * ПО каждой нграмме из статистики, проверяется, есть ли такая нграмма в хэшкарте.
+     * Если есть, то в лист обновлений в количество записывается сумма того, что был и того, что есть в нашей статистике.
+     * Если нет, то в листе обновлений количество берется из статистики.
+     * @param statistic
+     * @param listFromDb
+     * @return
+     */
     private List<Entity> makeListOfSaveAndUpdate(FourgramEnStatisticImpl statistic, List<Entity> listFromDb) {
         HashMap<FourgramEnImpl, Integer> mapDictionaryId = new HashMap<FourgramEnImpl, Integer>();
         HashMap<FourgramEnImpl, Integer> mapDictionaryCount = new HashMap<FourgramEnImpl, Integer>();

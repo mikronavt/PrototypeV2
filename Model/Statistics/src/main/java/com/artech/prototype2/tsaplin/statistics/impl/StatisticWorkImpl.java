@@ -20,17 +20,10 @@ import java.util.ArrayList;
 public class StatisticWorkImpl implements StatisticWork{
 
     public static void main(String[] args) throws Throwable{
-        String fileName = "E:\\test.txt";
+        String fileName = "C:\\1\\3.txt";
         StatisticWorkImpl statisticWork = new StatisticWorkImpl();
         statisticWork.getFullStatisticFromFileToDB(fileName, "txt");
-        
-//        AbstractSUBD db = new MySQL("dbconnect/dbconnect.properties");
-//        String label = "create_db";
-//        ManagerAPISaver.getInstance().registry(label, db, new BigramRuVarOneDaoImpl());
-//        List<Entity> listFromDb = ManagerAPISaver.getInstance().getAll(label, db);
-//
-//        List<Entity> saveAndUpdateList = makeListOfSaveAndUpdate(statistic, listFromDb);
-//
+
 
     }
 
@@ -49,7 +42,7 @@ public class StatisticWorkImpl implements StatisticWork{
         ArrayList<String> words = fileParser.getListOfWordsFromFile(fileName, format);
 
         //Здесь должен быть какой-то способ определения языка для файла
-        String lang = "ru";
+        String lang = "en";
 
         StatisticMakerImpl statisticMaker = new StatisticMakerImpl();
         StatisticSaverToDB dbSaver = new StatisticSaverToDBImpl();
@@ -84,6 +77,6 @@ public class StatisticWorkImpl implements StatisticWork{
 
 
 
-        //дальше надо залить все в базу
+
     }
 }

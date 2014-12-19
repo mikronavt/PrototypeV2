@@ -13,12 +13,20 @@ import com.artech.prototype2.saver.entity.Entity;
 import com.artech.prototype2.tsaplin.statistics.ngrams.AbstractBigram;
 
 /**
- *
+ *Англоязычные биграммы.
  * @author CANDY
  */
 public class BigramEnImpl extends AbstractBigram {
-    public BigramEnImpl(String first, String second){super(first, second);}
-
+    /**
+     * Конструктор для класса.
+     *
+     * @param first - первое слово.
+     * @param second - второе слово.
+     */
+    public BigramEnImpl(String first, String second){
+        this.first = first;
+        this.second = second;
+    }
     public BigramEnImpl(BigramEnVarOne bigramEnVarOne){
         this.setFirst(bigramEnVarOne.getWordOne());
         this.setSecond(bigramEnVarOne.getWordTwo());

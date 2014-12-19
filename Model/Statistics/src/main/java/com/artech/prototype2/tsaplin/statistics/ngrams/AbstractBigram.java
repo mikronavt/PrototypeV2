@@ -1,26 +1,17 @@
 package com.artech.prototype2.tsaplin.statistics.ngrams;
 
 /**
- * Класс, реализующий биграмм.
+ * Абстрактный класс биграмм.
  *
  * Created by atsaplin on 09.12.2014.
  */
 public abstract class AbstractBigram extends AbstractNgram {
 
-    private String first;
-    private String second;
+    protected String first;
+    protected String second;
 
-    public AbstractBigram(){}
-    /**
-     * Конструктор для класса.
-     *
-     * @param first - первое слово.
-     * @param second - второе слово.
-     */
-    public AbstractBigram(String first, String second){
-        this.first = first;
-        this.second = second;
-    }
+
+
 
     /**
      * Геттер для н-ного слова.

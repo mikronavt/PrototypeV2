@@ -9,18 +9,20 @@ package com.artech.prototype2.tsaplin.statistics.statisticholder.impl;
 import com.artech.prototype2.saver.entity.ThreegramRuVarOne;
 import com.artech.prototype2.tsaplin.statistics.ngrams.impl.ThreegramRuImpl;
 import com.artech.prototype2.tsaplin.statistics.statisticholder.AbstractNgramStatistic;
+
+import java.util.HashMap;
 import java.util.List;
 
 /**
- *
+ *Класс для хранения статистики русскоязычных триграмм.
  * @author CANDY
  */
 public class ThreegramRuStatisticImpl extends AbstractNgramStatistic<ThreegramRuImpl> {
 
-    public ThreegramRuStatisticImpl(){super();}
+    public ThreegramRuStatisticImpl(){this.setMap(new HashMap<ThreegramRuImpl, Integer>());}
 
     public ThreegramRuStatisticImpl(List<ThreegramRuVarOne> list){
-        super();
+        this.setMap(new HashMap<ThreegramRuImpl, Integer>());
         for(ThreegramRuVarOne dict: list){
             this.put(new ThreegramRuImpl(dict), dict.getCount());
         }

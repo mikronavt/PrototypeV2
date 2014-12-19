@@ -30,6 +30,11 @@ public interface Ngram {
      */
     public void setNthWord(String word, int n);
 
+    /**
+     * Метод, создающий сущность для работы с БД, соответствующий нграмме.
+     * @param count
+     * @return
+     */
     public Entity makeDictionary(int count);
 
 }
