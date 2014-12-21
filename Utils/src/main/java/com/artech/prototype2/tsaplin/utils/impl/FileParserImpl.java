@@ -3,7 +3,9 @@ package com.artech.prototype2.tsaplin.utils.impl;
 import com.artech.prototype2.tsaplin.utils.FileParser;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,7 +49,6 @@ public class FileParserImpl implements FileParser{
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "windows-1251"));
         ArrayList<String> words = new ArrayList<String>();
         String s;
-
         while ((s = reader.readLine())!=null){
             String[] arrayOfWords = s.split(" ");
             for (int i = 0; i < arrayOfWords.length; i++) {
@@ -59,6 +60,17 @@ public class FileParserImpl implements FileParser{
         return words;
     }
     
+    /**
+     * Метод определения кодировки файла
+     * @param fileName
+     * @return
+     * @throws FileNotFoundException 
+     */
+    public String getEncoding(String fileName) throws FileNotFoundException{
+         File fileToProceed = new File(fileName);
+         FileReader fileInput = new FileReader(fileToProceed);
+         return fileInput.getEncoding();
+    }
     
      /**
      * Метод обрабатывает txt-файл, достает из него слова, возвращает их в виде списка.
@@ -74,15 +86,17 @@ public class FileParserImpl implements FileParser{
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), code));
         ArrayList<String> words = new ArrayList<String>();
         String s;
+        String kode = getEncoding(fileName);
+        System.out.println(kode);
 
         while ((s = reader.readLine())!=null){
             String[] arrayOfWords = s.split(" ");
             for (int i = 0; i < arrayOfWords.length; i++) {
-                String word = arrayOfWords[i];
+                String word = new String(arrayOfWords[i].getBytes(kode), "UTF-8");
                 words.add(word);
             }
         }
-
+        
         return words;
     }
 }

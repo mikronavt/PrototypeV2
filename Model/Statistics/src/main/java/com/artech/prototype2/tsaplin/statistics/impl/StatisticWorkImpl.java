@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class StatisticWorkImpl implements StatisticWork{
 
     public static void main(String[] args) throws Throwable{
-        String fileName = "C:\\1\\3.txt";
+        String fileName = "E:/test.txt";
         StatisticWorkImpl statisticWork = new StatisticWorkImpl();
         statisticWork.getFullStatisticFromFileToDB(fileName, "txt");
 

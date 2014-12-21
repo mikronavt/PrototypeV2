@@ -11,3 +11,5 @@
 /Model/Analisys/target/
 .idea
 /target/
+/Model/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml
+javadoc-bundle-options
