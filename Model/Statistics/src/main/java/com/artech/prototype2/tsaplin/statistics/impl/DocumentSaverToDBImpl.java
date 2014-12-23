@@ -1,5 +1,6 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import com.artech.prototype2.saver.manager.ManagerAPISaver;
 import com.artech.prototype2.tsaplin.statistics.DocumentSaverToDB;
 
@@ -8,12 +9,13 @@ import com.artech.prototype2.tsaplin.statistics.DocumentSaverToDB;
  */
 public class DocumentSaverToDBImpl implements DocumentSaverToDB{
     @Override
-    public void saveRuDocumentToDB(String fileName, String format) {
-
+    public void saveRuDocumentToDB(String fileName, String format, AbstractSUBD db) {
+        String label = "document_ru_dao";
+        //ManagerAPISaver.getInstance().registry(label, db);
     }
 
     @Override
-    public void saveEnDocumentToDB(String fileName, String format) {
+    public void saveEnDocumentToDB(String fileName, String format, AbstractSUBD db) {
 
     }
 }

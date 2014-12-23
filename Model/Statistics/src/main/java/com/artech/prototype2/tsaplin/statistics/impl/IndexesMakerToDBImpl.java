@@ -1,5 +1,6 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
+import com.artech.prototype2.saver.dbo.AbstractSUBD;
 import com.artech.prototype2.tsaplin.statistics.IndexesMakerToDB;
 import com.artech.prototype2.tsaplin.statistics.statisticholder.impl.SingleWordEnStatisticImpl;
 import com.artech.prototype2.tsaplin.statistics.statisticholder.impl.SingleWordRuStatisticImpl;
@@ -11,32 +12,32 @@ import java.util.List;
  */
 public class IndexesMakerToDBImpl implements IndexesMakerToDB {
     @Override
-    public void reCountRuIdfIndexes() {
+    public void reCountRuIdfIndexes(AbstractSUBD db) {
 
     }
 
     @Override
-    public void reCountEnIdfIndexes() {
+    public void reCountEnIdfIndexes(AbstractSUBD db) {
 
     }
 
     @Override
-    public void saveOrUpdateWordsInRuIdf(SingleWordRuStatisticImpl statistic) {
+    public void saveOrUpdateWordsInRuIdf(SingleWordRuStatisticImpl statistic, AbstractSUBD db) {
 
     }
 
     @Override
-    public void saveOrUpdateWordsInEnIdf(SingleWordEnStatisticImpl statistic) {
+    public void saveOrUpdateWordsInEnIdf(SingleWordEnStatisticImpl statistic, AbstractSUBD db) {
 
     }
 
     @Override
-    public void addDocumentWordsToRuIndexes(String fileName, List<String> wordsList, SingleWordRuStatisticImpl statistic) {
+    public void addDocumentWordsToRuIndexes(String fileName, List<String> wordsList, SingleWordRuStatisticImpl statistic, AbstractSUBD db) {
 
     }
 
     @Override
-    public void addDocumentWordsToEnIndexes(String fileName, List<String> wordsList, SingleWordEnStatisticImpl statistic) {
+    public void addDocumentWordsToEnIndexes(String fileName, List<String> wordsList, SingleWordEnStatisticImpl statistic, AbstractSUBD db) {
 
     }
 }
