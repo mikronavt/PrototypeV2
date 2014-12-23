@@ -1,7 +1,7 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
 import com.artech.prototype2.saver.dbo.AbstractSUBD;
-import com.artech.prototype2.tsaplin.statistics.IndexesMakerToDB;
+import com.artech.prototype2.tsaplin.statistics.IndexesSaverToDB;
 import com.artech.prototype2.tsaplin.statistics.indexes.impl.IndexesListEnImpl;
 import com.artech.prototype2.tsaplin.statistics.indexes.impl.IndexesListRuImpl;
 
@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * Created by User on 22.12.2014.
  */
-public class IndexesMakerToDBImpl implements IndexesMakerToDB {
+public class IndexesSaverToDBImpl implements IndexesSaverToDB {
     @Override
     public void reCountRuIdf(AbstractSUBD db) {
 

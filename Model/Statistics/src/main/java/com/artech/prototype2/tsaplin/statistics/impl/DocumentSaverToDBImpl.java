@@ -1,6 +1,5 @@
 package com.artech.prototype2.tsaplin.statistics.impl;
 
-import com.artech.prototype2.saver.dao.impl.DictionaryEnDaoImpl;
 import com.artech.prototype2.saver.dao.impl.DocumentEnDaoImpl;
 import com.artech.prototype2.saver.dao.impl.DocumentRuDaoImpl;
 import com.artech.prototype2.saver.dbo.AbstractSUBD;
@@ -23,7 +22,7 @@ public class DocumentSaverToDBImpl implements DocumentSaverToDB{
         doc.setFormat(format);
 
         ManagerAPISaver.getInstance().saveOrUpdate(label, db, doc);
-        new IndexesMakerToDBImpl().reCountRuIdfIndexes(db);
+        new IndexesSaverToDBImpl().reCountRuIdfIndexes(db);
     }
 
     @Override
@@ -36,6 +35,6 @@ public class DocumentSaverToDBImpl implements DocumentSaverToDB{
         doc.setFormat(format);
 
         ManagerAPISaver.getInstance().saveOrUpdate(label, db, doc);
-        new IndexesMakerToDBImpl().reCountEnIdfIndexes(db);
+        new IndexesSaverToDBImpl().reCountEnIdfIndexes(db);
     }
 }

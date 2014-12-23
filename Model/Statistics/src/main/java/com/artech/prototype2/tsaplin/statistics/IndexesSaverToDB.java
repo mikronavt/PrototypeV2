@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Created by User on 22.12.2014.
  */
-public interface IndexesMakerToDB {
+public interface IndexesSaverToDB {
     public void reCountRuIdf(AbstractSUBD db);
 
     public void reCountEnIdf(AbstractSUBD db);
