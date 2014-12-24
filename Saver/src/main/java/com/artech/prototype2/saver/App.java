@@ -28,9 +28,9 @@ public class App {
         Entity entity = new DictionaryRu();
         ((DictionaryRu) entity).setWord("example");
         ((DictionaryRu) entity).setCount(3);
-
+        ((DictionaryRu) entity).setRuid(1);
         ManagerAPISaver.getInstance().saveOrUpdate(label, db, entity);
-//        ((DictionaryRu) entity).setRuid(2);
+//        
 //  //      ManagerAPISaver.getInstance().delete(label, entity);
 ////        ((DictionaryRu) entity).setRuid(4);
 //       ((DictionaryRu) entity).setCount(10);
@@ -40,22 +40,6 @@ public class App {
         for(Entity ent : dict){
             System.out.println(((DictionaryRu)ent).getWord());
         }
-//        /////////////////////////
-        label = "dict_en_dao";
-        ManagerAPISaver.getInstance().registry(label, db, new DictionaryEnDaoImpl());
-        Entity entity1 = new DictionaryEn();
-        ((DictionaryEn) entity1).setWord("example");
-        ((DictionaryEn) entity1).setCount(3);
 
-        ManagerAPISaver.getInstance().saveOrUpdate(label, db, entity);
-//        ((DictionaryRu) entity).setRuid(2);
-//  //      ManagerAPISaver.getInstance().delete(label, entity);
-////        ((DictionaryRu) entity).setRuid(4);
-//       ((DictionaryRu) entity).setCount(10);
-//        ManagerAPISaver.getInstance().update(label, db, entity);
-        dict = ManagerAPISaver.getInstance().getAll(label, db, DictionaryEn.class);
-        for(Entity ent : dict){
-            System.out.println(((DictionaryEn)ent).getWord());
-        }
     }
 }

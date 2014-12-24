@@ -16,7 +16,4 @@ Create_FourGram_Ru_Two_MySql.sql
 Create_FourGram_En_Two_MySql.sql
 Create_Documents_En_MySql.sql
 Create_Documents_Ru_MySql.sql
-Create_Idf_en_MySql.sql
-Create_Idf_ru_MySql.sql
-Create_Indexes_En_MySql.sql
-Create_Indexes_Ru_MySql.sql
+Create_Test_Read_PDF_Mysql.sql

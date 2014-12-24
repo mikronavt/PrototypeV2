@@ -18,9 +18,9 @@
     <mapping resource="com/artech/prototype2/saver/entity/FourgramEnVarOne.hbm.xml"/>
     <mapping resource="com/artech/prototype2/saver/entity/DocumentsRu.hbm.xml"/>
     <mapping resource="com/artech/prototype2/saver/entity/DocumentsEn.hbm.xml"/>
-    <mapping resource="com/artech/prototype2/saver/entity/IndexesRu.hbm.xml"/>
+<!--    <mapping resource="com/artech/prototype2/saver/entity/IndexesRu.hbm.xml"/>
     <mapping resource="com/artech/prototype2/saver/entity/IndexesEn.hbm.xml"/>
     <mapping resource="com/artech/prototype2/saver/entity/IdfRu.hbm.xml"/>
-    <mapping resource="com/artech/prototype2/saver/entity/IdfEn.hbm.xml"/>
+    <mapping resource="com/artech/prototype2/saver/entity/IdfEn.hbm.xml"/>-->
   </session-factory>
 </hibernate-configuration>

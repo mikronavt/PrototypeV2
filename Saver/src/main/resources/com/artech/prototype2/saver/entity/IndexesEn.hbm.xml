@@ -8,13 +8,13 @@
             <column name="INDEXID" />
             <generator class="identity" />
         </id>
-        <property name="enid" type="Integer">
+        <property name="enid" type="java.lang.Integer">
             <column name="ENID" not-null="true" />
         </property>
-        <property name="docid" type="Integer">
+        <property name="docid" type="java.lang.Integer">
             <column name="DOCID" not-null="true" />
         </property>
-        <property name="posit" type="Integer">
+        <property name="posit" type="java.lang.Integer">
             <column name="POSIT" not-null="true" />
         </property>
         <property name="tf" type="float">
