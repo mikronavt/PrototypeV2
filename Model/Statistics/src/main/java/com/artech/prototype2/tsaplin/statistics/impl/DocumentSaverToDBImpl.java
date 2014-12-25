@@ -22,7 +22,7 @@ public class DocumentSaverToDBImpl implements DocumentSaverToDB{
         doc.setFormat(format);
 
         ManagerAPISaver.getInstance().saveOrUpdate(label, db, doc);
-        new IndexesSaverToDBImpl().reCountRuIdfIndexes(db);
+        new IndexesSaverToDBImpl().reCountRuIdf(db);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class DocumentSaverToDBImpl implements DocumentSaverToDB{
         doc.setFormat(format);
 
         ManagerAPISaver.getInstance().saveOrUpdate(label, db, doc);
-        new IndexesSaverToDBImpl().reCountEnIdfIndexes(db);
+        new IndexesSaverToDBImpl().reCountEnIdf(db);
     }
 }
