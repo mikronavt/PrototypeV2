@@ -56,9 +56,39 @@ public class MultiParserImpl implements FileParser, AutoCloseable {
             return getListOfWordsFromTxt(fileName);
         } else if ("pdf".equals(format.toLowerCase())) {
             return getListOfWordsFromPDF(fileName);
-        } else {
+        } else if ("doc".equals(format.toLowerCase())) {
             return getListOfWordsFromDoc(fileName);
+        } else {
+            return getListOfWordsFromFB2(fileName);
         }
+    }
+
+    /**
+     * Получение корректных данных из файла FB2
+     * @param fileName
+     * @return
+     * @throws IOException 
+     */
+    private ArrayList<String> getListOfWordsFromFB2(String fileName) throws IOException {
+        if (fileName == null) {
+            return null;
+        }
+        File fileForImport = new File(fileName);
+        List<String> result = new ArrayList<String>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileForImport)));
+        String text;
+        while ((text = reader.readLine()) != null) {
+            String[] textFragments = text.toLowerCase().split("<[^<>]*.>");
+            String[] tmp = null;
+            for (String t : textFragments) {
+                tmp = t.split(" ");
+                for (String fragment : tmp) {
+                    result.add(fragment);
+                }
+            }
+        }
+        reader.close();
+        return (ArrayList<String>) result;
     }
 
     /**
@@ -105,6 +135,11 @@ public class MultiParserImpl implements FileParser, AutoCloseable {
 
     }
 
+    /**
+     * Получение корректных данных из файла doc/docx
+     * @param FilePath - путь к файлу
+     * @return список слов
+     */
     private ArrayList<String> getListOfWordsFromDoc(String FilePath) {
         FileInputStream fis;
         List<String> result = new ArrayList<String>();
@@ -113,7 +148,7 @@ public class MultiParserImpl implements FileParser, AutoCloseable {
                 fis = new FileInputStream(new File(FilePath));
                 XWPFDocument doc = new XWPFDocument(fis);
                 XWPFWordExtractor extract = new XWPFWordExtractor(doc);
-              // System.out.println(extract.getText());
+                // System.out.println(extract.getText());
                 StringBuilder builder = new StringBuilder();
                 builder.append(extract.getText());
                 String[] words = builder.toString().split(" ");
@@ -135,11 +170,12 @@ public class MultiParserImpl implements FileParser, AutoCloseable {
                 for (String s : words) {
                     result.add(s);
                 }
-               
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         return (ArrayList<String>) result;
     }
+
 }

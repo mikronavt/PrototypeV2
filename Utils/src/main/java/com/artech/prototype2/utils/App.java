@@ -46,10 +46,22 @@ public class App {
         }
     }
     
+    public static void testFB2() throws IOException{
+        String fileName = "E:\\33.fb2";
+        FileParser parser = new MultiParserImpl();
+        ArrayList<String> test = parser.getListOfWordsFromFile(fileName, "fb2");
+        System.out.println(((MultiParserImpl)parser).getEncoding(fileName));
+        OutputStreamWriter out = new OutputStreamWriter(System.out, "UTF-8");
+        for(String t : test){
+            out.write(t+"\n");
+        }
+    }
+    
     public static void main(String[] args) throws IOException {
 //        createDB();
 //        testPDF();
-        testDOC();
+//        testDOC();
+        testFB2();
         System.out.println("Hello World!");
     }
 }
